@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: homeassistant
-          image: ghcr.io/home-assistant/home-assistant:latest # {"$imagepolicy": "homeassistant:homeassistant"}
+          image: ghcr.io/home-assistant/home-assistant:2025.2.4 # {"$imagepolicy": "homeassistant:homeassistant"}
           imagePullPolicy: Always
           env:
             - name: TZ
@@ -46,7 +46,7 @@ spec:
             limits:
               memory: "1.5Gi"
         - name: zwave-js-ui
-          image: ghcr.io/zwave-js/zwave-js-ui:latest # {"$imagepolicy": "homeassistant:zwave-js-ui"}
+          image: ghcr.io/zwave-js/zwave-js-ui:9.30.1 # {"$imagepolicy": "homeassistant:zwave-js-ui"}
           imagePullPolicy: Always
           ports:
             - containerPort: 8091
