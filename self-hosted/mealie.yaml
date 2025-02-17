@@ -150,7 +150,7 @@ spec:
     name: flux-system
     namespace: flux-system
   update:
-    path: ./apps
+    path: ./self-hosted
     strategy: Setters
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
