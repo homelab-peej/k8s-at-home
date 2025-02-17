@@ -6,5 +6,8 @@ Home Assistant is a home automation toolkit that lets you automate and control y
 ### [Mealie](https://github.com/mealie-recipes/mealie/)
 Mealie is a self-hosted recipe manager, meal planner, and shopping list application.
 
+### [Tautulli](https://github.com/Tautulli/Tautulli)
+Tautulli is a web application for monitoring and providing analytics and notifications for your Plex server.
+
 ### [Z-Wave JS UI](https://github.com/zwave-js/zwave-js-ui)
 Z-Wave control panel and MQTT gateway. Either can be enabled separately or both together. I've paired this with Home Assistant so I can control z-wave switches and outlets around the home via [this dongle](https://a.co/d/9HZfxjH). By running this in the same pod as Home Assistant, it's still accessible from HA via localhost and keeps the services and ingresses simple.
