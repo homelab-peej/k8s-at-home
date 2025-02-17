@@ -93,6 +93,7 @@ spec:
 #   name: traefik
 #   namespace: metallb
 # spec:
+#   autoAssign: false
 #   addresses:
 #     - 192.168.1.2/32
 # ---
@@ -104,3 +105,4 @@ spec:
 # spec:
 #   ipAddressPools:
 #     - default
+#     - traefik

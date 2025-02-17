@@ -112,18 +112,88 @@ metadata:
   labels:
     app_name: homeassistant
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - name: web-ui
-      targetPort: 8123
-      port: 80
+      port: 8123
     - name: websocket
       port: 3000
     - name: zwave-web-ui
-      targetPort: 8091
-      port: 8080
+      port: 8091
   selector:
     app_name: homeassistant
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homeassistant-private
+  namespace: homeassistant
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - homeassistant.homelab-peej.dev
+      secretName: homeassistant-internal-tls-secret
+  rules:
+    - host: homeassistant.homelab-peej.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: homeassistant
+                port:
+                  number: 8123
+            path: /
+            pathType: Prefix
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: homeassistant-internal-certificate
+  namespace: homeassistant
+spec:
+  secretName: homeassistant-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - homeassistant.homelab-peej.dev
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zwave-private
+  namespace: homeassistant
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - zwave.homelab-peej.dev
+      secretName: zwave-internal-tls-secret
+  rules:
+    - host: zwave.homelab-peej.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: homeassistant
+                port:
+                  number: 8091
+            path: /
+            pathType: Prefix
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: zwave-internal-certificate
+  namespace: homeassistant
+spec:
+  secretName: zwave-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - zwave.homelab-peej.dev
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
