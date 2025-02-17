@@ -13,7 +13,7 @@
 - Insert the MicroSD card and power the Pi, waiting for the LED to steadily blink and a green screen output via HDMI to indicate success ([documentation](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#bootloader_update_stable)), power off, and remove the MicroSD card
 - Install your USB or M.2 drive and power back on to boot
 - Add `cgroup_memory=1 cgroup_enable=memory` to `/boot/firmware/cmdline.txt`
-- Run `sudo apt update && sudo apt upgrade`
+- Run `sudo apt update && sudo apt upgrade && sudo apt install -y open-iscsi`
 - Reboot
 
 ## Choose your Kubernetes Flavor
