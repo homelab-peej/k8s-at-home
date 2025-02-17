@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: mealie
-          image: ghcr.io/mealie-recipes/mealie:latest # {"$imagepolicy": "mealie:mealie"}
+          image: ghcr.io/mealie-recipes/mealie:v2.6.0 # {"$imagepolicy": "mealie:mealie"}
           imagePullPolicy: Always
           env:
             - name: ALLOW_SIGNUP
