@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: tautulli
-          image: ghcr.io/tautulli/tautulli:latest # {"$imagepolicy": "tautulli:tautulli"}
+          image: ghcr.io/tautulli/tautulli:v2.15.1 # {"$imagepolicy": "tautulli:tautulli"}
           imagePullPolicy: Always
           env:
             - name: TZ
