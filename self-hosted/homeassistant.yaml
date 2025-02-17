@@ -1,0 +1,263 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homeassistant
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homeassistant
+  namespace: homeassistant
+  labels:
+    app: homeassistant
+    app_name: homeassistant
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app_name: homeassistant
+  template:
+    metadata:
+      name: homeassistant
+      labels:
+        app: homeassistant
+        app_name: homeassistant
+    spec:
+      containers:
+        - name: homeassistant
+          image: ghcr.io/home-assistant/home-assistant:latest # {"$imagepolicy": "homeassistant:homeassistant"}
+          imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: "America/Chicago"
+          volumeMounts:
+            - name: hass-config
+              mountPath: /config
+            - name: config-file
+              mountPath: /config/configuration.yaml
+              subPath: configuration.yaml
+          resources:
+            requests:
+              cpu: "1m"
+              memory: "500Mi"
+            limits:
+              memory: "1.5Gi"
+        - name: zwave-js-ui
+          image: ghcr.io/zwave-js/zwave-js-ui:latest # {"$imagepolicy": "homeassistant:zwave-js-ui"}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8091
+              name: http
+              protocol: TCP
+            - containerPort: 3000
+              name: websocket
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "1m"
+              memory: "170Mi"
+            limits:
+              memory: "500Mi"
+          securityContext:
+            allowPrivilegeEscalation: true
+            privileged: true
+          volumeMounts:
+            - mountPath: /dev/zwave
+              name: zwavestick
+            - mountPath: /usr/src/app/store
+              name: zwave-data
+      nodeSelector:
+        kubernetes.io/hostname: k8s-pi-3
+      volumes:
+        - name: hass-config
+          persistentVolumeClaim:
+            claimName: hass-config
+        - name: config-file
+          configMap:
+            name: homeassistant-configuration
+        - name: zwavestick
+          hostPath:
+            path: /dev/serial/by-id/usb-0658_0200-if00
+            type: CharDevice
+        - name: zwave-data
+          persistentVolumeClaim:
+            claimName: zwave-data
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homeassistant-configuration
+  namespace: homeassistant
+data:
+  configuration.yaml: |
+    default_config:
+    frontend:
+      themes: !include_dir_merge_named themes
+    automation: !include automations.yaml
+    script: !include scripts.yaml
+    scene: !include scenes.yaml
+    http:
+      use_x_forwarded_for: true
+      trusted_proxies:
+        - 10.42.0.0/16
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: homeassistant
+  namespace: homeassistant
+  labels:
+    app_name: homeassistant
+spec:
+  type: LoadBalancer
+  ports:
+    - name: web-ui
+      targetPort: 8123
+      port: 80
+    - name: websocket
+      port: 3000
+    - name: zwave-web-ui
+      targetPort: 8091
+      port: 8080
+  selector:
+    app_name: homeassistant
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zwave-data
+  namespace: homeassistant
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 3Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hass-config
+  namespace: homeassistant
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 3Gi
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: homeassistant
+  namespace: homeassistant
+spec:
+  image: ghcr.io/home-assistant/home-assistant
+  interval: 6h0m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: zwave-js-ui
+  namespace: homeassistant
+spec:
+  image: ghcr.io/zwave-js/zwave-js-ui
+  interval: 6h0m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: homeassistant
+  namespace: homeassistant
+spec:
+  imageRepositoryRef:
+    name: homeassistant
+  policy:
+    semver:
+      range: '>=2025.1.3'
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: zwave-js-ui
+  namespace: homeassistant
+spec:
+  imageRepositoryRef:
+    name: zwave-js-ui
+  policy:
+    semver:
+      range: '>=9.29.1'
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: homeassistant
+  namespace: homeassistant
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: peej11-bot@users.noreply.github.com
+        name: peej11-bot
+      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
+  interval: 30m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  update:
+    path: ./self-hosted
+    strategy: Setters
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: zwave-js-ui
+  namespace: homeassistant
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: peej11-bot@users.noreply.github.com
+        name: peej11-bot
+      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
+  interval: 30m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  update:
+    path: ./self-hosted
+    strategy: Setters
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: homeassistant-alert
+  namespace: flux-system
+spec:
+  summary: "Home Assistant"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: ImageRepository
+      name: '*'
+      namespace: homeassistant
+    - kind: ImagePolicy
+      name: '*'
+      namespace: homeassistant
+    - kind: ImageUpdateAutomation
+      name: '*'
+      namespace: homeassistant
