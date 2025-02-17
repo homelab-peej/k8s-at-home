@@ -1,0 +1,30 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infra
+  namespace: flux-system
+spec:
+  interval: 8h0m0s
+  path: ./infra
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  timeout: 10m0s
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: self-hosted
+  namespace: flux-system
+spec:
+  interval: 8h0m0s
+  path: ./self-hosted
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  timeout: 10m0s
+  wait: true
