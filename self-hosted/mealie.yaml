@@ -147,7 +147,7 @@ spec:
   interval: 30m0s
   sourceRef:
     kind: GitRepository
-    name: self-hosted
+    name: flux-system
     namespace: flux-system
   update:
     path: ./apps
