@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: cloudflare-ddns
-          image: favonia/cloudflare-ddns:latest # {"$imagepolicy": "cloudflare-ddns:cloudflare-ddns"}
+          image: favonia/cloudflare-ddns:1.15.1 # {"$imagepolicy": "cloudflare-ddns:cloudflare-ddns"}
           imagePullPolicy: Always
           env:
             - name: CLOUDFLARE_API_TOKEN
