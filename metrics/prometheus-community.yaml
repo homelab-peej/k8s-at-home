@@ -1,0 +1,140 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: prometheus
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: prometheus-community
+  namespace: prometheus
+spec:
+  interval: 8h
+  timeout: 10m
+  url: https://prometheus-community.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  annotations:
+    kustomize.toolkit.fluxcd.io/force: enabled
+  name: prometheus
+  namespace: prometheus
+spec:
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  interval: 24h
+  timeout: 30m
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      remediateLastFailure: true
+  values:
+    grafana:
+      persistence:
+        enabled: true
+        type: sts
+        storageClassName: "longhorn"
+        accessModes:
+          - ReadWriteMany
+        size: 50Gi
+        finalizers:
+          - kubernetes.io/pvc-protection
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        hosts:
+          - grafana.homelab-peej.dev
+        tls:
+          - secretName: grafana-internal-tls-secret
+            hosts:
+              - grafana.homelab-peej.dev
+    prometheus:
+      prometheusSpec:
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "1Gi"
+          limits:
+            memory: "1.1Gi"
+      prometheusConfigSpec:
+        storageSpec: 
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn
+              accessModes: ["ReadWriteMany"]
+              resources:
+                requests:
+                  storage: 50Gi
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "50Mi"
+          limits:
+            memory: "50Mi"
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        hosts:
+          - prometheus.homelab-peej.dev
+        tls:
+          - secretName: prometheus-internal-tls-secret
+            hosts:
+              - prometheus.homelab-peej.dev
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: grafana-internal-certificate
+  namespace: prometheus
+spec:
+  secretName: grafana-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - grafana.homelab-peej.dev
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: prometheus-internal-certificate
+  namespace: prometheus
+spec:
+  secretName: prometheus-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - prometheus.homelab-peej.dev
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: prometheus-alert
+  namespace: flux-system
+spec:
+  summary: "Kube-Prometheus-Stack"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: prometheus
+    - kind: HelmChart
+      name: '*'
+      namespace: prometheus
+    - kind: HelmRelease
+      name: '*'
+      namespace: prometheus
