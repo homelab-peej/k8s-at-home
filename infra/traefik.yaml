@@ -62,17 +62,17 @@ spec:
     ports:
       web:
         port: 80
-        #redirections:
-        #  entryPoint:
-        #    to: websecure
-        #    scheme: https
-        #    permanent: true
+        redirections:
+          entryPoint:
+            to: websecure
+            scheme: https
+            permanent: true
       websecure:
         port: 443
     persistence:
       enabled: true
       size: 512Mi
-      storageClass: "longhorn" #"freenas-nfs-csi"
+      storageClass: "longhorn"
       accessMode: ReadWriteMany
     affinity:
       podAntiAffinity:
