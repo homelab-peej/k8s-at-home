@@ -1,0 +1,119 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cloudflare-ddns
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflare-ddns
+  namespace: cloudflare-ddns
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: cloudflare-ddns
+      app_name: cloudflare-ddns
+  template:
+    metadata:
+      labels:
+        app: cloudflare-ddns
+        app_name: cloudflare-ddns
+    spec:
+      containers:
+        - name: cloudflare-ddns
+          image: favonia/cloudflare-ddns:latest # {"$imagepolicy": "cloudflare-ddns:cloudflare-ddns"}
+          imagePullPolicy: Always
+          env:
+            - name: CLOUDFLARE_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cloudflare-ddns-config
+                  key: api
+            - name: DOMAINS
+              valueFrom:
+                secretKeyRef:
+                  name: cloudflare-ddns-config
+                  key: domains
+            - name: IP6_PROVIDER
+              value: 'none'
+            - name: CACHE_EXPIRATION
+              value: '5s'
+          command:
+            - /bin/ddns
+          workingDir: /
+          resources:
+            requests:
+              memory: "7Mi"
+            limits:
+              memory: "10Mi"
+      restartPolicy: Always
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: cloudflare-ddns
+  namespace: cloudflare-ddns
+spec:
+  image: favonia/cloudflare-ddns
+  interval: 6h0m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: cloudflare-ddns
+  namespace: cloudflare-ddns
+spec:
+  imageRepositoryRef:
+    name: cloudflare-ddns
+  policy:
+    semver:
+      range: '>=1.0.0 <2.0.0'
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: cloudflare-ddns
+  namespace: cloudflare-ddns
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: peej11-bot@users.noreply.github.com
+        name: peej11-bot
+      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
+  interval: 30m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  update:
+    path: ./infra
+    strategy: Setters
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: cloudflare-ddns-alert
+  namespace: flux-system
+spec:
+  summary: "Cloudflare DDNS"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: ImageRepository
+      name: '*'
+      namespace: cloudflare-ddns
+    - kind: ImagePolicy
+      name: '*'
+      namespace: cloudflare-ddns
+    - kind: ImageUpdateAutomation
+      name: '*'
+      namespace: cloudflare-ddns
