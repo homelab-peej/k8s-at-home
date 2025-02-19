@@ -56,6 +56,8 @@ spec:
           memory: "29Mi"
         limits:
           memory: "29Mi"
+      frr:
+        enabled: false
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
