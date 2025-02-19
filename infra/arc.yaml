@@ -1,0 +1,94 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: arc-systems
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: arc-runners
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: arc-runner-controller
+  namespace: arc-systems
+spec:
+  interval: 8h
+  provider: generic
+  ref:
+    tag: 0.10.1
+  url: oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: arc-runner-controller
+  namespace: arc-systems
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: arc-runner-controller
+  interval: 24h
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              kind: Deployment
+            patch: |
+              - op: replace
+                path: /spec/template/metadata/labels/app.kubernetes.io~1version
+                value: latest
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: arc-runner-set
+  namespace: arc-runners
+spec:
+  interval: 8h
+  provider: generic
+  ref:
+    tag: 0.10.1
+  url: oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: arc-runner-set
+  namespace: arc-runners
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: arc-runner-set
+  interval: 24h
+  values:
+    githubConfigUrl: "https://github.com/homelab-peej/"
+    githubConfigSecret: arc-token
+    maxRunners: 3
+    minRunners: 1
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: arc-alert
+  namespace: flux-system
+spec:
+  summary: "Actions Runner Controller"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: OCIRepository
+      name: '*'
+      namespace: arc-systems
+    - kind: HelmRelease
+      name: '*'
+      namespace: arc-systems
+    - kind: OCIRepository
+      name: '*'
+      namespace: arc-runners
+    - kind: HelmRelease
+      name: '*'
+      namespace: arc-runners
