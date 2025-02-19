@@ -50,10 +50,10 @@ spec:
       minAvailable: 1
     resources:
       requests:
-        cpu: "100m"
-        memory: "50Mi"
+        cpu: "2m"
+        memory: "47Mi"
       limits:
-        memory: "150Gi"
+        memory: "47Gi"
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -71,10 +71,10 @@ spec:
         minAvailable: 1
       resources:
         requests:
-          cpu: "100m"
-          memory: "15Mi"
+          cpu: "1m"
+          memory: "19Mi"
         limits:
-          memory: "50Gi"
+          memory: "19Gi"
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

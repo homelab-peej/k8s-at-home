@@ -63,10 +63,10 @@ spec:
       prometheusSpec:
         resources:
           requests:
-            cpu: "200m"
-            memory: "1Gi"
+            cpu: "128m"
+            memory: "1184Mi"
           limits:
-            memory: "1.1Gi"
+            memory: "1184Mi"
       prometheusConfigSpec:
         storageSpec:
           volumeClaimTemplate:

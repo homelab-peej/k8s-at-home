@@ -44,9 +44,9 @@ spec:
           resources:
             requests:
               cpu: ".5m"
-              memory: "180Mi"
+              memory: "220Mi"
             limits:
-              memory: "256Mi"
+              memory: "220Mi"
       volumes:
         - name: config
           persistentVolumeClaim:
