@@ -125,7 +125,7 @@ spec:
       enableServiceLinks: true
       containers:
         - name: homepage
-          image: ghcr.io/gethomepage/homepage:latest # {"$imagepolicy": "homepage:homepage"}
+          image: ghcr.io/gethomepage/homepage:v0.10.9 # {"$imagepolicy": "homepage:homepage"}
           imagePullPolicy: Always
           ports:
             - name: http
