@@ -68,7 +68,7 @@ spec:
           limits:
             memory: "1.1Gi"
       prometheusConfigSpec:
-        storageSpec: 
+        storageSpec:
           volumeClaimTemplate:
             spec:
               storageClassName: longhorn

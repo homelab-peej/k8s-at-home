@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -74,8 +75,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: web-ui
-    port: 8181
+    - name: web-ui
+      port: 8181
   selector:
     app_name: tautulli
 ---

@@ -48,7 +48,7 @@ spec:
     podDisruptionBudget:
       enabled: true
       minAvailable: 1
-    resources: 
+    resources:
       requests:
         cpu: "100m"
         memory: "50Mi"
@@ -57,19 +57,19 @@ spec:
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-              - cert-manager
-          topologyKey: "kubernetes.io/hostname"
+          - labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - cert-manager
+            topologyKey: "kubernetes.io/hostname"
     webhook:
       replicaCount: 1
       podDisruptionBudget:
         enabled: true
         minAvailable: 1
-      resources: 
+      resources:
         requests:
           cpu: "100m"
           memory: "15Mi"
@@ -78,16 +78,16 @@ spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app.kubernetes.io/name
-                operator: In
-                values:
-                - webhook
-            topologyKey: "kubernetes.io/hostname"
-    extraArgs: 
-    - --dns01-recursive-nameservers-only
-    - --dns01-recursive-nameservers=1.1.1.1:53
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - webhook
+              topologyKey: "kubernetes.io/hostname"
+    extraArgs:
+      - --dns01-recursive-nameservers-only
+      - --dns01-recursive-nameservers=1.1.1.1:53
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
