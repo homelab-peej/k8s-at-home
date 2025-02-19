@@ -9,7 +9,7 @@ _Automatically managed with Flux and Github Actions_ 🤖
 
 <div align="center">
 
-![Kubernetes](https://badgen.net/badge/Kubernetes/1.31.5+k3s1/blue)  ![Flux](https://badgen.net/badge/Flux/2.4.0/blue)
+![Kubernetes](https://badgen.net/badge/Kubernetes/1.31.5+k3s1/blue)  ![Flux](https://badgen.net/badge/Flux/2.4.0/blue) [![yamllint](https://github.com/homelab-peej/k8s-at-home/actions/workflows/yamllint.yaml/badge.svg?branch=main&event=push)](https://github.com/homelab-peej/k8s-at-home/actions/workflows/yamllint.yaml)
 
 </div>
 
