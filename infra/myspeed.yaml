@@ -1,0 +1,178 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: myspeed
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myspeed
+  namespace: myspeed
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: myspeed
+      app_name: myspeed
+  template:
+    metadata:
+      labels:
+        app: myspeed
+        app_name: myspeed
+    spec:
+      containers:
+        - name: myspeed
+          image: germannewsmaker/myspeed:latest # {"$imagepolicy": "myspeed:myspeed"}
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: /myspeed/data
+              name: myspeed
+          resources:
+            requests:
+              cpu: "1m"
+              memory: "350Mi"
+            limits:
+              memory: "500Mi"
+          ports:
+            - containerPort: 5216
+              protocol: TCP
+      restartPolicy: Always
+      volumes:
+        - name: myspeed
+          persistentVolumeClaim:
+            claimName: myspeed
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myspeed
+  namespace: myspeed
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myspeed
+  namespace: myspeed
+  labels:
+    app: myspeed
+    app_name: myspeed
+spec:
+  type: ClusterIP
+  ports:
+    - name: web-ui
+      port: 5216
+  selector:
+    app_name: myspeed
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myspeed-private
+  namespace: myspeed
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - myspeed.homelab-peej.dev
+      secretName: myspeed-internal-tls-secret
+  rules:
+    - host: myspeed.homelab-peej.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: myspeed
+                port:
+                  number: 5216
+            path: /
+            pathType: Prefix
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: myspeed-internal-certificate
+  namespace: myspeed
+spec:
+  secretName: myspeed-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - myspeed.homelab-peej.dev
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: myspeed
+  namespace: myspeed
+spec:
+  image: germannewsmaker/myspeed
+  interval: 6h0m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: myspeed
+  namespace: myspeed
+spec:
+  imageRepositoryRef:
+    name: myspeed
+  policy:
+    semver:
+      range: '>=1.0.0 <2.0.0'
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: myspeed
+  namespace: myspeed
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: peej11-bot@users.noreply.github.com
+        name: peej11-bot
+      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
+  interval: 30m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  update:
+    path: ./self-hosted
+    strategy: Setters
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: myspeed-alert
+  namespace: flux-system
+spec:
+  summary: "myspeed"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: ImageRepository
+      name: '*'
+      namespace: myspeed
+    - kind: ImagePolicy
+      name: '*'
+      namespace: myspeed
+    - kind: ImageUpdateAutomation
+      name: '*'
+      namespace: myspeed
