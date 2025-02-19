@@ -31,6 +31,7 @@ spec:
     kind: OCIRepository
     name: arc-runner-controller
   interval: 24h
+  # ARC workaround https://github.com/fluxcd/flux2/issues/4910#issuecomment-2286684282
   postRenderers:
     - kustomize:
         patches:
