@@ -34,12 +34,12 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-            token: ${{ secrets.GITHUB_TOKEN }}
-            branch: update-flux
-            commit-message: Update Flux to ${{ env.flux_version }}
-            title: Update Flux to ${{ env.flux_version }}
-            body: |
-              Update Flux to ${{ env.flux_version }}
-              Verify any API changes at https://github.com/fluxcd/flux2/releases/latest and add manifest changes to this branch before merging
-            reviewers: |
-              Peej11
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update-flux
+          commit-message: Update Flux to ${{ env.flux_version }}
+          title: Update Flux to ${{ env.flux_version }}
+          body: |
+            Update Flux to ${{ env.flux_version }}
+            Verify any API changes at https://github.com/fluxcd/flux2/releases/latest and add manifest changes to this branch before merging
+          reviewers: |
+            Peej11
