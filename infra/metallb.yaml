@@ -46,16 +46,16 @@ spec:
       resources:
         requests:
           cpu: "2m"
-          memory: "42Mi"
+          memory: "57Mi"
         limits:
-          memory: "55Mi"
+          memory: "57Mi"
     speaker:
       resources:
         requests:
-          cpu: "12m"
-          memory: "65Mi"
+          cpu: "3m"
+          memory: "29Mi"
         limits:
-          memory: "80Mi"
+          memory: "29Mi"
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert

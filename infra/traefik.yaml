@@ -52,9 +52,9 @@ spec:
     resources:
       requests:
         cpu: "100m"
-        memory: "50Mi"
+        memory: "68Mi"
       limits:
-        memory: "150Mi"
+        memory: "68Mi"
     ingressClass:
       enabled: true
       isDefaultClass: true
