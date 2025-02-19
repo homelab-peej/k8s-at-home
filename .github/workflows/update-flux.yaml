@@ -1,0 +1,45 @@
+name: update-flux
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-flux:
+    runs-on: arc-runner-set
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Setup Flux CLI
+        uses: fluxcd/flux2/action@main
+      - name: Check for updates
+        id: update
+        run: |
+          flux install \
+            --components-extra=image-reflector-controller,image-automation-controller \
+            --export > ./flux-bootstrap/flux-system/gotk-components.yaml
+
+          VERSION="$(flux -v)"
+          VERSION_NUMBER="$(flux -v | sed 's/flux version //g')"
+          echo "flux_version=$VERSION" >> $GITHUB_ENV
+          echo "flux_version_number=$VERSION_NUMBER" >> $GITHUB_ENV
+      - name: Update Readme
+        run: sed -i 's/Flux\/[0-9.]\+\(-rc.[0-9]\)\?\/blue/Flux\/${{ env.flux_version_number }}\/blue/g' ${{ github.workspace }}/README.md
+        shell: bash
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            branch: update-flux
+            commit-message: Update Flux to ${{ env.flux_version }}
+            title: Update Flux to ${{ env.flux_version }}
+            body: |
+              Update Flux to ${{ env.flux_version }}
+              Verify any API changes at https://github.com/fluxcd/flux2/releases/latest and add manifest changes to this branch before merging
+            reviewers: |
+              Peej11
