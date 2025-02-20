@@ -1,4 +1,3 @@
----
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -26,7 +25,7 @@ spec:
     spec:
       containers:
         - name: myspeed
-          image: germannewsmaker/myspeed:latest # {"$imagepolicy": "myspeed:myspeed"}
+          image: germannewsmaker/myspeed:1.0.9 # {"$imagepolicy": "myspeed:myspeed"}
           imagePullPolicy: Always
           volumeMounts:
             - mountPath: /myspeed/data
