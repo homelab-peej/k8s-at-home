@@ -28,5 +28,8 @@ Test analysis software that records your internet speed for up to 30 days.
 ### [Reloader](https://github.com/stakater/reloader)
 Reloader will watch many resources for `ConfigMap` or `Secret` changes and automatically rollout an update for those changes. Simply add the annotation `reloader.stakater.com/auto: "true"` to your Deployment `.metadata`. See the [documentation](https://github.com/stakater/reloader#how-to-use-reloader) for more examples.
 
+### [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller)
+This project aims to provide a general-purpose, Kubernetes-native upgrade controller (for nodes). It introduces a new CRD, the `Plan`, for defining any and all of your upgrade policies/requirements. A `Plan` is an outstanding intent to mutate nodes in your cluster. This is the recommended way to automate K3S updates according to the [documentation](https://docs.k3s.io/upgrades/automated).
+
 ### [Traefik](https://doc.traefik.io/traefik/)
 Traefik is an ingress controller that will let you access services with DNS names and a standard port across all services. To setup your service with Traefik, define a service type of `ClusterIP` with the `.spec.ports.port` your application is exposing. Then define a Kubernetes Ingress that points to your service. You can update your hosts file on a local system if you'd like to resolve a name to an IP address. If you have a DNS server, you can configure A records such as `homelab.local` and `*.homelab.local` that point to the IP address Traefik is running on. If you have a public domain name, you can do the same on your public DNS provider and then port-forward your router to Traefik to access services remotely.
