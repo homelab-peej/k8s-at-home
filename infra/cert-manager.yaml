@@ -53,7 +53,7 @@ spec:
         cpu: "2m"
         memory: "47Mi"
       limits:
-        memory: "47Gi"
+        memory: "47Mi"
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -74,7 +74,7 @@ spec:
           cpu: "1m"
           memory: "19Mi"
         limits:
-          memory: "19Gi"
+          memory: "19Mi"
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
