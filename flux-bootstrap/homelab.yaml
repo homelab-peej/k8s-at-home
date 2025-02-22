@@ -8,6 +8,7 @@ spec:
   interval: 8h0m0s
   path: ./infra
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -23,6 +24,7 @@ spec:
   interval: 8h0m0s
   path: ./self-hosted
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -38,6 +40,7 @@ spec:
   interval: 8h0m0s
   path: ./metrics
   prune: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: flux-system
