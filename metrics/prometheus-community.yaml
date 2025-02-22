@@ -67,6 +67,11 @@ spec:
             memory: "1184Mi"
           limits:
             memory: "1184Mi"
+        additionalScrapeConfigs:
+          - job_name: 'unifipoller'
+            scrape_interval: 30s
+            static_configs:
+              - targets: ['unpoller.unpoller.svc.cluster.local:9130']
       prometheusConfigSpec:
         storageSpec:
           volumeClaimTemplate:
