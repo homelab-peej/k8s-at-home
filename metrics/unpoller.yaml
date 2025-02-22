@@ -43,6 +43,8 @@ spec:
                 secretKeyRef:
                   name: unpoller-config
                   key: unifi-pass
+            - name: UP_UNIFI_DEFAULT_SAVE_DPI
+              value: "true"
           resources:
             requests:
               cpu: "2m"
