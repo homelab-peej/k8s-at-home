@@ -46,3 +46,24 @@ spec:
       operator:
         clusterPoolIPv4PodCIDRList:
           - 10.42.0.0/16
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: cilium-alert
+  namespace: flux-system
+spec:
+  summary: "Cilium"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: kube-system
+    - kind: HelmChart
+      name: '*'
+      namespace: kube-system
+    - kind: HelmRelease
+      name: '*'
+      namespace: kube-system
