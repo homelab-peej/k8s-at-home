@@ -5,8 +5,11 @@ Apps and services that are essential to a functioning cluster to support the app
 ### [Actions Runner Controller](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/deploying-runner-scale-sets-with-actions-runner-controller#runner-scale-set)
 Actions Runner Controller (ARC) is a Kubernetes operator that orchestrates and scales self-hosted runners for GitHub Actions. With ARC, you can create runner scale sets that automatically scale based on the number of workflows running in your repository, organization, or enterprise. Because controlled runners can be ephemeral and based on containers, new runner instances can scale up or down rapidly and cleanly.
 
-### [Cert-Manager](https://github.com/cert-manager/cert-manager)
+### [Cert-Manager](https://cert-manager.io)
 Cert-manager is a X.509 certificate manager for Kubernetes. It adds multiple certificate and issuer resources to your cluster can help you automate obtaininig, renewing, and using your certificates. By using the [DNS challenge](https://cert-manager.io/docs/configuration/acme/dns01/#setting-nameservers-for-dns01-self-check) option we can obtain certificates even for an internal-only domain name. Cert-manager knows that you still control the domain since it can write TXT records back to Cloudflare with your API token. If you have an internal DNS server and use [split-horizon](https://en.wikipedia.org/wiki/Split-horizon_DNS) be sure to add the extraAgs shown above to force cert-manager to use public DNS to authenticate since your internal DNS will not propogate those records.
+
+### [Cilium](https://cilium.io)
+Cilium is an open source, cloud native solution for providing, securing, and observing network connectivity between workloads, fueled by the revolutionary Kernel technology eBPF
 
 ### [Cloudflare-DDNS](https://github.com/favonia/cloudflare-ddns)
 A feature-rich and robust Cloudflare DDNS updater with a small footprint. The program will detect your machine’s public IP addresses and update DNS records using the [Cloudflare API](https://dash.cloudflare.com/profile/api-tokens).
@@ -22,7 +25,7 @@ Longhorn is a lightweight, reliable and easy-to-use distributed block storage sy
 ### [MetalLB](https://metallb.universe.tf/)
 Bare-metal Kubernetes installs do not have a native load-balancer implementation. This tool lets you dedicate IP addresses to be available to your cluster for [Services of type LoadBalancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/) to claim for use. I'll set one address aside specifically for a reverse-proxy to use with a DNS name, and I'll have another small pool available for other random stuff. See [basic L2 configuration](https://metallb.io/configuration/) to get started.
 
-### [Reloader](https://github.com/stakater/reloader)
+### [Reloader](https://docs.stakater.com/reloader/index.html)
 Reloader will watch many resources for `ConfigMap` or `Secret` changes and automatically rollout an update for those changes. Simply add the annotation `reloader.stakater.com/auto: "true"` to your Deployment `.metadata`. See the [documentation](https://github.com/stakater/reloader#how-to-use-reloader) for more examples.
 
 ### [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller)
