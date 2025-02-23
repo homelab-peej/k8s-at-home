@@ -47,10 +47,10 @@ spec:
               value: "true"
           resources:
             requests:
-              cpu: "2m"
-              memory: "30Mi"
+              cpu: 2m
+              memory: 45Mi
             limits:
-              memory: "30Mi"
+              memory: 45Mi
       restartPolicy: Always
 ---
 apiVersion: v1
