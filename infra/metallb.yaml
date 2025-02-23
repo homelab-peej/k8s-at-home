@@ -4,6 +4,16 @@ kind: Namespace
 metadata:
   name: metallb
 ---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: metallb
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
