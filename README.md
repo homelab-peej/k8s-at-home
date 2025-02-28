@@ -15,18 +15,20 @@ _Automatically managed with Flux and Github Actions_ 🤖
 
 ## 🛠️ Tools
 
-| Tool                            | Purpose                                                                          |
-|---------------------------------|----------------------------------------------------------------------------------|
-| [Flux](https://fluxcd.io/flux/) | Operator to manage your K8S cluster based any number of sources including GitHub |
+| Tool                                    | Purpose                                                                          |
+|-----------------------------------------|----------------------------------------------------------------------------------|
+| [Flux](https://fluxcd.io/flux/)         | Operator to manage your K8S cluster based any number of sources including GitHub |
+| [SOPS](https://github.com/getsops/sops) | K8S secrets and configmap manager to encrypt secrets with GnuPG for storage      |
 
 
 ## 🖥️ Nodes 
-| Node           | RAM | Storage        | Role   | OS            |
-|----------------|-----|----------------|--------|---------------|
-| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Master | Raspbian Lite |
-| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite |
-| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite |
-| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite |
+| Node           | RAM | Storage        | Role   | OS            | Accessories   |
+|----------------|-----|----------------|--------|---------------|----------------------------------------------------------------------------------------|
+| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Master | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
+| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
+| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
+| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
+| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
 
 
 ## 📦 Storage 
