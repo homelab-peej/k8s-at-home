@@ -5,6 +5,10 @@ metadata:
   name: infra
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   interval: 8h0m0s
   path: ./infra
   prune: true
@@ -21,6 +25,10 @@ metadata:
   name: self-hosted
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   interval: 8h0m0s
   path: ./self-hosted
   prune: true
@@ -37,6 +45,10 @@ metadata:
   name: metrics
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   interval: 8h0m0s
   path: ./metrics
   prune: true
