@@ -1,0 +1,203 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: actual
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: actual
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: traefik-allow-ingress
+  namespace: actual
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: traefik
+      ports:
+        - protocol: TCP
+          port: 5006
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actual
+  namespace: actual
+  labels:
+    app: actual
+    app_name: actual
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app_name: actual
+  template:
+    metadata:
+      name: actual
+      labels:
+        app: actual
+        app_name: actual
+    spec:
+      containers:
+        - name: actual
+          image: ghcr.io/actualbudget/actual:latest # {"$imagepolicy": "actual:actual"}
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: actual-data
+              mountPath: /data
+          resources:
+            requests:
+              cpu: 26m
+              memory: 170Mi
+            limits:
+              memory: 170Mi
+      volumes:
+        - name: actual-data
+          persistentVolumeClaim:
+            claimName: actual-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: actual
+  namespace: actual
+  labels:
+    app_name: actual
+spec:
+  type: ClusterIP
+  ports:
+    - name: web-ui
+      port: 5006
+  selector:
+    app_name: actual
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: actual-private
+  namespace: actual
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - actual.homelab-peej.dev
+      secretName: actual-internal-tls-secret
+  rules:
+    - host: actual.homelab-peej.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: actual
+                port:
+                  number: 5006
+            path: /
+            pathType: Prefix
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: actual-internal-certificate
+  namespace: actual
+spec:
+  secretName: actual-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - actual.homelab-peej.dev
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: actual-data
+  namespace: actual
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: actual
+  namespace: actual
+spec:
+  image: ghcr.io/actualbudget/actual
+  interval: 6h0m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: actual
+  namespace: actual
+spec:
+  imageRepositoryRef:
+    name: actual
+  policy:
+    semver:
+      range: '>=25.0.0'
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: actual
+  namespace: actual
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: peej11-bot@users.noreply.github.com
+        name: peej11-bot
+      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
+  interval: 30m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  update:
+    path: ./self-hosted
+    strategy: Setters
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: actual-alert
+  namespace: flux-system
+spec:
+  summary: "Actual Budget"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: ImageRepository
+      name: '*'
+      namespace: actual
+    - kind: ImagePolicy
+      name: '*'
+      namespace: actual
+    - kind: ImageUpdateAutomation
+      name: '*'
+      namespace: actual
