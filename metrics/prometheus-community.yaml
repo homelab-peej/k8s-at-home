@@ -85,6 +85,14 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    alertmanager:
+      alertmanagerSpec:
+        resources:
+          requests:
+            cpu: 1m
+            memory: 36Mi
+          limits:
+            memory: 36Mi
     grafana:
       persistence:
         enabled: true
@@ -141,6 +149,14 @@ spec:
           - secretName: prometheus-internal-tls-secret
             hosts:
               - prometheus.homelab-peej.dev
+    prometheusOperator:
+      prometheusConfigReloader:
+        resources:
+          requests:
+            cpu: 1m
+            memory: 21Mi
+          limits:
+            memory: 21Mi
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
