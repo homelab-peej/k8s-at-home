@@ -105,6 +105,12 @@ spec:
   values:
     longhornUI:
       replicas: 1
+      resources:
+        requests:
+          cpu: 1m
+          memory: 7168Ki
+        limits:
+          memory: 7168Ki
     ingress:
       enabled: true
       ingressClassName: traefik
