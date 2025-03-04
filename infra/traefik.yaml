@@ -77,10 +77,10 @@ spec:
         reloader.stakater.com/auto: "true"
     resources:
       requests:
-        cpu: "100m"
-        memory: "68Mi"
+        cpu: 100m
+        memory: 68Mi
       limits:
-        memory: "68Mi"
+        memory: 68Mi
     ingressClass:
       enabled: true
       isDefaultClass: true
@@ -111,6 +111,14 @@ spec:
     service:
       annotations:
         metallb.universe.tf/address-pool: traefik
+    experimental:
+      plugins:
+        fail2ban:
+          moduleName: "github.com/tomMoulard/fail2ban"
+          version: "v0.8.3"
+        geoblock:
+          moduleName: "github.com/PascalMinder/geoblock"
+          version: "v0.3.2"
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
