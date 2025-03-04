@@ -60,10 +60,10 @@ spec:
               name: myspeed
           resources:
             requests:
-              cpu: "1m"
-              memory: "100Mi"
+              cpu: 1m
+              memory: 100Mi
             limits:
-              memory: "100Mi"
+              memory: 100Mi
           ports:
             - containerPort: 5216
               protocol: TCP

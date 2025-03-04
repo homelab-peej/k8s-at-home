@@ -45,7 +45,7 @@ spec:
     remediation:
       retries: 3
   interval: 24h
-  timeout: 30m
+  timeout: 10m
   targetNamespace: reloader
   upgrade:
     crds: CreateReplace
@@ -56,10 +56,10 @@ spec:
       deployment:
         resources:
           requests:
-            cpu: ".1m"
-            memory: "24Mi"
+            cpu: 1m
+            memory: 24Mi
           limits:
-            memory: "48Mi"
+            memory: 48Mi
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert

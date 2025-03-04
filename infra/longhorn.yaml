@@ -96,7 +96,7 @@ spec:
     remediation:
       retries: 3
   interval: 24h
-  timeout: 30m
+  timeout: 10m
   targetNamespace: longhorn-system
   upgrade:
     crds: CreateReplace
@@ -105,6 +105,12 @@ spec:
   values:
     longhornUI:
       replicas: 1
+      resources:
+        requests:
+          cpu: 1m
+          memory: 7168Ki
+        limits:
+          memory: 7168Ki
     ingress:
       enabled: true
       ingressClassName: traefik

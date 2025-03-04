@@ -45,7 +45,7 @@ spec:
     remediation:
       retries: 3
   interval: 24h
-  timeout: 30m
+  timeout: 10m
   targetNamespace: cert-manager
   upgrade:
     crds: CreateReplace
@@ -60,10 +60,10 @@ spec:
       minAvailable: 1
     resources:
       requests:
-        cpu: "2m"
-        memory: "47Mi"
+        cpu: 2m
+        memory: 47Mi
       limits:
-        memory: "47Mi"
+        memory: 47Mi
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -81,10 +81,10 @@ spec:
         minAvailable: 1
       resources:
         requests:
-          cpu: "1m"
-          memory: "19Mi"
+          cpu: 1m
+          memory: 19Mi
         limits:
-          memory: "19Mi"
+          memory: 19Mi
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

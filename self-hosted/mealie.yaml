@@ -96,10 +96,10 @@ spec:
           workingDir: /
           resources:
             requests:
-              cpu: "2m"
-              memory: "428Mi"
+              cpu: 2m
+              memory: 428Mi
             limits:
-              memory: "428Mi"
+              memory: 428Mi
       restartPolicy: Always
       volumes:
         - name: mealie

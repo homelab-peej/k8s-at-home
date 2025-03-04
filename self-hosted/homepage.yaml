@@ -187,6 +187,12 @@ spec:
               subPath: widgets.yaml
             - mountPath: /app/config/logs
               name: logs
+          resources:
+            requests:
+              cpu: 1m
+              memory: 183Mi
+            limits:
+              memory: 183Mi
       volumes:
         - name: homepage-config
           configMap:

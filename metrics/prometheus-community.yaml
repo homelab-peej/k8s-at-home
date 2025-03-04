@@ -79,12 +79,20 @@ spec:
     remediation:
       retries: 3
   interval: 24h
-  timeout: 30m
+  timeout: 10m
   upgrade:
     crds: CreateReplace
     remediation:
       remediateLastFailure: true
   values:
+    alertmanager:
+      alertmanagerSpec:
+        resources:
+          requests:
+            cpu: 1m
+            memory: 36Mi
+          limits:
+            memory: 36Mi
     grafana:
       persistence:
         enabled: true
@@ -108,10 +116,10 @@ spec:
       prometheusSpec:
         resources:
           requests:
-            cpu: "128m"
-            memory: "1184Mi"
+            cpu: 128m
+            memory: 1184Mi
           limits:
-            memory: "1184Mi"
+            memory: 1184Mi
         additionalScrapeConfigs:
           - job_name: 'unifipoller'
             scrape_interval: 30s
@@ -128,10 +136,10 @@ spec:
                   storage: 50Gi
         resources:
           requests:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: 50m
+            memory: 50Mi
           limits:
-            memory: "50Mi"
+            memory: 50Mi
       ingress:
         enabled: true
         ingressClassName: traefik
@@ -141,6 +149,14 @@ spec:
           - secretName: prometheus-internal-tls-secret
             hosts:
               - prometheus.homelab-peej.dev
+    prometheusOperator:
+      prometheusConfigReloader:
+        resources:
+          requests:
+            cpu: 1m
+            memory: 21Mi
+          limits:
+            memory: 21Mi
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate

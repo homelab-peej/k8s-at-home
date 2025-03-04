@@ -59,7 +59,7 @@ spec:
     remediation:
       retries: 3
   interval: 24h
-  timeout: 30m
+  timeout: 10m
   targetNamespace: metallb
   upgrade:
     crds: CreateReplace
@@ -69,17 +69,17 @@ spec:
     controller:
       resources:
         requests:
-          cpu: "2m"
-          memory: "57Mi"
+          cpu: 2m
+          memory: 57Mi
         limits:
-          memory: "57Mi"
+          memory: 57Mi
     speaker:
       resources:
         requests:
-          cpu: "3m"
-          memory: "29Mi"
+          cpu: 3m
+          memory: 29Mi
         limits:
-          memory: "29Mi"
+          memory: 29Mi
       frr:
         enabled: false
 ---
