@@ -85,10 +85,10 @@ spec:
               subPath: configuration.yaml
           resources:
             requests:
-              cpu: "2m"
-              memory: "454Mi"
+              cpu: 2m
+              memory: 454Mi
             limits:
-              memory: "454Mi"
+              memory: 454Mi
         - name: zwave-js-ui
           image: ghcr.io/zwave-js/zwave-js-ui:9.31.0 # {"$imagepolicy": "homeassistant:zwave-js-ui"}
           imagePullPolicy: Always
@@ -101,10 +101,10 @@ spec:
               protocol: TCP
           resources:
             requests:
-              cpu: "2m"
-              memory: "278Mi"
+              cpu: 2m
+              memory: 234Mi
             limits:
-              memory: "278Mi"
+              memory: 234Mi
           securityContext:
             allowPrivilegeEscalation: true
             privileged: true
