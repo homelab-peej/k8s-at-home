@@ -14,8 +14,11 @@ Cilium is an open source, cloud native solution for providing, securing, and obs
 ### [Cloudflare-DDNS](https://github.com/favonia/cloudflare-ddns)
 A feature-rich and robust Cloudflare DDNS updater with a small footprint. The program will detect your machine’s public IP addresses and update DNS records using the [Cloudflare API](https://dash.cloudflare.com/profile/api-tokens).
 
-### [CSI-Driver-SMB](https://github.com/kubernetes-csi/csi-driver-smb)
-This driver allows Kubernetes to access SMB server on both Linux and Windows nodes, plugin name: `smb.csi.k8s.io`.
+### [CSI Driver NFS](https://github.com/kubernetes-csi/csi-driver-nfs)
+This driver allows Kubernetes to access NFS servers on both Linux and Windows nodes, plugin name: `nfs.csi.k8s.io`.
+
+### [CSI Driver SMB](https://github.com/kubernetes-csi/csi-driver-smb)
+This driver allows Kubernetes to access SMB servers on both Linux and Windows nodes, plugin name: `smb.csi.k8s.io`.
 
 ### [Flux Extensions](https://fluxcd.io/flux/guides/)
 - [Automatic Image Updates](https://fluxcd.io/flux/guides/image-update/) - You can follow this guide to automate image scanning and application updates. Flux will monitor a registry and image that you select and automatically pick the latest image based on the parameters provided. Flux will then write those changes back to your source control and update your application. [Mealie](https://github.com/homelab-peej/k8s-at-home/blob/main/self-hosted/mealie.yaml) has a good example.
