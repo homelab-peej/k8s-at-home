@@ -59,11 +59,11 @@ spec:
   eventSeverity: info
   eventSources:
     - kind: HelmRepository
-      name: '*'
+      name: 'cilium'
       namespace: kube-system
     - kind: HelmChart
-      name: '*'
+      name: 'kube-system-cilium'
       namespace: kube-system
     - kind: HelmRelease
-      name: '*'
+      name: 'cilium'
       namespace: kube-system
