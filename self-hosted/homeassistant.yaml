@@ -90,7 +90,7 @@ spec:
             limits:
               memory: 454Mi
         - name: zwave-js-ui
-          image: ghcr.io/zwave-js/zwave-js-ui:10.0.2 # {"$imagepolicy": "homeassistant:zwave-js-ui"}
+          image: ghcr.io/zwave-js/zwave-js-ui:10.0.3 # {"$imagepolicy": "homeassistant:zwave-js-ui"}
           imagePullPolicy: Always
           ports:
             - containerPort: 8091
