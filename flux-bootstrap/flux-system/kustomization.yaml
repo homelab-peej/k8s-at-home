@@ -56,7 +56,7 @@ patches:
               - name: manager
                 resources:
                   limits:
-                    memory: 500Mi
+                    memory: 250Mi
     target:
       kind: Deployment
       name: "(kustomize-controller|helm-controller|source-controller|image-automation-controller|image-reflector-controller|notification-controller)"
