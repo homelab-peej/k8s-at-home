@@ -31,11 +31,14 @@ spec:
       retries: 3
   interval: 24h
   timeout: 10m
-  targetNamespace: reloader
+  targetNamespace: kube-system
   upgrade:
     crds: CreateReplace
     remediation:
       remediateLastFailure: true
+  values:
+    windows:
+      enabled: false
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
