@@ -31,7 +31,7 @@ spec:
       retries: 3
   interval: 24h
   timeout: 10m
-  targetNamespace: reloader
+  targetNamespace: kube-system
   upgrade:
     crds: CreateReplace
     remediation:
