@@ -95,6 +95,13 @@ spec:
                     values:
                       - webhook
               topologyKey: "kubernetes.io/hostname"
+    cainjector:
+      resources:
+        requests:
+          cpu: 1m
+          memory: 85Mi
+        limits:
+          memory: 85Mi
     extraArgs:
       - --dns01-recursive-nameservers-only
       - --dns01-recursive-nameservers=1.1.1.1:53

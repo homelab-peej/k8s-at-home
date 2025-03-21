@@ -35,6 +35,13 @@ spec:
       retries: 3
   interval: 24h
   timeout: 10m
+  values:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 80Mi
+      limits:
+        memory: 80Mi
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
