@@ -14,6 +14,20 @@ Cilium is an open source, cloud native solution for providing, securing, and obs
 ### [Cloudflare-DDNS](https://github.com/favonia/cloudflare-ddns)
 A feature-rich and robust Cloudflare DDNS updater with a small footprint. The program will detect your machine’s public IP addresses and update DNS records using the [Cloudflare API](https://dash.cloudflare.com/profile/api-tokens).
 
+### [CloudNative Postgres Operator](https://github.com/cloudnative-pg/cloudnative-pg)
+CloudNativePG is a comprehensive open source platform designed to seamlessly manage PostgreSQL databases within Kubernetes environments, covering the entire operational lifecycle from initial deployment to ongoing maintenance. The main component is the CloudNativePG operator. Deploy a Postgres `Cluster` to [define your deployment](https://cloudnative-pg.io/documentation/1.25/cloudnative-pg.v1/#Cluster).
+```
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cluster-example
+  namespace: default
+spec:
+  instances: 3
+  storage:
+    size: 1Gi
+```
+
 ### [CSI Driver NFS](https://github.com/kubernetes-csi/csi-driver-nfs)
 This driver allows Kubernetes to access NFS servers on both Linux and Windows nodes, plugin name: `nfs.csi.k8s.io`.
 
