@@ -6,16 +6,6 @@ metadata:
     pod-security.kubernetes.io/enforce: privileged
   name: system-upgrade
 ---
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: default-deny-ingress
-  namespace: system-upgrade
-spec:
-  podSelector: {}
-  policyTypes:
-    - Ingress
----
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:

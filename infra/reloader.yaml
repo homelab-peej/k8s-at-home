@@ -4,16 +4,6 @@ kind: Namespace
 metadata:
   name: reloader
 ---
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: default-deny-ingress
-  namespace: reloader
-spec:
-  podSelector: {}
-  policyTypes:
-    - Ingress
----
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
