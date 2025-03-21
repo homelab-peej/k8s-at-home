@@ -23,6 +23,11 @@ metadata:
 spec:
   concurrency: 1
   cordon: true
+  drain:
+    force: true
+    ignoreDaemonSets: true
+    deleteEmptydirData: true
+    skipWaitForDeleteTimeout: 60
   nodeSelector:
     matchExpressions:
       - key: node-role.kubernetes.io/control-plane
@@ -42,6 +47,11 @@ metadata:
 spec:
   concurrency: 1
   cordon: true
+  drain:
+    force: true
+    ignoreDaemonSets: true
+    deleteEmptydirData: true
+    skipWaitForDeleteTimeout: 60
   nodeSelector:
     matchExpressions:
       - key: node-role.kubernetes.io/control-plane
