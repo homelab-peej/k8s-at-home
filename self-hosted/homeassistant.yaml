@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: homeassistant
-          image: ghcr.io/home-assistant/home-assistant:2025.3.4 # {"$imagepolicy": "homeassistant:homeassistant"}
+          image: ghcr.io/home-assistant/home-assistant:2025.3.4@sha256:5d510569a2ceaa2fa8f8a34b91bddd36f5f7f03e4cb23e942f245e4a5a98bbef # {"$imagepolicy": "homeassistant:homeassistant"}
           imagePullPolicy: Always
           env:
             - name: TZ
@@ -46,7 +46,7 @@ spec:
             limits:
               memory: 454Mi
         - name: zwave-js-ui
-          image: ghcr.io/zwave-js/zwave-js-ui:10.1.0 # {"$imagepolicy": "homeassistant:zwave-js-ui"}
+          image: ghcr.io/zwave-js/zwave-js-ui:10.1.0@sha256:7a64bcb6c69224fd01ad2c8e7bd336594ce7c9b9b2a576d97cdcc47d3d7cb6a5 # {"$imagepolicy": "homeassistant:zwave-js-ui"}
           imagePullPolicy: Always
           ports:
             - containerPort: 8091
@@ -227,7 +227,7 @@ metadata:
   name: homeassistant
   namespace: homeassistant
 spec:
-  image: ghcr.io/home-assistant/home-assistant
+  image: ghcr.io/home-assistant/home-assistant@sha256:5d510569a2ceaa2fa8f8a34b91bddd36f5f7f03e4cb23e942f245e4a5a98bbef
   interval: 6h0m0s
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
@@ -236,7 +236,7 @@ metadata:
   name: zwave-js-ui
   namespace: homeassistant
 spec:
-  image: ghcr.io/zwave-js/zwave-js-ui
+  image: ghcr.io/zwave-js/zwave-js-ui@sha256:7a64bcb6c69224fd01ad2c8e7bd336594ce7c9b9b2a576d97cdcc47d3d7cb6a5
   interval: 6h0m0s
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2

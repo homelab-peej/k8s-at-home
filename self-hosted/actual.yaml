@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: actual
-          image: ghcr.io/actualbudget/actual:25.3.1 # {"$imagepolicy": "actual:actual"}
+          image: ghcr.io/actualbudget/actual:25.3.1@sha256:58fecd9088b73ffe402450f51eff488036cdc8ca570650be38ad2bbabbfe193b # {"$imagepolicy": "actual:actual"}
           imagePullPolicy: Always
           volumeMounts:
             - name: actual-data
@@ -115,7 +115,7 @@ metadata:
   name: actual
   namespace: actual
 spec:
-  image: ghcr.io/actualbudget/actual
+  image: ghcr.io/actualbudget/actual@sha256:58fecd9088b73ffe402450f51eff488036cdc8ca570650be38ad2bbabbfe193b
   interval: 6h0m0s
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
