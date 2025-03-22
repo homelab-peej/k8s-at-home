@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: mealie
-          image: ghcr.io/mealie-recipes/mealie:v2.8.0@sha256:63aef46d90975d9cf9c0fdb9399fc2fe36acd222e1db6be99c504b9ccdbee967 # {"$imagepolicy": "mealie:mealie"}
+          image: ghcr.io/mealie-recipes/mealie:v2.8.0 # {"$imagepolicy": "mealie:mealie"}
           imagePullPolicy: Always
           env:
             - name: ALLOW_SIGNUP
@@ -150,7 +150,7 @@ metadata:
   name: mealie
   namespace: mealie
 spec:
-  image: ghcr.io/mealie-recipes/mealie@sha256:63aef46d90975d9cf9c0fdb9399fc2fe36acd222e1db6be99c504b9ccdbee967
+  image: ghcr.io/mealie-recipes/mealie
   interval: 6h0m0s
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2

@@ -27,7 +27,7 @@ spec:
           - "true"
   serviceAccountName: system-upgrade
   upgrade:
-    image: rancher/k3s-upgrade@sha256:70a238fdf8da99b99fcdb835f8162c9176e8078c170f5d6f349d3b38c3bfed7b
+    image: rancher/k3s-upgrade
   version: v1.31.6+k3s1
 ---
 apiVersion: upgrade.cattle.io/v1
@@ -51,10 +51,10 @@ spec:
     args:
       - prepare
       - server-plan
-    image: rancher/k3s-upgrade@sha256:70a238fdf8da99b99fcdb835f8162c9176e8078c170f5d6f349d3b38c3bfed7b
+    image: rancher/k3s-upgrade
   serviceAccountName: system-upgrade
   upgrade:
-    image: rancher/k3s-upgrade@sha256:70a238fdf8da99b99fcdb835f8162c9176e8078c170f5d6f349d3b38c3bfed7b
+    image: rancher/k3s-upgrade
   version: v1.31.6+k3s1
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -291,7 +291,7 @@ data:
   SYSTEM_UPGRADE_JOB_ACTIVE_DEADLINE_SECONDS: "900"
   SYSTEM_UPGRADE_JOB_BACKOFF_LIMIT: "99"
   SYSTEM_UPGRADE_JOB_IMAGE_PULL_POLICY: Always
-  SYSTEM_UPGRADE_JOB_KUBECTL_IMAGE: rancher/kubectl:v1.30.3@sha256:86264eefaba5ffc7df2ab290f02dc4c79befd29ff9dfc6d0de630e71d6bfd375
+  SYSTEM_UPGRADE_JOB_KUBECTL_IMAGE: rancher/kubectl:v1.30.3
   SYSTEM_UPGRADE_JOB_PRIVILEGED: "true"
   SYSTEM_UPGRADE_JOB_TTL_SECONDS_AFTER_FINISH: "900"
   SYSTEM_UPGRADE_PLAN_POLLING_INTERVAL: 15m
@@ -355,7 +355,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: default-controller-env
-          image: rancher/system-upgrade-controller:v0.15.2@sha256:3e899833afcea9a8788d384ce976df9a05be84636fe5c01ec2307b5bd8fe9810
+          image: rancher/system-upgrade-controller:v0.15.2
           imagePullPolicy: IfNotPresent
           name: system-upgrade-controller
           resources:
