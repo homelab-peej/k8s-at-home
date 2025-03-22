@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: tautulli
-          image: ghcr.io/tautulli/tautulli:v2.15.1 # {"$imagepolicy": "tautulli:tautulli"}
+          image: ghcr.io/tautulli/tautulli:v2.15.1@sha256:7755360de25d5b60aaf67a0aa4f1f71fb4fc12a1a668bb9ced09e9f4ab5239cd # {"$imagepolicy": "tautulli:tautulli"}
           imagePullPolicy: Always
           env:
             - name: TZ
@@ -122,7 +122,7 @@ metadata:
   name: tautulli
   namespace: tautulli
 spec:
-  image: ghcr.io/tautulli/tautulli
+  image: ghcr.io/tautulli/tautulli@sha256:7f26e6a5811c7a7f394c9f5be04c0dafafb2112c7d72ea8a68c569473422e6a4
   interval: 6h0m0s
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
