@@ -1,6 +1,32 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:best-practices"
-  ]
+    "config:best-practices",
+    ":timezone(America/Chicago)"
+  ],
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  "flux": {
+    "fileMatch": [
+      "(^|/)kubernetes/.+\\.ya?ml$",
+      "(^|/)self-hosted/.+\\.ya?ml$",
+      "(^|/)metrics/.+\\.ya?ml$",
+      "(^|/)flux-bootstrap/.+\\.ya?ml$"
+    ]
+  },
+  "helm-values": {
+    "fileMatch": [
+      "(^|/)infra/.+\\.ya?ml$",
+      "(^|/)self-hosted/.+\\.ya?ml$",
+      "(^|/)metrics/.+\\.ya?ml$",
+      "(^|/)flux-bootstrap/.+\\.ya?ml$"
+    ]
+  },
+  "kubernetes": {
+    "fileMatch": [
+      "(^|/)infra/.+\\.ya?ml$",
+      "(^|/)self-hosted/.+\\.ya?ml$",
+      "(^|/)metrics/.+\\.ya?ml$",
+      "(^|/)flux-bootstrap/.+\\.ya?ml$"
+    ]
+  }
 }
