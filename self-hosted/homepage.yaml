@@ -126,7 +126,7 @@ spec:
       enableServiceLinks: true
       containers:
         - name: homepage
-          image: ghcr.io/gethomepage/homepage:v0.10.9 # {"$imagepolicy": "homepage:homepage"}
+          image: ghcr.io/gethomepage/homepage:v0.10.9
           imagePullPolicy: Always
           ports:
             - name: http
@@ -213,69 +213,3 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - www.homelab-peej.dev
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
-metadata:
-  name: homepage
-  namespace: homepage
-spec:
-  image: ghcr.io/gethomepage/homepage
-  interval: 6h0m0s
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImagePolicy
-metadata:
-  name: homepage
-  namespace: homepage
-spec:
-  imageRepositoryRef:
-    name: homepage
-  policy:
-    semver:
-      range: '>=0.0.0 <1.0.0'
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageUpdateAutomation
-metadata:
-  name: homepage
-  namespace: homepage
-spec:
-  git:
-    checkout:
-      ref:
-        branch: main
-    commit:
-      author:
-        email: peej11-bot@users.noreply.github.com
-        name: peej11-bot
-      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
-  interval: 30m0s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
-  update:
-    path: ./self-hosted
-    strategy: Setters
----
-apiVersion: notification.toolkit.fluxcd.io/v1beta3
-kind: Alert
-metadata:
-  name: homepage-alert
-  namespace: flux-system
-spec:
-  summary: "Homepage"
-  providerRef:
-    name: discord
-  eventSeverity: info
-  eventSources:
-    - kind: ImageRepository
-      name: '*'
-      namespace: homepage
-    - kind: ImagePolicy
-      name: '*'
-      namespace: homepage
-    - kind: ImageUpdateAutomation
-      name: '*'
-      namespace: homepage

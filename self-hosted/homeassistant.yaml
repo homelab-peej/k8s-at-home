@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: homeassistant
-          image: ghcr.io/home-assistant/home-assistant:2025.3.4 # {"$imagepolicy": "homeassistant:homeassistant"}
+          image: ghcr.io/home-assistant/home-assistant:2025.3.4
           imagePullPolicy: Always
           env:
             - name: TZ
@@ -47,7 +47,7 @@ spec:
             limits:
               memory: 454Mi
         - name: zwave-js-ui
-          image: ghcr.io/zwave-js/zwave-js-ui:10.1.0 # {"$imagepolicy": "homeassistant:zwave-js-ui"}
+          image: ghcr.io/zwave-js/zwave-js-ui:10.1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8091
@@ -221,114 +221,3 @@ spec:
   resources:
     requests:
       storage: 3Gi
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
-metadata:
-  name: homeassistant
-  namespace: homeassistant
-spec:
-  image: ghcr.io/home-assistant/home-assistant
-  interval: 6h0m0s
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
-metadata:
-  name: zwave-js-ui
-  namespace: homeassistant
-spec:
-  image: ghcr.io/zwave-js/zwave-js-ui
-  interval: 6h0m0s
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImagePolicy
-metadata:
-  name: homeassistant
-  namespace: homeassistant
-spec:
-  imageRepositoryRef:
-    name: homeassistant
-  policy:
-    semver:
-      range: '>=2025.1.3'
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImagePolicy
-metadata:
-  name: zwave-js-ui
-  namespace: homeassistant
-spec:
-  imageRepositoryRef:
-    name: zwave-js-ui
-  policy:
-    semver:
-      range: '>=9.29.1'
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageUpdateAutomation
-metadata:
-  name: homeassistant
-  namespace: homeassistant
-spec:
-  git:
-    checkout:
-      ref:
-        branch: main
-    commit:
-      author:
-        email: peej11-bot@users.noreply.github.com
-        name: peej11-bot
-      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
-  interval: 30m0s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
-  update:
-    path: ./self-hosted
-    strategy: Setters
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageUpdateAutomation
-metadata:
-  name: zwave-js-ui
-  namespace: homeassistant
-spec:
-  git:
-    checkout:
-      ref:
-        branch: main
-    commit:
-      author:
-        email: peej11-bot@users.noreply.github.com
-        name: peej11-bot
-      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
-  interval: 30m0s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
-  update:
-    path: ./self-hosted
-    strategy: Setters
----
-apiVersion: notification.toolkit.fluxcd.io/v1beta3
-kind: Alert
-metadata:
-  name: homeassistant-alert
-  namespace: flux-system
-spec:
-  summary: "Home Assistant"
-  providerRef:
-    name: discord
-  eventSeverity: info
-  eventSources:
-    - kind: ImageRepository
-      name: '*'
-      namespace: homeassistant
-    - kind: ImagePolicy
-      name: '*'
-      namespace: homeassistant
-    - kind: ImageUpdateAutomation
-      name: '*'
-      namespace: homeassistant

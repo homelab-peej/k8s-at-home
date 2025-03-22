@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: myspeed
-          image: germannewsmaker/myspeed:1.0.9 # {"$imagepolicy": "myspeed:myspeed"}
+          image: germannewsmaker/myspeed:1.0.9
           imagePullPolicy: Always
           volumeMounts:
             - mountPath: /myspeed/data
@@ -110,69 +110,3 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - myspeed.homelab-peej.dev
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
-metadata:
-  name: myspeed
-  namespace: myspeed
-spec:
-  image: germannewsmaker/myspeed
-  interval: 6h0m0s
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImagePolicy
-metadata:
-  name: myspeed
-  namespace: myspeed
-spec:
-  imageRepositoryRef:
-    name: myspeed
-  policy:
-    semver:
-      range: '>=1.0.0 <2.0.0'
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageUpdateAutomation
-metadata:
-  name: myspeed
-  namespace: myspeed
-spec:
-  git:
-    checkout:
-      ref:
-        branch: main
-    commit:
-      author:
-        email: peej11-bot@users.noreply.github.com
-        name: peej11-bot
-      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
-  interval: 30m0s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
-  update:
-    path: ./infra
-    strategy: Setters
----
-apiVersion: notification.toolkit.fluxcd.io/v1beta3
-kind: Alert
-metadata:
-  name: myspeed-alert
-  namespace: flux-system
-spec:
-  summary: "myspeed"
-  providerRef:
-    name: discord
-  eventSeverity: info
-  eventSources:
-    - kind: ImageRepository
-      name: '*'
-      namespace: myspeed
-    - kind: ImagePolicy
-      name: '*'
-      namespace: myspeed
-    - kind: ImageUpdateAutomation
-      name: '*'
-      namespace: myspeed

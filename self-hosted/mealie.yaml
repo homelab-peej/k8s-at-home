@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: mealie
-          image: ghcr.io/mealie-recipes/mealie:v2.8.0 # {"$imagepolicy": "mealie:mealie"}
+          image: ghcr.io/mealie-recipes/mealie:v2.8.0
           imagePullPolicy: Always
           env:
             - name: ALLOW_SIGNUP
@@ -143,69 +143,3 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - mealie.homelab-peej.dev
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
-metadata:
-  name: mealie
-  namespace: mealie
-spec:
-  image: ghcr.io/mealie-recipes/mealie
-  interval: 6h0m0s
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImagePolicy
-metadata:
-  name: mealie
-  namespace: mealie
-spec:
-  imageRepositoryRef:
-    name: mealie
-  policy:
-    semver:
-      range: '>=2.0.0 <3.0.0'
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageUpdateAutomation
-metadata:
-  name: mealie
-  namespace: mealie
-spec:
-  git:
-    checkout:
-      ref:
-        branch: main
-    commit:
-      author:
-        email: peej11-bot@users.noreply.github.com
-        name: peej11-bot
-      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
-  interval: 30m0s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
-  update:
-    path: ./self-hosted
-    strategy: Setters
----
-apiVersion: notification.toolkit.fluxcd.io/v1beta3
-kind: Alert
-metadata:
-  name: mealie-alert
-  namespace: flux-system
-spec:
-  summary: "Mealie"
-  providerRef:
-    name: discord
-  eventSeverity: info
-  eventSources:
-    - kind: ImageRepository
-      name: '*'
-      namespace: mealie
-    - kind: ImagePolicy
-      name: '*'
-      namespace: mealie
-    - kind: ImageUpdateAutomation
-      name: '*'
-      namespace: mealie
