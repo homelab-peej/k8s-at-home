@@ -122,7 +122,7 @@ metadata:
   name: tautulli
   namespace: tautulli
 spec:
-  image: ghcr.io/tautulli/tautulli@sha256:7f26e6a5811c7a7f394c9f5be04c0dafafb2112c7d72ea8a68c569473422e6a4
+  image: ghcr.io/tautulli/tautulli
   interval: 6h0m0s
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
