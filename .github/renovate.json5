@@ -5,6 +5,7 @@
     ":timezone(America/Chicago)"
   ],
   "dependencyDashboardTitle": "Renovate Dashboard",
+  "ignorePaths": ["**/flux-system/**"],
   "flux": {
     "fileMatch": [
       "(^|/)kubernetes/.+\\.ya?ml$",
