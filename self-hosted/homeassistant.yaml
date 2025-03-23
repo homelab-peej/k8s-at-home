@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: homeassistant
-          image: ghcr.io/home-assistant/home-assistant:2025.3.4
+          image: ghcr.io/home-assistant/home-assistant:2025.3.4@sha256:5d510569a2ceaa2fa8f8a34b91bddd36f5f7f03e4cb23e942f245e4a5a98bbef
           imagePullPolicy: Always
           env:
             - name: TZ
@@ -47,7 +47,7 @@ spec:
             limits:
               memory: 454Mi
         - name: zwave-js-ui
-          image: ghcr.io/zwave-js/zwave-js-ui:10.1.0
+          image: ghcr.io/zwave-js/zwave-js-ui:10.1.0@sha256:7a64bcb6c69224fd01ad2c8e7bd336594ce7c9b9b2a576d97cdcc47d3d7cb6a5
           imagePullPolicy: Always
           ports:
             - containerPort: 8091
