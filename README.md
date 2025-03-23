@@ -15,10 +15,11 @@ _Automatically managed with Flux and Github Actions_ 🤖
 
 ## 🛠️ Tools
 
-| Tool                                    | Purpose                                                                          |
-|-----------------------------------------|----------------------------------------------------------------------------------|
-| [Flux](https://fluxcd.io/flux/)         | Operator to manage your K8S cluster based any number of sources including GitHub |
-| [SOPS](https://github.com/getsops/sops) | K8S secrets and configmap manager to encrypt secrets with GnuPG for storage      |
+| Tool                                     | Purpose                                                                          |
+|------------------------------------------|----------------------------------------------------------------------------------|
+| [Flux](https://fluxcd.io/flux/)          | Operator to manage your K8S cluster based any number of sources including GitHub |
+| [Renovate](https://docs.renovatebot.com) | Tool to automate dependency updates                                              |
+| [SOPS](https://github.com/getsops/sops)  | K8S secrets and configmap manager to encrypt secrets with GnuPG for storage      |
 
 
 ## 🖥️ Nodes 
@@ -48,9 +49,11 @@ _Automatically managed with Flux and Github Actions_ 🤖
 
 ## ☁️ Cloud Services
 
-| Service                                              | Use                                    | Cost            |
-|------------------------------------------------------|----------------------------------------|-----------------|
-| [Cloudflare](https://www.cloudflare.com/)            | Domains and DNS management             | ~$70/yr         |
-| [Backblaze](https://www.backblaze.com/cloud-storage) | Offsite S3 storage for important files | ~$100/yr        |
-| [GitHub](https://github.com/)                        | Hosting this repo and CI/CD            | Free            |
-|                                                      |                                        | Total: ~$170/yr |
+| Service                                              | Use                                        | Cost            |
+|------------------------------------------------------|--------------------------------------------|-----------------|
+| [Backblaze](https://www.backblaze.com/cloud-storage) | Offsite S3 storage for important files     | ~$100/yr        |
+| [Cloudflare](https://www.cloudflare.com/)            | Domains and DNS management                 | ~$70/yr         |
+| [GitHub](https://github.com/)                        | Hosting this repo and CI/CD                | Free            |
+| [Let's Encrypt](https://letsencrypt.org/)            | Issuing SSL Certificates with Cert Manager | Free            |
+| [UniFi Site Manager](https://unifi.ui.com)           | UniFi External Access Management           | Free            |
+|                                                      |                                            | Total: ~$170/yr |
