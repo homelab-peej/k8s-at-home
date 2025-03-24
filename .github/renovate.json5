@@ -2,9 +2,18 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":timezone(America/Chicago)"
+    "docker:enableMajor",
+    "helpers:pinGitHubActionDigests",
+    "github>homelab-peej/k8s-at-home//.github/renovate/labels.json5",
+    "github>homelab-peej/k8s-at-home//.github/renovate/semanticCommits.json5",
+    ":dependencyDashboard",
+    ":disableRateLimiting"
   ],
-  "dependencyDashboardTitle": "Renovate Dashboard",
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": [
+    "prEditedNotification",
+    "prIgnoreNotification"
+  ],
   "flux": {
     "fileMatch": [
       "(^|/)infra/.+\\.ya?ml$",
@@ -25,5 +34,27 @@
       "(^|/)self-hosted/.+\\.ya?ml$",
       "(^|/)metrics/.+\\.ya?ml$"
     ]
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "infra/system-upgrade-controller\\.yaml$"
+      ],
+      "matchStrings": [
+        "version: (?<currentValue>v[\\d\\.\\+\\w-]+)"
+      ],
+      "depNameTemplate": "k3s",
+      "versioningTemplate": "semver-coerced",
+      "datasourceTemplate": "custom.k3s"
+    }
+  ],
+  "customDatasources": {
+    "k3s": {
+      "defaultRegistryUrlTemplate": "https://update.k3s.io/v1-release/channels",
+      "transformTemplates": [
+        '{"releases":[{"version": $$.(data[id = \'stable\'].latest),"sourceUrl":"https://github.com/k3s-io/k3s","changelogUrl":$join(["https://github.com/k3s-io/k3s/releases/tag/",data[id = \'stable\'].latest])}],"sourceUrl": "https://github.com/k3s-io/k3s","homepage": "https://k3s.io/"}'
+      ]
+    }
   }
 }

@@ -2,7 +2,7 @@
 
 ### Homelab ⚗️ 
 
-_Automatically managed with Flux and Github Actions_ 🤖
+_Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 
 </div>
 
