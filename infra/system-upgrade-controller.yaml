@@ -57,45 +57,6 @@ spec:
     image: rancher/k3s-upgrade
   version: v1.31.6+k3s1
 ---
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: system-upgrade-version-check
-rules:
-  - apiGroups: [""]
-    resources: ["nodes"]
-    verbs: ["get", "list"]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: system-upgrade-version-check
-subjects:
-  - kind: ServiceAccount
-    name: system-upgrade-version-check-sa
-    namespace: system-upgrade
-roleRef:
-  kind: ClusterRole
-  name: system-upgrade-version-check
-  apiGroup: rbac.authorization.k8s.io
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: system-upgrade-version-check-sa
-  namespace: system-upgrade
-secrets:
-  - name: system-upgrade-version-check-sa-secret
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: system-upgrade-version-check-sa-secret
-  namespace: system-upgrade
-  annotations:
-    kubernetes.io/service-account.name: system-upgrade-version-check-sa
-type: kubernetes.io/service-account-token
----
 apiVersion: v1
 kind: ServiceAccount
 metadata:
