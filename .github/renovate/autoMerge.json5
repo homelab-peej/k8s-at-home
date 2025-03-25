@@ -15,13 +15,6 @@
       "automergeType": "branch",
       "matchUpdateTypes": ["minor", "patch"],
       "ignoreTests": true
-    },
-    {
-      "matchDatasources": ["helm"],
-      "automerge": true,
-      "automergeType": "branch",
-      "matchUpdateTypes": ["patch"],
-      "ignoreTests": true
     }
   ]
 }
