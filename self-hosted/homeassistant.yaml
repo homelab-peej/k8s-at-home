@@ -47,7 +47,7 @@ spec:
             limits:
               memory: 454Mi
         - name: zwave-js-ui
-          image: ghcr.io/zwave-js/zwave-js-ui:10.1.2
+          image: ghcr.io/zwave-js/zwave-js-ui:10.1.3
           imagePullPolicy: Always
           ports:
             - containerPort: 8091
