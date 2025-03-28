@@ -1,10 +1,14 @@
 # Setup your own Kubernetes cluster on Raspberry Pi
 
 ### Important Notes
-- The steps below were all done on Raspberry Pi 5 8GB
+- A few Raspberry Pi have plenty of resources to run some basic applications and the necessary infrastructure to manage storage and networking tasks to get you started
+- The steps below were all initially tested on Raspberry Pi 5 8GB
 - This [POE M.2 Hat+](https://www.waveshare.com/poe-m.2-hat-plus.htm) was used to provide a M.2 slot for boot and PoE for a rack install
 - Running Kubernetes off of a MicroSD card under normal circumstances will likely impact performance and burn out the card quickly
 - Use a USB 3.0 drive or NVMe for best results
+
+![System Performance](../res/system-performance.png "System Performance")
+*plenty of resources across 5 RPi systems*
 
 ## Install Raspbian
 - Install [Raspberry Pi Imager](https://www.raspberrypi.com/software/) on your system
@@ -18,6 +22,7 @@
 
 ## Choose your Kubernetes Flavor
 - [K3S](SETUP-k3s.md) - easy  
+- [Talos](SETUP-talos.md) - easy(ish)  
 - [kubeadm](SETUP-kubeadm.md) - hard  
 
 ## Install [Cilium CNI](https://docs.cilium.io/en/stable/installation/k3s/)

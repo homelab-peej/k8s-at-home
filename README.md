@@ -1,6 +1,6 @@
 <div align="center">
 
-### Homelab ⚗️ 
+### <img src="res/k8s-logo.png" align="center" width="30px" height="30px"/> Homelab <img src="res/k3s-logo.png" align="center" width="30px" height="30px"/>
 
 _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 
@@ -9,7 +9,7 @@ _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 
 <div align="center">
 
-![Kubernetes](https://badgen.net/badge/Kubernetes/1.31.6+k3s1/blue)  ![Flux](https://badgen.net/badge/Flux/2.5.1/blue) [![yamllint](https://github.com/homelab-peej/k8s-at-home/actions/workflows/yamllint.yaml/badge.svg?branch=main&event=push)](https://github.com/homelab-peej/k8s-at-home/actions/workflows/yamllint.yaml)
+![Kubernetes](https://badgen.net/badge/Kubernetes/1.32.3+k3s1/blue)  ![Flux](https://badgen.net/badge/Flux/2.5.1/blue) [![yamllint](https://github.com/homelab-peej/k8s-at-home/actions/workflows/yamllint.yaml/badge.svg?branch=main&event=push)](https://github.com/homelab-peej/k8s-at-home/actions/workflows/yamllint.yaml)
 
 </div>
 
