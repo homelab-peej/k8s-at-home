@@ -47,9 +47,9 @@ spec:
         resources:
           requests:
             cpu: 1m
-            memory: 24Mi
+            memory: 512Mi
           limits:
-            memory: 48Mi
+            memory: 512Mi
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
