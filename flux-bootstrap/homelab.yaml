@@ -11,7 +11,7 @@ spec:
       name: sops-gpg
   interval: 8h0m0s
   path: ./infra
-  prune: true
+  prune: false
   force: true
   sourceRef:
     kind: GitRepository
@@ -31,7 +31,7 @@ spec:
       name: sops-gpg
   interval: 8h0m0s
   path: ./self-hosted
-  prune: true
+  prune: false
   force: true
   sourceRef:
     kind: GitRepository
@@ -51,7 +51,7 @@ spec:
       name: sops-gpg
   interval: 8h0m0s
   path: ./metrics
-  prune: true
+  prune: false
   force: true
   sourceRef:
     kind: GitRepository
@@ -82,7 +82,7 @@ spec:
       name: sops-gpg
   interval: 8h0m0s
   path: .secrets
-  prune: true
+  prune: false
   force: true
   sourceRef:
     kind: GitRepository
