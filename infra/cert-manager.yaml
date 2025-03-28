@@ -45,9 +45,6 @@ spec:
     crds:
       enabled: true
     replicaCount: 1
-    podDisruptionBudget:
-      enabled: true
-      minAvailable: 1
     resources:
       requests:
         cpu: 2m
@@ -66,9 +63,6 @@ spec:
             topologyKey: "kubernetes.io/hostname"
     webhook:
       replicaCount: 1
-      podDisruptionBudget:
-        enabled: true
-        minAvailable: 1
       resources:
         requests:
           cpu: 1m
