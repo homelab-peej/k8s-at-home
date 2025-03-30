@@ -45,6 +45,9 @@ Longhorn is a lightweight, reliable and easy-to-use distributed block storage sy
 ### [MetalLB](https://metallb.universe.tf/)
 Bare-metal Kubernetes installs do not have a native load-balancer implementation. This tool lets you dedicate IP addresses to be available to your cluster for [Services of type LoadBalancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/) to claim for use. I'll set one address aside specifically for a reverse-proxy to use with a DNS name, and I'll have another small pool available for other random stuff. See [basic L2 configuration](https://metallb.io/configuration/) to get started.
 
+### [Node Feature Discovery](https://github.com/kubernetes-sigs/node-feature-discovery)
+Node Feature Discovery is an addon to detect node capabilities for Kubernetes. It detects hardware features available on each node in a Kubernetes cluster, and advertises those features using node labels and optionally node extended resources, annotations and node taints. Node Feature Discovery is compatible with any recent version of Kubernetes (v1.24+).
+
 ### [Reloader](https://docs.stakater.com/reloader/index.html)
 Reloader will watch many resources for `ConfigMap` or `Secret` changes and automatically rollout an update for those changes. Simply add the annotation `reloader.stakater.com/auto: "true"` to your Deployment `.metadata`. See the [documentation](https://github.com/stakater/reloader#how-to-use-reloader) for more examples.
 
