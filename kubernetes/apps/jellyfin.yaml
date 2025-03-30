@@ -32,10 +32,10 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                - key: kubernetes.io/arch
-                  operator: In
-                  values:
-                    - amd64
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values:
+                      - amd64
       containers:
         - name: jellyfin
           image: ghcr.io/jellyfin/jellyfin:10.10.6
@@ -71,7 +71,7 @@ spec:
           emptyDir:
             sizeLimit: 8Gi
         - name: quicksync
-          hostPath: 
+          hostPath:
             path: /dev/dri
 ---
 apiVersion: v1
