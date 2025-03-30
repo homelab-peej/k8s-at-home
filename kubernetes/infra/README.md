@@ -35,7 +35,6 @@ This driver allows Kubernetes to access NFS servers on both Linux and Windows no
 This driver allows Kubernetes to access SMB servers on both Linux and Windows nodes, plugin name: `smb.csi.k8s.io`.
 
 ### [Flux Extensions](https://fluxcd.io/flux/guides/)
-- [Automatic Image Updates](https://fluxcd.io/flux/guides/image-update/) - You can follow this guide to automate image scanning and application updates. Flux will monitor a registry and image that you select and automatically pick the latest image based on the parameters provided. Flux will then write those changes back to your source control and update your application. [Mealie](https://github.com/homelab-peej/k8s-at-home/blob/main/self-hosted/mealie.yaml) has a good example.
 - [Monitoring Alerts](https://fluxcd.io/flux/monitoring/alerts/) - This guide will help you setup alerts that use the notification controller. Many Flux `kind`s can be monitored and send alerts based on state changes or errors. Cross-namespace references are difficult (by design) so I've done a single secret in `flux-system` as well as the provider which references it. The alert can point to objects in other namespaces so this removes the need for replicating resources across namespaces.
 - [Webhook Receivers](https://fluxcd.io/flux/guides/webhook-receivers/) - With cert-manager installed and the ability to create certificates for custom domains, we can turn Flux into a push-based pipeline that will trigger a sync any time there's a commit.
 
