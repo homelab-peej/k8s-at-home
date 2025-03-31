@@ -29,7 +29,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: traefik
-      version: 34.4.1
+      version: 34.5.0
   install:
     crds: Create
     remediation:
