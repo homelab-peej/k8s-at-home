@@ -46,6 +46,8 @@ spec:
               memory: 1893Mi
             limits:
               memory: 1893Mi
+          securityContext:
+            privileged: true
           volumeMounts:
             - name: media
               mountPath: /media
@@ -57,6 +59,25 @@ spec:
               mountPath: /transcode
             - name: quicksync
               mountPath: /dev/dri
+          livenessProbe:
+            httpGet:
+              path: /System/Ping
+              port: 8096
+            initialDelaySeconds: 5
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /System/Ping
+              port: 8096
+            initialDelaySeconds: 5
+            periodSeconds: 30
+          startupProbe:
+            httpGet:
+              path: /System/Ping
+              port: 8096
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 5
       volumes:
         - name: media
           persistentVolumeClaim:
