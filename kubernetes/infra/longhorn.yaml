@@ -54,9 +54,20 @@ spec:
       host: longhorn.homelab-peej.dev
       tls: true
       tlsSecret: longhorn-internal-tls-secret
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: longhorn-system-longhorn-dashboard-auth@kubernetescrd
     persistence:
       defaultClass: false
       reclaimPolicy: Retain
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: longhorn-dashboard-auth
+  namespace: longhorn-system
+spec:
+  basicAuth:
+    secret: longhorn-dashboard-auth-secret
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
