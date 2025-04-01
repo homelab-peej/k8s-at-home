@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: traefik-dashboard-auth-secret
+    namespace: traefik
+type: kubernetes.io/basic-auth
+stringData:
+    username: ENC[AES256_GCM,data:utupb5oDlMMYVCU=,iv:3/eFqeq+zibev1A3rDoHB+zlb+A1Ue+l0J5Ei/AAFGY=,tag:GmlNSRrl+Jz4XIQULvKYDQ==,type:str]
+    password: ENC[AES256_GCM,data:Mxcx3dt8Cfzs3+DVbtNr+GGI3DsJNlco,iv:Y2qfnvwBn7eVfuvW2i/1+L9eLsLvZnjpqKPyvJvlS38=,tag:Vdeazhy/84/LMLhCRWXjXQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-04-01T00:36:25Z"
+    mac: ENC[AES256_GCM,data:GXiMkGiis7yQ6X8ozDiTTxSgi/SYmruHqsgdDAcUS5eS55xuX5EULF9efmKekCW/NcA9gZ6P3dL7/6oRpbRc1KqNiUNUYa1nHurSMjMMdk1ygvB5EtBw8hX9Exmtq5ZpVmt5MnfYqhev2khlIxKcge3jOQosUlf4/UuQzQlgivc=,iv:UETC0iBcQvnO6Dfny8b5N2GEsLYxtbFW4/cW0mwVZJw=,tag:ODkd6OMbcfUsBfRuuH8/1A==,type:str]
+    pgp:
+        - created_at: "2025-04-01T00:36:25Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA1q7zTHG2LSZAQ/8CTWaiZs19dmirMBF2cgv6BS1UhFqBzQXJcJ0pMobwyN2
+            P0ffbZn17j2V+t8KP4IE5pXWhx2OpdR+JuMViXn7W8j5iAzXwXtPmQlODJlAIjMf
+            PNytBFQGPgwYsWBr3T4cH7RZ2btgTVQmMwKP7MN5FlvAU4MI7slpc2ZwPWuPw0Jz
+            6lwAE3OGl0P/JJo8Wl/CBfRJnQqZOmCART8exXnCRphCT2QIFP6nQerGZdZhR1U/
+            w2zOrILJCcSOrbKeLYbyq0KsIiMPWGQAYV/DRfmiMJ+TeTHMj/Ya5WaXz9k+RO6I
+            uBJZnNUHIZCauFTbvA90kuCdutyDHp/EPp/Ju9OZWNowOk74vxnNfMQYi2rtAToK
+            CWLo5HTMI95wbXhzMX6FffHX2/UTcnmxQE6VidAnsr0AYURB8rRPfTIv4ImP+So5
+            iuYOvMVv9IF5Hmmc/hUtuDWT6zNrDaS3+0BRBS53cxZgnF0QcSk7EgaPwKg6D8Cu
+            4mWOaDfuny+GuuvwTyhSk0Dy1cQGagm/16mZorAKKVN1mNTNbGL1VvaK+BcJ8nkA
+            mKTLn4mZk9f7MWPj4OmpDvR3wg1X21Cmjr+DAb39Bf0HWXyq6EaYd+bpBi1Ebimd
+            fv0JpbLzokQWm8ouZtZ8rQTGBLrk318NhIspSlRTrCX4kps4rO7AAJzcQHA17y3U
+            aAEJAhAtNvgwA/b/HXJ4sV8bP/9ZKBXVqWx7a3bWggIRRC5VsvuanCPd0hP8wWSZ
+            kxQXdvdCeA1BZKQI4r0bcp6LqA9nF11yn1jpbykveYDVrVQcnaKTMfNec6DtD4BC
+            sW9rPCzCSDSH
+            =DkBj
+            -----END PGP MESSAGE-----
+          fp: 733981EC713BBFDBAAD9E5FB77E29A7F07D187AC
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.4
