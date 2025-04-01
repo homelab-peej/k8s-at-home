@@ -16,13 +16,11 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: mealie
-      app_name: mealie
+      app.kubernetes.io/name: mealie
   template:
     metadata:
       labels:
-        app: mealie
-        app_name: mealie
+        app.kubernetes.io/name: mealie
     spec:
       containers:
         - name: mealie
@@ -98,15 +96,14 @@ metadata:
   name: mealie
   namespace: mealie
   labels:
-    app: mealie
-    app_name: mealie
+    app.kubernetes.io/name: mealie
 spec:
   type: ClusterIP
   ports:
     - name: web-ui
       port: 9000
   selector:
-    app_name: mealie
+    app.kubernetes.io/name: mealie
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress

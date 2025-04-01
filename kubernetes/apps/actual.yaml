@@ -10,8 +10,7 @@ metadata:
   name: actual
   namespace: actual
   labels:
-    app: actual
-    app_name: actual
+    app.kubernetes.io/name: actual
   annotations:
     reloader.stakater.com/auto: "true"
 spec:
@@ -19,13 +18,12 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app_name: actual
+      app.kubernetes.io/name: actual
   template:
     metadata:
       name: actual
       labels:
-        app: actual
-        app_name: actual
+        app.kubernetes.io/name: actual
     spec:
       containers:
         - name: actual
@@ -51,14 +49,14 @@ metadata:
   name: actual
   namespace: actual
   labels:
-    app_name: actual
+    app.kubernetes.io/name: actual
 spec:
   type: ClusterIP
   ports:
     - name: web-ui
       port: 5006
   selector:
-    app_name: actual
+    app.kubernetes.io/name: actual
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
