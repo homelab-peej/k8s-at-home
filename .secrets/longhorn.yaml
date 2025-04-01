@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: longhorn-dashboard-auth-secret
+    namespace: longhorn-system
+type: kubernetes.io/basic-auth
+stringData:
+    username: ENC[AES256_GCM,data:M+NVWh6movtSX0s=,iv:WfpMOk8kX57kQcW2qs0/wIULnl06jnU9JYfBQx9YKqQ=,tag:tfcJ4BKSNyiJ6IxXOtu1Zw==,type:str]
+    password: ENC[AES256_GCM,data:Y3c0AKauLJywCd+/BUZ4czMQ+Kh6tvbz,iv:bYBEDy/hbRpGJWMRfinFxUVPq2+uOSmdAFCvhtq+nj4=,tag:PUMvyVlzieABBQbyGwT5pw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-04-01T15:23:54Z"
+    mac: ENC[AES256_GCM,data:UMJQHmZdxBqjBjLPEXqaBDrFyzjUzwAFMlQF0Ilq/dYJ4UL8FOhrAh9jYbXG2GzPFooWTeF+LW0g2bgl5WEi7llHRO0jkGZ8g1pCYw5f+eVbrfp4v0E2oRRk+jMzzrVq/YbJ8G6AMdrQDF23DST77ByKJLpT5gAVWtgRPT52MkQ=,iv:vORMD0T5MSEtPz+Ogoy8l9JnGDBaVQQbma3tKL/w4SQ=,tag:6V3NdvP//cOzC29Td0Ot3g==,type:str]
+    pgp:
+        - created_at: "2025-04-01T15:23:54Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA1q7zTHG2LSZARAAkYFZpJeQG/UT3SvqWC1ri2ZC9Wau2YmLhsWV91oBZsfw
+            FYxaWB/z+mYgdp1UOWUwGWGdgl9o8sVpovtul3GCLBMuQN6BV9FXBeFpyv5yG8A5
+            wEH2GBEMMaB8nUI5SL1ebzi0nkmYBEC1S6r8NB07pCrpDNbNxSuEx7ohgTWEGcXx
+            js4UL7fFQraCdxiVaBESdUexHRmK+6BjS6pGF73yNfQF+9UXJMt5i+bc00CU8Ipj
+            F/HLvygYUKTk2YUUYmEwc4C70w+ZR35bysOS+N81IrDY1jMxKGswwvk5HyI7/j9Q
+            53wDvlgDkfnextGG6LyZe/x+/Dg9X6/wrKli5AkIq5rgpJxgpcAn60Fi8Licz88f
+            kRAHUh+qfFj023cz/C11zIVdTMhFlaQ0GWeg4hgk+JrnosmCsjftDP9FkD6dECYt
+            fzKaMDxOnkvm7DMMCv/L/dS+Ji9S2gOjGh7Qxx7rR2GUPxN89yKF5bHy4p44PH5W
+            09OgTpQyoWh7URDVWFkoYVonAvEYbHDBca+O10TInz673JkY/jE1E6Px5r8l/VRO
+            NE2LC1AF0KLmfSuhCrSnd20b6TzJ7aHBDCIt2Iu/L4gZ1BDNNjm8nkcL/1wdi7jg
+            QSN6bfDiZwp0rlNAhyqLSqecQnT6wvMrnwoy5ovL7gZo8RznmPZ6+REMmNL01qHU
+            aAEJAhAId47T22BWn/cRA5KZSXA0V/qoqyW/l+WGVCWwLzeDobgerb/Uqc8wSmGs
+            Brokwx+AHeVzI+WAnuwkmi+Lmkd7k+8BfrNILNM8kIcoVGFMVoekf0QYVMhk9vHp
+            MH7iGG47Pzgq
+            =TNTp
+            -----END PGP MESSAGE-----
+          fp: 733981EC713BBFDBAAD9E5FB77E29A7F07D187AC
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.4
