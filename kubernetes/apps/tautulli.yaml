@@ -10,8 +10,7 @@ metadata:
   name: tautulli
   namespace: tautulli
   labels:
-    app: tautulli
-    app_name: tautulli
+    app.kubernetes.io/name: tautulli
   annotations:
     reloader.stakater.com/auto: "true"
 spec:
@@ -19,13 +18,12 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app_name: tautulli
+      app.kubernetes.io/name: tautulli
   template:
     metadata:
       name: tautulli
       labels:
-        app: tautulli
-        app_name: tautulli
+        app.kubernetes.io/name: tautulli
     spec:
       containers:
         - name: tautulli
@@ -71,14 +69,14 @@ metadata:
   name: tautulli
   namespace: tautulli
   labels:
-    app_name: tautulli
+    app.kubernetes.io/name: tautulli
 spec:
   type: ClusterIP
   ports:
     - name: web-ui
       port: 8181
   selector:
-    app_name: tautulli
+    app.kubernetes.io/name: tautulli
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress

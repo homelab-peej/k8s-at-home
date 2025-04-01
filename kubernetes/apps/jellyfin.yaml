@@ -10,21 +10,19 @@ metadata:
   name: jellyfin
   namespace: jellyfin
   labels:
-    app: jellyfin
-    app_name: jellyfin
+    app.kubernetes.io/name: jellyfin
   annotations:
     reloader.stakater.com/auto: "true"
 spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app_name: jellyfin
+      app.kubernetes.io/name: jellyfin
   template:
     metadata:
       name: jellyfin
       labels:
-        app: jellyfin
-        app_name: jellyfin
+        app.kubernetes.io/name: jellyfin
     spec:
       affinity:
         nodeAffinity:
@@ -194,14 +192,14 @@ metadata:
   name: jellyfin
   namespace: jellyfin
   labels:
-    app_name: jellyfin
+    app.kubernetes.io/name: jellyfin
 spec:
   type: ClusterIP
   ports:
     - name: web-ui
       port: 8096
   selector:
-    app_name: jellyfin
+    app.kubernetes.io/name: jellyfin
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
