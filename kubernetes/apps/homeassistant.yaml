@@ -69,7 +69,7 @@ spec:
             - mountPath: /usr/src/app/store
               name: zwave-data
       nodeSelector:
-        kubernetes.io/hostname: k8s-pi-3
+        kubernetes.io/hostname: k8s-30-8vx9q
       volumes:
         - name: hass-config
           persistentVolumeClaim:
