@@ -23,13 +23,16 @@ _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 
 
 ## 🖥️ Nodes 
-| Node           | RAM | Storage        | Role   | OS            | Accessories   |
-|----------------|-----|----------------|--------|---------------|----------------------------------------------------------------------------------------|
-| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Master | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
-| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
-| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
-| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
-| Raspberry Pi 5 | 8GB | 256GB NVMe SSD | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
+| Node            | RAM  | Storage                   | Role   | OS            | Accessories                                                                            |
+|-----------------|------|---------------------------|--------|---------------|----------------------------------------------------------------------------------------|
+| Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Master | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
+| Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Master | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
+| Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Master | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
+| Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
+| Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
+| WI-6 Mini PC    | 32GB | 1TB NVMe SSD              | Worker | Debian        |                                                                                        |
+| Minisforum JB95 | 16GB | 512GB NVMe SSD            | Worker | Debian        |                                                                                        |
+| Radxa Rock 5B   | 32GB | 64GB eMMC, 512GB NVMe SSD | Worker | Debian        | [PoE HAT](https://arace.tech/products/radxa-25w-poe-hat)                               |
 
 
 ## 📦 Storage 
@@ -52,6 +55,7 @@ _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 | Service                                              | Use                                        | Cost            |
 |------------------------------------------------------|--------------------------------------------|-----------------|
 | [Backblaze](https://www.backblaze.com/cloud-storage) | Offsite S3 storage for important files     | ~$100/yr        |
+| [Bitwarden](https://bitwarden.com)                   | Password management                        | Free            |
 | [Cloudflare](https://www.cloudflare.com/)            | Domains and DNS management                 | ~$70/yr         |
 | [GitHub](https://github.com/)                        | Hosting this repo and CI/CD                | Free            |
 | [Let's Encrypt](https://letsencrypt.org/)            | Issuing SSL Certificates with Cert Manager | Free            |
