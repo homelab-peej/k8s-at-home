@@ -78,6 +78,9 @@ spec:
           - name: traefik-dashboard-auth
         tls:
           secretName: traefik-dashboard-internal-tls-secret
+    podDisruptionBudget:
+      enabled: true
+      minAvailable: 1
     ports:
       web:
         port: 80
