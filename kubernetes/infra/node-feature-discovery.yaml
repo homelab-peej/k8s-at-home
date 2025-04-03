@@ -45,24 +45,24 @@ spec:
     master:
       resources:
         limits:
-          memory: 4Gi
+          memory: 68Mi
         requests:
-          cpu: 100m
-          memory: 128Mi
+          cpu: 2m
+          memory: 68Mi
     worker:
       resources:
         limits:
-          memory: 512Mi
+          memory: 62Mi
         requests:
-          cpu: 5m
-          memory: 64Mi
+          cpu: 3m
+          memory: 62Mi
     gc:
       resources:
         limits:
-          memory: 1Gi
+          memory: 23Mi
         requests:
-          cpu: 10m
-          memory: 128Mi
+          cpu: 1m
+          memory: 23Mi
     prometheus:
       enable: true
 ---
