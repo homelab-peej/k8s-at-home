@@ -38,7 +38,7 @@ spec:
     hubble:
       ui:
         enabled: true
-        ingress: 
+        ingress:
           enabled: true
           className: traefik
           annotations:
