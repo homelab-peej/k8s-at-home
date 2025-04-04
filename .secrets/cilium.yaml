@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: hubble-dashboard-auth-secret
+    namespace: kube-system
+type: kubernetes.io/basic-auth
+stringData:
+    username: ENC[AES256_GCM,data:2t5dYp4czqo1PzM=,iv:7qFIYrk9A+W0PfMKgtQ0MnkKWQScN20ImmitZz7Nz74=,tag:y8k95wSOUkV9CSEXvu5TwQ==,type:str]
+    password: ENC[AES256_GCM,data:YsHwK0nbFYMAVHLV5ZhtSc4hXiDKTFOyMI6yV8ypuJ4=,iv:ao+enS7cCiqpmc5nyfScy/jFUTuNLnoRz+IcH5nLnwg=,tag:4Y9FnMgQxhe5/Kp4fCwnbA==,type:str]
+sops:
+    lastmodified: "2025-04-04T15:01:38Z"
+    mac: ENC[AES256_GCM,data:6bthQfrZsYmZr59YO5q3CH5d4njJJV59BVQH+TvpE0mFhxqa4UjW/1stx5G5b1Cw2lHGZcr/oj7LImp+ASvdSXLr3/rST2P+3zd5YrNPu40zl9WyeyRtE1gLVi7b5u9obVmGJJNoQLsi6KvBTdLa1x6y38U24Q5gBfdBSM6Nu3U=,iv:PRAmTEoibekvaDiRwUeey7FdmBscAP94mVEkfkccBmw=,tag:K8okxC/mVU2OGDki88qX7g==,type:str]
+    pgp:
+        - created_at: "2025-04-04T15:01:38Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA1q7zTHG2LSZARAAunbqhGfsEiOwAO6Mu8poQcTubppOlnPASWICMRQV7QlI
+            Wce5/LWsXDIbQmQ11NTs8mj25l1WgQJasPFGngXPM70ZqUAG/Jd3toPYiyAXHW+4
+            iPqknF4+y9EvAei9aFPsw9VKthcojEXQT2u27yPvVLpolCZ474tbUn4XVERhJvvV
+            W2zke2ub+eC2BuFuOX8FsL/+gvKK2DR5oj++Jtq5X6tHYr7UKQMbpe4bOYOAMcUq
+            iBiglFUZyNpAKtKIZUkz5k59Sy0RT8jgvLZGOaair3I7JaCCrdolht81PbUal7Zs
+            Sk2VLbD9z4dU4HzPC87wjfxTR832qFW4s5GdZ+dbScnQ2AwzMhhIDPNJjFoaJ21K
+            EVaZAfqqG4vHT6LuNZ9PwO4bveFhJeIylqRXvYX3VruUaQVGPZdEqTInmK9yysFG
+            V+LbgZCMYJ4AWlgoA8SXkprAZ+MyHMfzkVXIhCITv+vBAvptEqNBtQkIMkrBXJhl
+            V5rfwVl2jJi3ly1r68aDrQGLsBs3juY8rwqtgfczeHPKdHtqQ1bbZnbp2GCY7+ci
+            uqR4hBcQfhoC8tIXHAvhLQOfsZMO+towzZnxVLlGE34oBJZOMYm2yrXfmKJUxrST
+            ibE+3VOf3rHb2jk+MGZP3aSvF+LIihLB48PMLhRK3Tycre2qq3knz4NNSOu1FcbU
+            aAEJAhDlZwioHL1Wcng90sXq8mgs8MLGtDwsexRag9/jkxzM4fZ5oNi+iBq1IMhv
+            jEoIV8+zIK6BUxkEz+d2SIAhUX0Bi8CaP10kgTwr7BRxLBVq9Y57ZqSCXEBTw7ZW
+            m8kbc+oZCvSE
+            =DCzF
+            -----END PGP MESSAGE-----
+          fp: 733981EC713BBFDBAAD9E5FB77E29A7F07D187AC
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.1
