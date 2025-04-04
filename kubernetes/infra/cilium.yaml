@@ -38,6 +38,17 @@ spec:
     hubble:
       ui:
         enabled: true
+        ingress: 
+          enabled: true
+          className: traefik
+          annotations:
+            traefik.ingress.kubernetes.io/router.middlewares: kube-system-hubble-dashboard-auth@kubernetescrd
+          hosts:
+            - hubble.homelab-peej.dev
+          tls:
+            - secretName: hubble-internal-tls-secret
+              hosts:
+                - hubble.homelab-peej.dev
       relay:
         enabled: true
     envoy:
@@ -46,6 +57,28 @@ spec:
       operator:
         clusterPoolIPv4PodCIDRList:
           - 10.42.0.0/16
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: hubble-dashboard-auth
+  namespace: kube-system
+spec:
+  basicAuth:
+    secret: hubble-dashboard-auth-secret
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: hubble-internal-certificate
+  namespace: kube-system
+spec:
+  secretName: hubble-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - hubble.homelab-peej.dev
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
