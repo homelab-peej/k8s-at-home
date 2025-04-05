@@ -99,56 +99,14 @@ patches:
               - name: manager
                 resources:
                   limits:
-                    memory: 103Mi
+                    memory: 200Mi
                     cpu: ~
                   requests:
-                    memory: 103Mi
+                    memory: 200Mi
                     cpu: 17m
     target:
       kind: Deployment
       name: "(source-controller)"
-  - patch: | ### Adjust resource limits | https://fluxcd.io/flux/installation/configuration/vertical-scaling/#increase-the-number-of-workers-and-limits
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        name: all
-      spec:
-        revisionHistoryLimit: 3
-        template:
-          spec:
-            containers:
-              - name: manager
-                resources:
-                  limits:
-                    memory: 82Mi
-                    cpu: ~
-                  requests:
-                    memory: 82Mi
-                    cpu: 12m
-    target:
-      kind: Deployment
-      name: "(image-automation-controller)"
-  - patch: | ### Adjust resource limits | https://fluxcd.io/flux/installation/configuration/vertical-scaling/#increase-the-number-of-workers-and-limits
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        name: all
-      spec:
-        revisionHistoryLimit: 3
-        template:
-          spec:
-            containers:
-              - name: manager
-                resources:
-                  limits:
-                    memory: 120Mi
-                    cpu: ~
-                  requests:
-                    memory: 120Mi
-                    cpu: 6m
-    target:
-      kind: Deployment
-      name: "(image-reflector-controller)"
   - patch: | ### Adjust resource limits | https://fluxcd.io/flux/installation/configuration/vertical-scaling/#increase-the-number-of-workers-and-limits
       apiVersion: apps/v1
       kind: Deployment
