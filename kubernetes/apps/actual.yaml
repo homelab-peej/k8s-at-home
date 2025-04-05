@@ -29,6 +29,11 @@ spec:
         - name: actual
           image: ghcr.io/actualbudget/actual:25.4.0
           imagePullPolicy: Always
+          env:
+            - name: PORT
+              value: "5006"
+            - name: ACTUAL_PORT
+              value: "5006"
           volumeMounts:
             - name: actual-data
               mountPath: /data
