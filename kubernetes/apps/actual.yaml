@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: actual
-          image: ghcr.io/actualbudget/actual:25.3.1
+          image: ghcr.io/actualbudget/actual:25.4.0
           imagePullPolicy: Always
           volumeMounts:
             - name: actual-data
