@@ -51,15 +51,15 @@ spec:
         affinity:
           podAntiAffinity:
             preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              podAffinityTerm:
-                labelSelector:
-                  matchExpressions:
-                    - key: app.kubernetes.io/name
-                      operator: 'In'
-                      values:
-                        - authelia
-                topologyKey: kubernetes.io/hostname
+              - weight: 1
+                podAffinityTerm:
+                  labelSelector:
+                    matchExpressions:
+                      - key: app.kubernetes.io/name
+                        operator: 'In'
+                        values:
+                          - authelia
+                  topologyKey: kubernetes.io/hostname
       podDisruptionBudget:
         enabled: true
         minAvailable: 1
