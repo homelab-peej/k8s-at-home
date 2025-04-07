@@ -10,7 +10,7 @@ metadata:
   name: reloader
   namespace: reloader
 spec:
-  interval: 8h
+  interval: 1h
   timeout: 10m
   url: https://stakater.github.io/stakater-charts
 ---

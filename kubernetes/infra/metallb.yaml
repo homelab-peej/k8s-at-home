@@ -10,7 +10,7 @@ metadata:
   name: metallb
   namespace: metallb
 spec:
-  interval: 8h
+  interval: 1h
   timeout: 10m
   url: https://metallb.github.io/metallb
 ---
