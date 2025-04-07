@@ -10,7 +10,7 @@ metadata:
   name: traefik
   namespace: traefik
 spec:
-  interval: 8h
+  interval: 1h
   timeout: 10m
   url: https://traefik.github.io/charts
 ---

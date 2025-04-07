@@ -10,7 +10,7 @@ metadata:
   name: metrics-server
   namespace: metrics-server
 spec:
-  interval: 8h
+  interval: 1h
   timeout: 10m
   url: https://kubernetes-sigs.github.io/metrics-server/
 ---

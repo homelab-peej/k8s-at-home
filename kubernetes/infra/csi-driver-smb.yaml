@@ -5,7 +5,7 @@ metadata:
   name: csi-driver-smb
   namespace: kube-system
 spec:
-  interval: 8h
+  interval: 1h
   timeout: 10m
   url: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/charts
 ---

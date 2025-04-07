@@ -10,7 +10,7 @@ metadata:
   name: authelia
   namespace: authelia
 spec:
-  interval: 8h
+  interval: 1h
   timeout: 10m
   url: https://charts.authelia.com
 ---
