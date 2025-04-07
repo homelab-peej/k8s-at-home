@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: authelia-user-config
+    namespace: authelia
+data:
+    users_database.yml: ENC[AES256_GCM,data:6Qx2o0ErFeOgtK9089QvgdqquVYh2Zau4TzpiVgaqFiEvj9adNjIAP+b9SOZ3EHHfsyQBqKTMvgXZxZRa4NrK+JK6uk33kQpGXcJpeSwQE9v4au59u8NQ/xnEtSCK8Azx5UP5ftMSCHb9FbzQvDf78vFsenYqlDO13/+7Agypo/lBvAfY0hrMnS1O181gd3oO9J561eIjmcgxv7bHFWZZeuRBelR3sd8ecd89TRAEXy0nrfX60aVEmXKAR5BpCwMLBFkftb2DFqk1jVDwKNMmYfxfqoa65buXh0ZSOG0NKQvrWg37O83L9uJffQ1Y6SJiAsMP+ONAe9oRkWlR9MZ80UGdLo9onPvFWhZNZJ5Y6P0WXWWytP+cnqVvfNWLa7hH2GB2JDuqmulXsRdj8pEg2TAdc1BpQbDVpufDVa/Gb3Gr6lqgeDDwRsaDzTyUSYEvA8XfqNSFtSf16a+mAbb6A9Pa0cUF86zD9fRBBeNakzM4XHz1y8WKBTqTHtD+l0gsuLaKYUeBEONVCLLeZKRYiVj3VJp+JbkbQzLEZdjoZao3cxZ/C/JfKk/ii+z8AnyrUAf9ao5rHAo4ppSB1lEc1ireexZaHGlphjAqt3AgxZi9dGSKNl5y8JhU5iiNg==,iv:sWt2HIMQmw9aFZ0cV8uaziLXi1XdNkMTSC7bBO3MVvQ=,tag:VpCD7dvTkbUf//j0aDqHgA==,type:str]
+sops:
+    lastmodified: "2025-04-07T01:18:24Z"
+    mac: ENC[AES256_GCM,data:sAj2xyLCUjxFdpmwuJVwvBKYwj7IK6yNatd4nmnbUhmQvKRAg0j+dIJyqfyrVtH7+Puf8SP+VLPl54w9baAQzk87LmRtp+tA6iOEoYtAVLWFDwWwgQCfLv1ndji8us+Ai/RLQ6maRnCgR3/3D4jWKplvuGGCCnOJAEhkwff0icI=,iv:Ql3FTOIq93fs9tYC8sOuOqXQ2/psYmT5LUWeZnHGqLY=,tag:wtTlNgof3y+LWQcxYF1Yzg==,type:str]
+    pgp:
+        - created_at: "2025-04-07T01:18:24Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA1q7zTHG2LSZAQ//RDSrGXTU2aJ4/gAfGVULrlQR4XDJPinGEs18MH3biw+u
+            I2d4oazXzHK46O7UZt6Qs42JvyiuY+ypyOZYYVr3pQHZkIMoQFkP0SxRVymDagsn
+            GXGa+3WYx1h3yLanZwpqc6mGqJG78WZwOPucDOnxiF9hPGhtHEeQrYbZ074tcqUB
+            1xrky3H2rL/hv6eHo/5qGRDApDS24hjUQ4iFOcJz/81NylSZNaXWQpSq1wosGPm7
+            59u47pgCdbe6NI8enXZ17tMJ9fE4V3M3uQE7N5Akiyqxi1IbGvq/DAnAp1N7lFAb
+            nnPY3giG9IEfMeNJoZKNlDxG+qjcaBFQMtVko+5lbjcS1luVsipzOUiKi7KfbBuh
+            Jx/84nwaDLMeW2WCq+5Nn70MY+3TIc0TLd7lZSI2BmYZHx0CPn756FZpL+3ov7/Q
+            hn4Xxn+jzdiemLahQvEocH+HXEqMryv1yJVIP2/XuPafVskf4ULkNtpJnl4vvjwM
+            g3lIF4/3tEP+WgaUbNNk4nT6eQtkUlUcfYrP8dEebBIZr/Txez8Bsj+gOqFshu2k
+            40MyksDI58a429hUI2ALJMSYImVOdESnuDC2jrbPWpraL2OG3D/lEMYcbM2ZZCfg
+            /xtSuj6uRqxmUTGtboTeeuDWCFdRXnGrhiFhNP2k8kdCua3GZBCnH7jK5Pv6y+3U
+            ZgEJAhD91iGwqTfBWadigHwUrJ2bpnuNTXyLqbaiwgID57nyITrODiRR0IsyGoNH
+            oIkmvHR7y8r4VJ3t4w8LVUBBNetbrmCMlfdxNQWWzhTBlrhGlqEormuCBFAls/oC
+            /rtVZ3zP6A==
+            =vCNY
+            -----END PGP MESSAGE-----
+          fp: 733981EC713BBFDBAAD9E5FB77E29A7F07D187AC
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.1
