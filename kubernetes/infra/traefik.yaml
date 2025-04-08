@@ -106,7 +106,7 @@ spec:
             topologyKey: kubernetes.io/hostname
     service:
       annotations:
-        metallb.universe.tf/address-pool: traefik
+        metallb.io/address-pool: traefik
     experimental:
       plugins:
         fail2ban:
