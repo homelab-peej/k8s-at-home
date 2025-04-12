@@ -1,9 +1,14 @@
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: csi-driver-smb
+---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: csi-driver-smb
-  namespace: kube-system
+  namespace: csi-driver-smb
 spec:
   interval: 1h
   timeout: 10m
@@ -15,7 +20,7 @@ metadata:
   annotations:
     kustomize.toolkit.fluxcd.io/force: enabled
   name: csi-driver-smb
-  namespace: kube-system
+  namespace: csi-driver-smb
 spec:
   chart:
     spec:
@@ -31,7 +36,7 @@ spec:
       retries: 3
   interval: 24h
   timeout: 10m
-  targetNamespace: kube-system
+  targetNamespace: csi-driver-smb
   upgrade:
     crds: CreateReplace
     remediation:
@@ -52,11 +57,11 @@ spec:
   eventSeverity: info
   eventSources:
     - kind: HelmRepository
-      name: 'csi-driver-smb'
-      namespace: kube-system
+      name: '*'
+      namespace: csi-driver-smb
     - kind: HelmChart
-      name: 'kube-system-csi-driver-smb'
-      namespace: kube-system
+      name: '*'
+      namespace: csi-driver-smb
     - kind: HelmRelease
-      name: 'csi-driver-smb'
-      namespace: kube-system
+      name: '*'
+      namespace: csi-driver-smb
