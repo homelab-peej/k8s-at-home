@@ -52,6 +52,15 @@ spec:
               memory: 45Mi
             limits:
               memory: 45Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
       restartPolicy: Always
 ---
 apiVersion: v1
