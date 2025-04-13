@@ -159,8 +159,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - name: web-ui
+    - name: http
       port: 8096
+    - name: https
+      port: 8920
   selector:
     app.kubernetes.io/name: jellyfin
 ---
