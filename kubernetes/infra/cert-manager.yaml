@@ -64,6 +64,9 @@ spec:
                   values:
                     - cert-manager
             topologyKey: "kubernetes.io/hostname"
+    prometheus:
+      servicemonitor:
+        enabled: true
     webhook:
       replicaCount: 2
       podDisruptionBudget:
