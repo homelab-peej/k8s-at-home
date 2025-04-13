@@ -70,6 +70,13 @@ spec:
         - name: config-file
           configMap:
             name: authelia-user-config
+      resources:
+        requests:
+          cpu: 1m
+          memory: 53Mi
+        limits:
+          cpu: ~
+          memory: 53Mi
     configMap:
       access_control:
         default_policy: 'one_factor'
@@ -103,6 +110,15 @@ spec:
       storageClass: longhorn
       accessModes:
         - ReadWriteMany
+    redis:
+      master:
+        resources:
+          requests:
+            cpu: 12m
+            memory: 12Mi
+          limits:
+            cpu: ~
+            memory: 12Mi
   postRenderers:
     - kustomize:
         patches:
