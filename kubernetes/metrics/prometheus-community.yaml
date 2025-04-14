@@ -142,9 +142,9 @@ spec:
         resources:
           requests:
             cpu: 1m
-            memory: 21Mi
+            memory: 48Mi
           limits:
-            memory: 21Mi
+            memory: 48Mi
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
