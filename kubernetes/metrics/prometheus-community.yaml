@@ -104,10 +104,10 @@ spec:
       prometheusSpec:
         resources:
           requests:
-            cpu: 128m
-            memory: 1184Mi
+            cpu: 512m
+            memory: 2024Mi
           limits:
-            memory: 1184Mi
+            memory: 2024Mi
         additionalScrapeConfigs:
           - job_name: 'unifipoller'
             scrape_interval: 30s
