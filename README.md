@@ -22,7 +22,8 @@ _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 | [SOPS](https://github.com/getsops/sops)  | K8S secrets and configmap manager to encrypt secrets with GnuPG for storage      |
 
 
-## 🖥️ Nodes 
+## 🖥️ Nodes
+
 | Node            | RAM  | Storage                   | Role   | OS            | Accessories                                                                            |
 |-----------------|------|---------------------------|--------|---------------|----------------------------------------------------------------------------------------|
 | Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Master | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
@@ -30,12 +31,11 @@ _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 | Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Master | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
 | Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
 | Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
-| WI-6 Mini PC    | 32GB | 1TB NVMe SSD              | Worker | Debian        |                                                                                        |
-| Minisforum JB95 | 16GB | 512GB NVMe SSD            | Worker | Debian        |                                                                                        |
-| Radxa Rock 5B   | 32GB | 64GB eMMC, 512GB NVMe SSD | Worker | Debian        | [PoE HAT](https://arace.tech/products/radxa-25w-poe-hat)                               |
+| WI-6 Mini PC    | 32GB | 2TB NVMe SSD              | Worker | Debian        |                                                                                        |
 
 
-## 📦 Storage 
+## 📦 Storage
+
 | Node    | RAM   | Storage             | Function              | OS            |
 |---------|-------|---------------------|-----------------------|---------------|
 | TrueNAS | 128GB | 12 x 8TB HDD RAIDZ3 | Multi-purpose Storage | TrueNAS Scale |
