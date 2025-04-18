@@ -42,6 +42,8 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    fullnameOverride: reloader
+    nameOverride: reloader
     reloader:
       deployment:
         resources:
