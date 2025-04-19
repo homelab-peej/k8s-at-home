@@ -1,0 +1,47 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  annotations:
+    kustomize.toolkit.fluxcd.io/force: enabled
+  name: gpu-operator
+  namespace: gpu-operator
+spec:
+  chart:
+    spec:
+      chart: gpu-operator
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: gpu-operator
+      version: v25.3.0
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  interval: 24h
+  timeout: 10m
+  targetNamespace: gpu-operator
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      remediateLastFailure: true
+  values:
+    toolkit:
+      env:
+        - name: CONTAINERD_CONFIG
+          value: /var/lib/rancher/k3s/agent/etc/containerd/config.toml
+        - name: CONTAINERD_SOCKET
+          value: /run/k3s/containerd/containerd.sock
+    nfd:
+      enabled: false
+    driver:
+      enabled: false
+    migManager:
+      enabled: false
+    vgpuDeviceManager:
+      enabled: false
+    vfioManager:
+      enabled: false
+    sandboxDevicePlugin:
+      enabled: false

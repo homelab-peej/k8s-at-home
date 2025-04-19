@@ -1,0 +1,89 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  annotations:
+    kustomize.toolkit.fluxcd.io/force: enabled
+  name: cert-manager
+  namespace: cert-manager
+spec:
+  chart:
+    spec:
+      chart: cert-manager
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: cert-manager
+      version: v1.17.1
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  interval: 24h
+  timeout: 10m
+  targetNamespace: cert-manager
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      remediateLastFailure: true
+  values:
+    crds:
+      enabled: true
+    replicaCount: 2
+    podDisruptionBudget:
+      enabled: true
+      minAvailable: 1
+    resources:
+      requests:
+        cpu: 2m
+        memory: 47Mi
+      limits:
+        memory: 47Mi
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - cert-manager
+            topologyKey: "kubernetes.io/hostname"
+    prometheus:
+      servicemonitor:
+        enabled: true
+    webhook:
+      replicaCount: 2
+      podDisruptionBudget:
+        enabled: true
+        minAvailable: 1
+      resources:
+        requests:
+          cpu: 1m
+          memory: 19Mi
+        limits:
+          memory: 19Mi
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - webhook
+              topologyKey: "kubernetes.io/hostname"
+    cainjector:
+      replicaCount: 2
+      podDisruptionBudget:
+        enabled: true
+        minAvailable: 1
+      resources:
+        requests:
+          cpu: 1m
+          memory: 85Mi
+        limits:
+          memory: 85Mi
+    extraArgs:
+      - --dns01-recursive-nameservers-only
+      - --dns01-recursive-nameservers=1.1.1.1:53

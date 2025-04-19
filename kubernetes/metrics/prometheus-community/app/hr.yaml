@@ -1,0 +1,132 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  annotations:
+    kustomize.toolkit.fluxcd.io/force: enabled
+  name: prometheus
+  namespace: prometheus
+spec:
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+      version: 70.7.0
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  interval: 24h
+  timeout: 10m
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      remediateLastFailure: true
+  values:
+    alertmanager:
+      alertmanagerSpec:
+        resources:
+          requests:
+            cpu: 1m
+            memory: 36Mi
+          limits:
+            memory: 36Mi
+    grafana:
+      persistence:
+        enabled: true
+        type: sts
+        storageClassName: "longhorn"
+        accessModes:
+          - ReadWriteMany
+        size: 50Gi
+        finalizers:
+          - kubernetes.io/pvc-protection
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        hosts:
+          - grafana.homelab-peej.dev
+        tls:
+          - secretName: grafana-internal-tls-secret
+            hosts:
+              - grafana.homelab-peej.dev
+      dashboardProviders:
+        dashboardproviders.yaml:
+          apiVersion: 1
+          providers:
+            - name: 'grafana-dashboards-kubernetes'
+              orgId: 1
+              folder: 'Kubernetes'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
+      dashboards:
+        grafana-dashboards-kubernetes:
+          k8s-system-api-server:
+            url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
+            token: ''
+          k8s-system-coredns:
+            url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
+            token: ''
+          k8s-views-global:
+            url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
+            token: ''
+          k8s-views-namespaces:
+            url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
+            token: ''
+          k8s-views-nodes:
+            url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
+            token: ''
+          k8s-views-pods:
+            url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
+            token: ''
+    prometheus:
+      prometheusSpec:
+        resources:
+          requests:
+            cpu: 512m
+            memory: 2024Mi
+          limits:
+            memory: 2024Mi
+        additionalScrapeConfigs:
+          - job_name: 'unifipoller'
+            scrape_interval: 30s
+            static_configs:
+              - targets: ['unpoller.unpoller.svc.cluster.local:9130']
+      prometheusConfigSpec:
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn
+              accessModes: ["ReadWriteMany"]
+              resources:
+                requests:
+                  storage: 50Gi
+        resources:
+          requests:
+            cpu: 50m
+            memory: 50Mi
+          limits:
+            memory: 50Mi
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        hosts:
+          - prometheus.homelab-peej.dev
+        tls:
+          - secretName: prometheus-internal-tls-secret
+            hosts:
+              - prometheus.homelab-peej.dev
+    prometheusOperator:
+      prometheusConfigReloader:
+        resources:
+          requests:
+            cpu: 1m
+            memory: 48Mi
+          limits:
+            memory: 48Mi

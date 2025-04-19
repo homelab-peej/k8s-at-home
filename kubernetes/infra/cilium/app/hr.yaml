@@ -1,0 +1,49 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cilium
+  namespace: kube-system
+spec:
+  chart:
+    spec:
+      chart: cilium
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: cilium
+      version: 1.17.3
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  interval: 24h
+  timeout: 10m
+  targetNamespace: kube-system
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      remediateLastFailure: true
+  values:
+    hubble:
+      ui:
+        enabled: true
+        ingress:
+          enabled: true
+          className: traefik
+          annotations:
+            traefik.ingress.kubernetes.io/router.middlewares: kube-system-hubble-dashboard-auth@kubernetescrd
+          hosts:
+            - hubble.homelab-peej.dev
+          tls:
+            - secretName: hubble-internal-tls-secret
+              hosts:
+                - hubble.homelab-peej.dev
+      relay:
+        enabled: true
+    envoy:
+      enabled: true
+    ipam:
+      operator:
+        clusterPoolIPv4PodCIDRList:
+          - 10.42.0.0/16

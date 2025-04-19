@@ -1,0 +1,21 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: reloader-alert
+  namespace: flux-system
+spec:
+  summary: "Reloader"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: reloader
+    - kind: HelmChart
+      name: '*'
+      namespace: reloader
+    - kind: HelmRelease
+      name: '*'
+      namespace: reloader

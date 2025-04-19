@@ -1,0 +1,21 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: metallb-alert
+  namespace: flux-system
+spec:
+  summary: "MetalLB"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: metallb
+    - kind: HelmChart
+      name: '*'
+      namespace: metallb
+    - kind: HelmRelease
+      name: '*'
+      namespace: metallb

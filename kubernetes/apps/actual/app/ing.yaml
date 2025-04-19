@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: actual-private
+  namespace: actual
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - actual.homelab-peej.dev
+      secretName: actual-internal-tls-secret
+  rules:
+    - host: actual.homelab-peej.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: actual
+                port:
+                  number: 5006
+            path: /
+            pathType: Prefix

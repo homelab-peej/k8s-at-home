@@ -1,0 +1,46 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: longhorn-release
+  namespace: longhorn-system
+spec:
+  chart:
+    spec:
+      chart: longhorn
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: longhorn-repo
+      version: 1.8.1
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  interval: 24h
+  timeout: 10m
+  targetNamespace: longhorn-system
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      remediateLastFailure: true
+  values:
+    longhornUI:
+      replicas: 1
+      resources:
+        requests:
+          cpu: 1m
+          memory: 7168Ki
+        limits:
+          memory: 7168Ki
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      host: longhorn.homelab-peej.dev
+      tls: true
+      tlsSecret: longhorn-internal-tls-secret
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: longhorn-system-longhorn-dashboard-auth@kubernetescrd
+    persistence:
+      defaultClass: false
+      reclaimPolicy: Retain

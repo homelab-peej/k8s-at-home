@@ -1,0 +1,21 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: gpu-operator-alert
+  namespace: flux-system
+spec:
+  summary: "GPU Operator"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: gpu-operator
+    - kind: HelmChart
+      name: '*'
+      namespace: gpu-operator
+    - kind: HelmRelease
+      name: '*'
+      namespace: gpu-operator

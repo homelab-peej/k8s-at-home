@@ -1,0 +1,21 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: cilium-alert
+  namespace: flux-system
+spec:
+  summary: "Cilium"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: 'cilium'
+      namespace: kube-system
+    - kind: HelmChart
+      name: 'kube-system-cilium'
+      namespace: kube-system
+    - kind: HelmRelease
+      name: 'cilium'
+      namespace: kube-system

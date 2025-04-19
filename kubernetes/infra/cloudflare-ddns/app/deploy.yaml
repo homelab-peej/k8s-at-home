@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflare-ddns
+  namespace: cloudflare-ddns
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: cloudflare-ddns
+      app_name: cloudflare-ddns
+  template:
+    metadata:
+      labels:
+        app: cloudflare-ddns
+        app_name: cloudflare-ddns
+    spec:
+      containers:
+        - name: cloudflare-ddns
+          image: favonia/cloudflare-ddns:1.15.1
+          imagePullPolicy: Always
+          env:
+            - name: CLOUDFLARE_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cloudflare-ddns-config
+                  key: api
+            - name: DOMAINS
+              valueFrom:
+                secretKeyRef:
+                  name: cloudflare-ddns-config
+                  key: domains
+            - name: IP6_PROVIDER
+              value: 'none'
+            - name: CACHE_EXPIRATION
+              value: '5s'
+          command:
+            - /bin/ddns
+          workingDir: /
+          resources:
+            requests:
+              cpu: 1m
+              memory: 9Mi
+            limits:
+              memory: 9Mi
+      restartPolicy: Always
