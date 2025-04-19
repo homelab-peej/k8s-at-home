@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myspeed-private
+  namespace: myspeed
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - myspeed.homelab-peej.dev
+      secretName: myspeed-internal-tls-secret
+  rules:
+    - host: myspeed.homelab-peej.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: myspeed
+                port:
+                  number: 5216
+            path: /
+            pathType: Prefix

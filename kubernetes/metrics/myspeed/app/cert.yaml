@@ -1,0 +1,13 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: myspeed-internal-certificate
+  namespace: myspeed
+spec:
+  secretName: myspeed-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - myspeed.homelab-peej.dev
