@@ -1,0 +1,26 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: homeassistant-internal-certificate
+  namespace: homeassistant
+spec:
+  secretName: homeassistant-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - homeassistant.homelab-peej.dev
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: zwave-internal-certificate
+  namespace: homeassistant
+spec:
+  secretName: zwave-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - zwave.homelab-peej.dev
