@@ -11,7 +11,7 @@ spec:
       name: sops-gpg
   interval: 8h0m0s
   path: ./kubernetes/infra
-  prune: false
+  prune: true
   force: true
   sourceRef:
     kind: GitRepository
@@ -31,7 +31,7 @@ spec:
       name: sops-gpg
   interval: 8h0m0s
   path: ./kubernetes/apps
-  prune: false
+  prune: true
   force: true
   sourceRef:
     kind: GitRepository
@@ -51,7 +51,7 @@ spec:
       name: sops-gpg
   interval: 8h0m0s
   path: ./kubernetes/metrics
-  prune: false
+  prune: true
   force: true
   sourceRef:
     kind: GitRepository
