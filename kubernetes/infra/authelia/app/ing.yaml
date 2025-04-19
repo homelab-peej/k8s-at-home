@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: authelia-private
+  namespace: authelia
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - auth.homelab-peej.dev
+      secretName: authelia-internal-tls-secret
+  rules:
+    - host: auth.homelab-peej.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: authelia-authelia
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix

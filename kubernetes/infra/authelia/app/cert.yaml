@@ -1,0 +1,13 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: authelia-internal-certificate
+  namespace: authelia
+spec:
+  secretName: authelia-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - auth.homelab-peej.dev
