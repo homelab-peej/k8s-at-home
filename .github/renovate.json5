@@ -18,6 +18,9 @@
   "flux": {
     "fileMatch": [
       "(^|/)kubernetes/.+\\.ya?ml$"
+    ],
+    "ignorePaths": [
+      "**/flux-bootstrap/flux-system/gotk-*.yaml"
     ]
   },
   "helm-values": {
