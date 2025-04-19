@@ -1,19 +1,4 @@
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: traefik
----
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: traefik
-  namespace: traefik
-spec:
-  interval: 1h
-  timeout: 10m
-  url: https://traefik.github.io/charts
----
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -115,46 +100,3 @@ spec:
         geoblock:
           moduleName: "github.com/PascalMinder/geoblock"
           version: "v0.3.2"
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: traefik-dashboard-auth
-  namespace: traefik
-spec:
-  basicAuth:
-    secret: traefik-dashboard-auth-secret
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: traefik-dashboard-internal-certificate
-  namespace: traefik
-spec:
-  secretName: traefik-dashboard-internal-tls-secret
-  issuerRef:
-    name: internal-cloudflare-clusterissuer
-    kind: ClusterIssuer
-  dnsNames:
-    - traefik-dashboard.homelab-peej.dev
----
-apiVersion: notification.toolkit.fluxcd.io/v1beta3
-kind: Alert
-metadata:
-  name: traefik-alert
-  namespace: flux-system
-spec:
-  summary: "Traefik"
-  providerRef:
-    name: discord
-  eventSeverity: info
-  eventSources:
-    - kind: HelmRepository
-      name: '*'
-      namespace: traefik
-    - kind: HelmChart
-      name: '*'
-      namespace: traefik
-    - kind: HelmRelease
-      name: '*'
-      namespace: traefik
