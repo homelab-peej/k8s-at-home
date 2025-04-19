@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tautulli
+  namespace: tautulli
+  labels:
+    app.kubernetes.io/name: tautulli
+spec:
+  type: ClusterIP
+  ports:
+    - name: web-ui
+      port: 8181
+  selector:
+    app.kubernetes.io/name: tautulli
