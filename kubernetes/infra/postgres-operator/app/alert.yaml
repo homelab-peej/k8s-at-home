@@ -1,0 +1,21 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: cnpg-alert
+  namespace: flux-system
+spec:
+  summary: "CNPG Operator"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: cnpg
+    - kind: HelmChart
+      name: '*'
+      namespace: cnpg
+    - kind: HelmRelease
+      name: '*'
+      namespace: cnpg
