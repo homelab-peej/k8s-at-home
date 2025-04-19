@@ -1,0 +1,21 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: longhorn-alert
+  namespace: flux-system
+spec:
+  summary: "Longhorn"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: longhorn-system
+    - kind: HelmChart
+      name: '*'
+      namespace: longhorn-system
+    - kind: HelmRelease
+      name: '*'
+      namespace: longhorn-system
