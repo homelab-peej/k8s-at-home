@@ -1,0 +1,82 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+  namespace: jellyfin
+  labels:
+    app.kubernetes.io/name: jellyfin
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: jellyfin
+  template:
+    metadata:
+      name: jellyfin
+      labels:
+        app.kubernetes.io/name: jellyfin
+    spec:
+      containers:
+        - name: jellyfin
+          image: ghcr.io/jellyfin/jellyfin:10.10.7
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 1000m
+              memory: 2048Mi
+            limits:
+              memory: 2048Mi
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: media
+              mountPath: /media
+            - name: config
+              mountPath: /config
+            - name: cache
+              mountPath: /cache
+            - name: transcode
+              mountPath: /transcode
+            - name: quicksync
+              mountPath: /dev/dri
+          livenessProbe:
+            httpGet:
+              path: /System/Ping
+              port: 8096
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /System/Ping
+              port: 8096
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          startupProbe:
+            httpGet:
+              path: /System/Ping
+              port: 8096
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            failureThreshold: 10
+      nodeSelector:
+        kubernetes.io/hostname: k8s-09-5a8fq
+      volumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: jellyfin-media
+        - name: config
+          persistentVolumeClaim:
+            claimName: jellyfin-config
+        - name: cache
+          persistentVolumeClaim:
+            claimName: jellyfin-cache
+        - name: transcode
+          emptyDir:
+            sizeLimit: 8Gi
+        - name: quicksync
+          hostPath:
+            path: /dev/dri
