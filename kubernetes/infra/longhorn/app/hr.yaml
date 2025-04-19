@@ -40,7 +40,7 @@ spec:
       tls: true
       tlsSecret: longhorn-internal-tls-secret
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: longhorn-system-longhorn-dashboard-auth@kubernetescrd        
+        traefik.ingress.kubernetes.io/router.middlewares: longhorn-system-longhorn-dashboard-auth@kubernetescrd
     persistence:
       defaultClass: false
       reclaimPolicy: Retain
