@@ -1,0 +1,21 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: metrics-server-alert
+  namespace: flux-system
+spec:
+  summary: "Metrics Server"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: metrics-server
+    - kind: HelmChart
+      name: '*'
+      namespace: metrics-server
+    - kind: HelmRelease
+      name: '*'
+      namespace: metrics-server
