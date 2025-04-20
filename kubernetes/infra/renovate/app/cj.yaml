@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: ghcr.io/renovatebot/renovate:39.251.1
+              image: ghcr.io/renovatebot/renovate:39.251.2
               args:
                 - homelab-peej/k8s-at-home
               env:
