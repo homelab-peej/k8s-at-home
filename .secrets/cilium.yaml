@@ -2,35 +2,35 @@ apiVersion: v1
 kind: Secret
 metadata:
     name: hubble-dashboard-auth-secret
-    namespace: kube-system
+    namespace: cilium
 type: kubernetes.io/basic-auth
 stringData:
-    username: ENC[AES256_GCM,data:2t5dYp4czqo1PzM=,iv:7qFIYrk9A+W0PfMKgtQ0MnkKWQScN20ImmitZz7Nz74=,tag:y8k95wSOUkV9CSEXvu5TwQ==,type:str]
-    password: ENC[AES256_GCM,data:YsHwK0nbFYMAVHLV5ZhtSc4hXiDKTFOyMI6yV8ypuJ4=,iv:ao+enS7cCiqpmc5nyfScy/jFUTuNLnoRz+IcH5nLnwg=,tag:4Y9FnMgQxhe5/Kp4fCwnbA==,type:str]
+    username: ENC[AES256_GCM,data:FWyCUjR6hWcutw0=,iv:TOLOVoeOnsFAf6mlryTe8Z8aFxt33NtebUR7CynuYEo=,tag:QeNu2Cd8e9CiUZmf7wskJg==,type:str]
+    password: ENC[AES256_GCM,data:wL4U4Bvbmbbi4wSTZkYz9uMltRHO0BOGxbw5f/CG6oY=,iv:bnZZ/aa/5zh8R9RnRLriFb/DZwZWB7w1QW56eRe/QJs=,tag:5IMckc7Zzhb63mJSBcJ+lA==,type:str]
 sops:
-    lastmodified: "2025-04-04T15:01:38Z"
-    mac: ENC[AES256_GCM,data:6bthQfrZsYmZr59YO5q3CH5d4njJJV59BVQH+TvpE0mFhxqa4UjW/1stx5G5b1Cw2lHGZcr/oj7LImp+ASvdSXLr3/rST2P+3zd5YrNPu40zl9WyeyRtE1gLVi7b5u9obVmGJJNoQLsi6KvBTdLa1x6y38U24Q5gBfdBSM6Nu3U=,iv:PRAmTEoibekvaDiRwUeey7FdmBscAP94mVEkfkccBmw=,tag:K8okxC/mVU2OGDki88qX7g==,type:str]
+    lastmodified: "2025-04-22T03:36:46Z"
+    mac: ENC[AES256_GCM,data:tMDPL7tnY+fI53rRgmEMq4ZceSF97WJUZq/vDoM4twhYd7xkTtrs69JtQn/h+9jpUAozJwAId3/fi7acHMQuRgt3X4Hu6TRHHB9gGuny5alSmyaZpSLmi/UB4ureYGnZ/xCzO9PIWEbvvgeFcgyZKf2tY7cdptAQTr4rWvwn6LM=,iv:OgitzIf+d0A9Ol0SbTwo/jHEeK5iP2OrJyQhPNKBNV8=,tag:6nY36y6XD2cVRaU92nWMhQ==,type:str]
     pgp:
-        - created_at: "2025-04-04T15:01:38Z"
+        - created_at: "2025-04-22T03:36:46Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQIMA1q7zTHG2LSZARAAunbqhGfsEiOwAO6Mu8poQcTubppOlnPASWICMRQV7QlI
-            Wce5/LWsXDIbQmQ11NTs8mj25l1WgQJasPFGngXPM70ZqUAG/Jd3toPYiyAXHW+4
-            iPqknF4+y9EvAei9aFPsw9VKthcojEXQT2u27yPvVLpolCZ474tbUn4XVERhJvvV
-            W2zke2ub+eC2BuFuOX8FsL/+gvKK2DR5oj++Jtq5X6tHYr7UKQMbpe4bOYOAMcUq
-            iBiglFUZyNpAKtKIZUkz5k59Sy0RT8jgvLZGOaair3I7JaCCrdolht81PbUal7Zs
-            Sk2VLbD9z4dU4HzPC87wjfxTR832qFW4s5GdZ+dbScnQ2AwzMhhIDPNJjFoaJ21K
-            EVaZAfqqG4vHT6LuNZ9PwO4bveFhJeIylqRXvYX3VruUaQVGPZdEqTInmK9yysFG
-            V+LbgZCMYJ4AWlgoA8SXkprAZ+MyHMfzkVXIhCITv+vBAvptEqNBtQkIMkrBXJhl
-            V5rfwVl2jJi3ly1r68aDrQGLsBs3juY8rwqtgfczeHPKdHtqQ1bbZnbp2GCY7+ci
-            uqR4hBcQfhoC8tIXHAvhLQOfsZMO+towzZnxVLlGE34oBJZOMYm2yrXfmKJUxrST
-            ibE+3VOf3rHb2jk+MGZP3aSvF+LIihLB48PMLhRK3Tycre2qq3knz4NNSOu1FcbU
-            aAEJAhDlZwioHL1Wcng90sXq8mgs8MLGtDwsexRag9/jkxzM4fZ5oNi+iBq1IMhv
-            jEoIV8+zIK6BUxkEz+d2SIAhUX0Bi8CaP10kgTwr7BRxLBVq9Y57ZqSCXEBTw7ZW
-            m8kbc+oZCvSE
-            =DCzF
+            hQIMA1q7zTHG2LSZAQ//afPHzg02g9fKtSrHIAKW/s/qCpIU5DHj/IiLrgfEizl/
+            egQae9dKGcDf7QZq80tDrdnCZRSRzbwaxjgBDKi8JduLqXL1aCmalq3Pp3JTXZDw
+            Es9c7KcQxlFRgJWafBZ25lyKfxTmLr0ysoN3TzsGOxn6b7y28gPt/JeEJwyWjP4B
+            +xDxi5bnxRoYCWV2U54O2sTQeKOXIAWzOal3h2nXkHC0vHk4qAALftpxXTYuxWam
+            9L2jLIaKY5QViQHbU/TE5feb+/FQzfy5pvM5QGTMUBwKnVUt1lwuuKo7oik8gXMD
+            Alug76Z3bYgIMZZWq7C1tP/T7suZhOF0JbJvwlMoeVfaWZg+OecZ6tDtcYZ8gkce
+            YhoIGKW0phcP+4JKqr4enxv2meynRyuXq38AYLFoXlvfuq0R1SqFE9FR89B/+zVN
+            m42DAT3otk6cegtphh6qNnu6mCxLdCo2AX5CA8bxDocPlWni8UNwauVRSLkaFNaR
+            wuvSg3wIFhQxBsU9vhKd/wmO1GkU0G90Qj1M4t5I1WIRFc/Yo14bsFp8Vdt5jWN0
+            652RdrJwuqSkc5jCp1Pkxg8+A4FJvUbshKAxH9eUWx1m8BM5ECXN0GROn3OTtXkw
+            xI3fXX86fngzEptl7NjBvW+pd+DYBY0jSWpCcYGtSqIKOQlLxPfzqHzllcKmlATU
+            aAEJAhBSPsJ3CXcej6lPXkycgJr7O7n01dnQUXeNS3CRLHyrGW/ZOMYcowURXGll
+            bEJa2fVKzeuYhwlddKtyrjQ//sCtYXSeHNfdHGf1Ol6PcQSDVhXvFw/1NUdhm5Ww
+            vpAZ/4OAg+Dj
+            =t56a
             -----END PGP MESSAGE-----
           fp: 733981EC713BBFDBAAD9E5FB77E29A7F07D187AC
     encrypted_regex: ^(data|stringData)$
-    version: 3.10.1
+    version: 3.10.2
