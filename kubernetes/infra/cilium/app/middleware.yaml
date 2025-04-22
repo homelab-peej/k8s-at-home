@@ -3,7 +3,7 @@ apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: hubble-dashboard-auth
-  namespace: kube-system
+  namespace: cilium
 spec:
   basicAuth:
     secret: hubble-dashboard-auth-secret
