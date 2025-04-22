@@ -5,17 +5,11 @@ metadata:
   name: arc-alert
   namespace: flux-system
 spec:
-  summary: "Actions Runner Controller"
+  summary: "Action Runners"
   providerRef:
     name: discord
   eventSeverity: info
   eventSources:
-    - kind: OCIRepository
-      name: '*'
-      namespace: arc-systems
-    - kind: HelmRelease
-      name: '*'
-      namespace: arc-systems
     - kind: OCIRepository
       name: '*'
       namespace: arc-runners

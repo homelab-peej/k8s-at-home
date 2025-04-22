@@ -2,20 +2,17 @@
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
-  name: cilium-alert
+  name: arc-alert
   namespace: flux-system
 spec:
-  summary: "Cilium"
+  summary: "Actions Runner Controller"
   providerRef:
     name: discord
   eventSeverity: info
   eventSources:
-    - kind: HelmRepository
+    - kind: OCIRepository
       name: '*'
-      namespace: cilium
-    - kind: HelmChart
-      name: '*'
-      namespace: cilium
+      namespace: arc-systems
     - kind: HelmRelease
       name: '*'
-      namespace: cilium
+      namespace: arc-systems
