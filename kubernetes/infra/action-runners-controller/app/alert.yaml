@@ -1,0 +1,18 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: arc-alert
+  namespace: flux-system
+spec:
+  summary: "Actions Runner Controller"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: OCIRepository
+      name: '*'
+      namespace: arc-systems
+    - kind: HelmRelease
+      name: '*'
+      namespace: arc-systems

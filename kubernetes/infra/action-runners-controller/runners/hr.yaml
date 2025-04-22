@@ -1,0 +1,16 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: arc-runner-set
+  namespace: arc-runners
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: arc-runner-set
+  interval: 24h
+  values:
+    githubConfigUrl: "https://github.com/homelab-peej/"
+    githubConfigSecret: arc-token
+    maxRunners: 3
+    minRunners: 1
