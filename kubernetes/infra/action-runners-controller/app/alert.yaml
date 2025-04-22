@@ -2,7 +2,7 @@
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
-  name: arc-alert
+  name: arc-controller-alert
   namespace: flux-system
 spec:
   summary: "Actions Runner Controller"
