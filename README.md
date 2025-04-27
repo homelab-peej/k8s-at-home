@@ -31,7 +31,7 @@ _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 | Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Master | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
 | Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
 | Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
-| WI-6 Mini PC    | 32GB | 2TB NVMe SSD              | Worker | Debian        |                                                                                        |
+| N95 Mini PC     | 32GB | 2TB NVMe SSD              | Worker | Debian        |                                                                                        |
 
 
 ## 📦 Storage
