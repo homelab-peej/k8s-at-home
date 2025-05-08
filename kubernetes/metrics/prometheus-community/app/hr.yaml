@@ -85,14 +85,21 @@ spec:
           k8s-views-pods:
             url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
             token: ''
+    kubeStateMetrics:
+      resources:
+        requests:
+          cpu: 6m
+          memory: 50Mi
+        limits:
+          memory: 50Mi
     prometheus:
       prometheusSpec:
         resources:
           requests:
             cpu: 512m
-            memory: 2024Mi
+            memory: 2277Mi
           limits:
-            memory: 2024Mi
+            memory: 2277Mi
         additionalScrapeConfigs:
           - job_name: 'unifipoller'
             scrape_interval: 30s
@@ -123,6 +130,12 @@ spec:
             hosts:
               - prometheus.homelab-peej.dev
     prometheusOperator:
+      resources:
+        requests:
+          cpu: 2m
+          memory: 77Mi
+        limits:
+          memory: 77Mi
       prometheusConfigReloader:
         resources:
           requests:
