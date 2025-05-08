@@ -9,7 +9,8 @@ _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 
 <div align="center">
 
-![Kubernetes](https://badgen.net/badge/Kubernetes/1.32.3+k3s1/blue)  ![Flux](https://badgen.net/badge/Flux/2.5.1/blue) [![yamllint](https://github.com/homelab-peej/k8s-at-home/actions/workflows/yamllint.yaml/badge.svg?branch=main&event=push)](https://github.com/homelab-peej/k8s-at-home/actions/workflows/yamllint.yaml)
+![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fhomelab-peej%2Fk8s-at-home%2Frefs%2Fheads%2Fmain%2Fkubernetes%2Finfra%2Fsystem-upgrade-controller%2Fapp%2Fplan-server.yaml&query=%24.spec.version&style=flat&label=Kubernetes)
+  ![Flux](https://badgen.net/badge/Flux/2.5.1/blue) [![yamllint](https://github.com/homelab-peej/k8s-at-home/actions/workflows/yamllint.yaml/badge.svg?branch=main&event=push)](https://github.com/homelab-peej/k8s-at-home/actions/workflows/yamllint.yaml)
 
 </div>
 
