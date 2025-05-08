@@ -25,9 +25,30 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    operator:
+      resources:
+        requests:
+          cpu: 2m
+          memory: 100Mi
+        limits:
+          memory: 100Mi
     hubble:
       ui:
         enabled: true
+        backend:
+          resources:
+            requests:
+              cpu: 2m
+              memory: 44Mi
+            limits:
+              memory: 44Mi
+        frontend:
+          resources:
+            requests:
+              cpu: 1m
+              memory: 10Mi
+            limits:
+              memory: 10Mi
         ingress:
           enabled: true
           className: traefik
@@ -41,8 +62,20 @@ spec:
                 - hubble.homelab-peej.dev
       relay:
         enabled: true
+        resources:
+          requests:
+            cpu: 1m
+            memory: 34Mi
+          limits:
+            memory: 34Mi
     envoy:
       enabled: true
+      resources:
+        requests:
+          cpu: 19m
+          memory: 70Mi
+        limits:
+          memory: 70Mi
     ipam:
       operator:
         clusterPoolIPv4PodCIDRList:
