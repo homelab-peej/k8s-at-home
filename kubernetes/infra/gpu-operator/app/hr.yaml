@@ -27,12 +27,46 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    dcgmExporter:
+      resources:
+        requests:
+          cpu: 10m
+          memory: 600Mi
+        limits:
+          memory: 600Mi
+    devicePlugin:
+      resources:
+        requests:
+          cpu: 2m
+          memory: 44Mi
+        limits:
+          memory: 44Mi
+    gfd:
+      resources:
+        requests:
+          cpu: 3m
+          memory: 90Mi
+        limits:
+          memory: 90Mi
     toolkit:
       env:
         - name: CONTAINERD_CONFIG
           value: /var/lib/rancher/k3s/agent/etc/containerd/config.toml
         - name: CONTAINERD_SOCKET
           value: /run/k3s/containerd/containerd.sock
+      resources:
+        requests:
+          cpu: 2m
+          memory: 40Mi
+        limits:
+          memory: 40Mi
+    validator:
+      resources:
+        requests:
+          cpu: 2m
+          memory: 2Mi
+        limits:
+          memory: 2Mi
     nfd:
       enabled: false
     driver:
