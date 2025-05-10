@@ -1,0 +1,87 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+    name: cloudflare-clusterissuer
+spec:
+    acme:
+        email: ENC[AES256_GCM,data:qYJmGel4o739Fn3uNZnC,iv:WiLV7F7T28rjVTz3BPxFRYafoAm3iyi1aXZfm/PjEwA=,tag:evBIHjJgA9jX2waNUEe4Ng==,type:str]
+        server: https://acme-v02.api.letsencrypt.org/directory
+        privateKeySecretRef:
+            name: cloudflare-clusterissuer-account-key
+        solvers:
+            - dns01:
+                cloudflare:
+                    apiTokenSecretRef:
+                        name: cloudflare-api-token-secret
+                        key: api-token
+sops:
+    lastmodified: "2025-05-10T17:45:56Z"
+    mac: ENC[AES256_GCM,data:jNyOx9e8evvHY/UXdyEA4u7Awzggi23uxJj8QRI2TdUNa6eVjn9fgUhntD4Dz88iNpetRJgqZQn800jN9EZteotL9uMZo9qPHUsdSf7ae12o1GZ4fzM9HlXiwEnvnTVhLLPhwsBhUSvf8WGfZClYVE2vtFmaTWoyPtUXvzbnunM=,iv:Y6djIoCJPK/zATpDL809zAUcswtIwB3q8R4n/lRocUQ=,tag:zv7X3SaOFPnPnWx2bPMj8Q==,type:str]
+    pgp:
+        - created_at: "2025-05-10T17:45:56Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA1q7zTHG2LSZARAAl0cc93cPWqzl+ZzSaqVUtyGWrqapDIq3RMn1b7n2G+UN
+            hTX0W7Q0ix7SlauCR0adNf6dOoQYrEQA7msnGES2leke1+FKGxHqvDeor+FZg9xP
+            qGttIXPfwAOKJqSFaK0HBh4YdBRQWnqMxZ/SzZtwTOiuAEvL/NZO22aUsopnRc0c
+            5vquRB4t25c78EIFF5nuOLCHvWeCAMWnxU4jZ2Jk33r7dHrZO/ahRmq02yWyEIoV
+            //DqHNcmV2ol3AVTCIdAxVUhLIu9RSelhhroBroIIDL91NXekci6vuf/gRNLzMP5
+            LHxEd5Ke67kdNX0vuRZiOLHaHDOJCEXQCakYOF/7GNZSXlkBTxavxV9LYSJwfItU
+            x2/DswoyerGQrugJOT7REiH6Gms7rpYcJIz+gzsmjgdI4x64CkGbsEYUKOj9HzhH
+            whGnFf4dDWanZomMlnQAsNRFavWcgEw4+uIS5EziCuDlqPupN8D8ieBlHZ1HjYt9
+            OL9HaDuUHQIqli/pfMMaRKjx14cQ48jGlPgO/rADEw0Y+wwXr0lLGZJthcXFakH9
+            ZnkhYcdUGqt5cif36TCzaz/yivWqV4zHrXAIerPoStNVaL1dXWMxico51Y/OxKR9
+            LipOuboAJlZMueTigTFNHHnzbFdvCJGXB+1Uznz8ukYM7mI2BwsRu6SKotpnQQzU
+            aAEJAhD9C+DuH2G9G9fVoTBEugCi6kKg4S3PDIcWyrT5zyRzqFQBdON0KmRzlBXG
+            9mxdSgitu48IyjV/5PhESYbdSF2xKfL/pXSzzRe5c15y3rY33Y/pGlydUDbehfnl
+            cp+63OFHR+mf
+            =m7Bo
+            -----END PGP MESSAGE-----
+          fp: 733981EC713BBFDBAAD9E5FB77E29A7F07D187AC
+    encrypted_regex: ^(data|stringData|email)$
+    version: 3.10.2
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+    name: internal-cloudflare-clusterissuer
+spec:
+    acme:
+        email: ENC[AES256_GCM,data:QyihsK5FJdksccH1y6yu,iv:DxyX28l1/zINDDDfEAPzuZ0D9JrrR42/PtVSrfrow9o=,tag:bMfsFOSk2Ak0mY7+7ASkjw==,type:str]
+        server: https://acme-v02.api.letsencrypt.org/directory
+        privateKeySecretRef:
+            name: internal-cloudflare-clusterissuer-account-key
+        solvers:
+            - dns01:
+                cloudflare:
+                    apiTokenSecretRef:
+                        name: internal-cloudflare-api-token-secret
+                        key: api-token
+sops:
+    lastmodified: "2025-05-10T17:45:56Z"
+    mac: ENC[AES256_GCM,data:jNyOx9e8evvHY/UXdyEA4u7Awzggi23uxJj8QRI2TdUNa6eVjn9fgUhntD4Dz88iNpetRJgqZQn800jN9EZteotL9uMZo9qPHUsdSf7ae12o1GZ4fzM9HlXiwEnvnTVhLLPhwsBhUSvf8WGfZClYVE2vtFmaTWoyPtUXvzbnunM=,iv:Y6djIoCJPK/zATpDL809zAUcswtIwB3q8R4n/lRocUQ=,tag:zv7X3SaOFPnPnWx2bPMj8Q==,type:str]
+    pgp:
+        - created_at: "2025-05-10T17:45:56Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA1q7zTHG2LSZARAAl0cc93cPWqzl+ZzSaqVUtyGWrqapDIq3RMn1b7n2G+UN
+            hTX0W7Q0ix7SlauCR0adNf6dOoQYrEQA7msnGES2leke1+FKGxHqvDeor+FZg9xP
+            qGttIXPfwAOKJqSFaK0HBh4YdBRQWnqMxZ/SzZtwTOiuAEvL/NZO22aUsopnRc0c
+            5vquRB4t25c78EIFF5nuOLCHvWeCAMWnxU4jZ2Jk33r7dHrZO/ahRmq02yWyEIoV
+            //DqHNcmV2ol3AVTCIdAxVUhLIu9RSelhhroBroIIDL91NXekci6vuf/gRNLzMP5
+            LHxEd5Ke67kdNX0vuRZiOLHaHDOJCEXQCakYOF/7GNZSXlkBTxavxV9LYSJwfItU
+            x2/DswoyerGQrugJOT7REiH6Gms7rpYcJIz+gzsmjgdI4x64CkGbsEYUKOj9HzhH
+            whGnFf4dDWanZomMlnQAsNRFavWcgEw4+uIS5EziCuDlqPupN8D8ieBlHZ1HjYt9
+            OL9HaDuUHQIqli/pfMMaRKjx14cQ48jGlPgO/rADEw0Y+wwXr0lLGZJthcXFakH9
+            ZnkhYcdUGqt5cif36TCzaz/yivWqV4zHrXAIerPoStNVaL1dXWMxico51Y/OxKR9
+            LipOuboAJlZMueTigTFNHHnzbFdvCJGXB+1Uznz8ukYM7mI2BwsRu6SKotpnQQzU
+            aAEJAhD9C+DuH2G9G9fVoTBEugCi6kKg4S3PDIcWyrT5zyRzqFQBdON0KmRzlBXG
+            9mxdSgitu48IyjV/5PhESYbdSF2xKfL/pXSzzRe5c15y3rY33Y/pGlydUDbehfnl
+            cp+63OFHR+mf
+            =m7Bo
+            -----END PGP MESSAGE-----
+          fp: 733981EC713BBFDBAAD9E5FB77E29A7F07D187AC
+    encrypted_regex: ^(data|stringData|email)$
+    version: 3.10.2
