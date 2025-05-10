@@ -1,0 +1,39 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: flux-webhook-certificate
+  namespace: flux-system
+spec:
+  secretName: flux-webhook-tls-secret
+  issuerRef:
+    name: cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - ENC[AES256_GCM,data:lucYWQlEGsMXKeWCHcH1l3Z1aARB7odUcIQSeH8zLT4H58thX2zJZFBmbA6pb067821KEOAyJx6l,iv:M7+X19eXsxn+pyzo8rHL1W5USH7z/PjYjP6mKzv0NWw=,tag:dX4FS+dIleZSRbkIIOTjeQ==,type:str]
+sops:
+  lastmodified: "2025-05-10T21:06:59Z"
+  mac: ENC[AES256_GCM,data:800dMmlLuY8qOiSaG0XP/UPTya0QBkx8HDlHvf/jjwUGVVuRCQzRX6r85Vbl55tzBCv/e/tunBdmn3aI/bxmFQe4/i57b1Fha0ycx0PE+mKtf6YSxLjQ1QgtNdz1jn89frr+U4iy1NR2mGSLlRP0fgJUCZRfQADSPSXb40+Oufc=,iv:kmm5b88WVQKFi8RUIuJnoIDkr7F/JRTP2u8b0Ckt1Uo=,tag:glphu3Vzi54zYqx7I0OPeg==,type:str]
+  pgp:
+    - created_at: "2025-05-10T21:06:59Z"
+      enc: |-
+        -----BEGIN PGP MESSAGE-----
+
+        hQIMA1q7zTHG2LSZAQ//Y7/AIhrMmtd5gSz1Bkw2A0v+x5VmJiSoiC+ezEX10Ce2
+        LntLKfSGW2Yh8pEwcOFm36ytD4QUs53OZVLUJxhoYrf+Omehy/HH+s17chkvtxEJ
+        TulkLJIBDd4W7fa3sJpppqVCyA4dJQ6F6kl5QwFFls418Z1o02QaM/z9TJWrmlKr
+        wCNFhm4u6EaDeE0fNiqBEgDIRayVK+AVjhHZzO7wXJh6jfj18j8XRjL7I1Ly8uJ6
+        horA+XiCY+wrC2LAJmdewf5TxARzLn77kXnF8pYrfuk+n/hmGp+0Bfdnri6PHbrM
+        /lMA0Rap9nrD/BrONHW9TVk8N9xSJIcTtR+zmIluZJHVEKTPy8VwciQ6BQ28zoh+
+        G9JNrrMlKHSy3s8VtTOu+hG0JeVP+wJDOfduePOOh4qSubbeqFrX5jGJIvuqh1Gy
+        Xr8eLWf5NRUIBjV1iby1P/0qkFX1fOHn1yoi+fKKeQXxDUuvrizfdxfgh65Nd9fh
+        /ETkVEFx79xddZsEgTYuw11RXc/malODIr753ZWu4ss6uf3265rAgiy7cfVR2oEw
+        jUMpFyvPtJ+sZX9OhxkXkO3n1k0I8D1TZdgmOJbiSKrQLdRSCub0JDE04ouH+y2L
+        lRUNhXD4wFH3Qdz0Zox/QJzJ02oPP0v5nBHXWexlS6rVpQvQQkb/uC/WBbPsyZPU
+        ZgEJAhDAsrUqlbggsdZmtowOGzrWBbyK2BA7TyCaigX1dnA/o437IvBKEeiBgjkZ
+        rCGbLGeoh54O9Apxdp8fd4Q+EKWjoGgmm7veXtrwKHHIzbKSboyF1814WyQMcQS5
+        rkt6YqKpwQ==
+        =p0eb
+        -----END PGP MESSAGE-----
+      fp: 733981EC713BBFDBAAD9E5FB77E29A7F07D187AC
+  encrypted_regex: ^(data|stringData|email|addresses|dnsNames|host|hosts)$
+  version: 3.10.2

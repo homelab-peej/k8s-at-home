@@ -1,0 +1,49 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webhook-receiver
+  namespace: flux-system
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - ENC[AES256_GCM,data:8k0Cz9e3Vg03BqLXMBuTofI1Vnyhwb5hU500rGg5Zj/O6uX3Iymy9AJZYMNeNKAVws6JAGPKzU3p,iv:AjEl0phkFzy9cqYTTkrj/dFP7IR2VkxayDEdrrdYdPc=,tag:BBXI/aj3gSwh8piZqPYIVQ==,type:str]
+      secretName: flux-webhook-tls-secret
+  rules:
+    - host: ENC[AES256_GCM,data:nXToyqVjDjihQSV6XlQbPkUmNl2t5JtQFptVeMie3XxMAx7mLY12I7O60QppgYoLwsG9apYQFbVR,iv:Pd9y0sPyTHXAYCftxjs3c5x6mTXBsW3gxPcLj2+GnFI=,tag:SBEUrkmexFao4boDt3gOBA==,type:str]
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: webhook-receiver
+                port:
+                  number: 80
+sops:
+  lastmodified: "2025-05-10T21:07:04Z"
+  mac: ENC[AES256_GCM,data:BBIoSNCSbGgS/+GKj764ovdlnKpPVC3O6XLwOfgSjIHfxNoQjdCCcTPBdYTGgVYv+9CJfYiWeUz2zo0rIyRNVvbiB4Cctv7Nmt8OBQmCrfsmFF9CX8W0de+51YDTSxhKeUx4Dl1oA6jipzr4SW0yA5SZ34DeGL5SDzIQ2henVoY=,iv:RPMDW4UUsT4NuMC4OSVPTTxH49SN0l30Fdyf254IQ+w=,tag:/BDzjV2FtY9Q2rPu1FWH2Q==,type:str]
+  pgp:
+    - created_at: "2025-05-10T21:07:04Z"
+      enc: |-
+        -----BEGIN PGP MESSAGE-----
+
+        hQIMA1q7zTHG2LSZAQ/+MvEP9mThAcFR6HM35s1E4ZK6PBhJMoczBtTrJ09DyKAa
+        h9L1gNel/yOYL2qBDL1gP/ixEpJYa605KAeBKB3ovh0Qd7x6CzoXVjMLxNdOqZII
+        Vw6J2H6/Y2oJ/Yt3hyxgbBG8qCKl6/yih8CWMO4mjK2AnTHnENj1VNmOZKp3hrhB
+        SWbMa2iydCgCXeADynAVlsjePgjKl1sjyvFHh5T4enIwAuEG7b1rPdeq6pr2fOYt
+        WwCtASvvmfZiR4szz6tQ5Q/rXX1L+rrkEtd+aOz9lP9jits8tQ5R/RWlwnHlF+ex
+        nEukioVbRZPDltrJx9ZUWk8CLIQp5TiYoA5hsVd1qGmhju78sebGuXeZqJtufjhr
+        fiA2kKW4zR5ePwU5FVuCNnbkDVhGpGslJqTRFqNqQplpZbsAB0U7wFbPbll+ZL+F
+        z6yaQhmkt1b4Ik6hGV0LktI+pIRdbRlqk/gYCVhzTWGtRZ01HJ1U26NJlqahV6Vs
+        E1dc2KHjrxCMnHv/M+fji/FCOPsObV1BxJe54BelOwF2PfvMHVIBs21ZNSKt1GZR
+        0tlZnutyNA3blHYwD487/JtSkkoNvjWV837R62fgAfGsZEZp7r+F+6ngRjMM5RA8
+        wK4DOehas+mlke123A4X8WZF7E9mvYowM87cf0ygC11an3xwhIKCYvcGh736FjHU
+        aAEJAhCUng84IMXEX/3UB8FQ1/DtKs/QdwpYVPQ2bSXI+AltXL/qBtLlGt34kFdJ
+        Us29XqpTh2XNcvAirX8ZG5T60ux6rudYx+RhoNgiooDvn1aQuMZYI7lVGjh0mhvg
+        mIWZapXruQM+
+        =2Gru
+        -----END PGP MESSAGE-----
+      fp: 733981EC713BBFDBAAD9E5FB77E29A7F07D187AC
+  encrypted_regex: ^(data|stringData|email|addresses|dnsNames|host|hosts)$
+  version: 3.10.2
