@@ -59,6 +59,9 @@ Reloader will watch many resources for `ConfigMap` or `Secret` changes and autom
 ### [Renovate](https://github.com/renovatebot/renovate)
 Renovate is an automated dependency update tool. It helps to update dependencies in your code without needing to do it manually. When Renovate runs on your repo, it looks for references to dependencies (both public and private) and, if there are newer versions available, Renovate can create pull requests to update your versions automatically.
 
+### [Spegel](https://github.com/spegel-org/spegel)
+Spegel enables each node in a Kubernetes cluster to act as a local registry mirror, allowing nodes to share images between themselves. Any image already pulled by a node will be available for any other node in the cluster to pull. This has the benefit of reducing workload startup times and egress traffic as images will be stored locally within the cluster. On top of that it allows the scheduling of new workloads even when external registries are down.
+
 ### [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller)
 This project aims to provide a general-purpose, Kubernetes-native upgrade controller (for nodes). It introduces a new CRD, the `Plan`, for defining any and all of your upgrade policies/requirements. A `Plan` is an outstanding intent to mutate nodes in your cluster. This is the recommended way to automate K3S updates according to the [documentation](https://docs.k3s.io/upgrades/automated).
 
