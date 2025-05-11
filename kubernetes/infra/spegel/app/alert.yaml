@@ -1,0 +1,21 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: spegel-alert
+  namespace: flux-system
+spec:
+  summary: "Spegel"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: spegel
+    - kind: HelmChart
+      name: '*'
+      namespace: spegel
+    - kind: HelmRelease
+      name: '*'
+      namespace: spegel
