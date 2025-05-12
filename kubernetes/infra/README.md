@@ -53,6 +53,9 @@ Bare-metal Kubernetes installs do not have a native load-balancer implementation
 ### [Node Feature Discovery](https://github.com/kubernetes-sigs/node-feature-discovery)
 Node Feature Discovery is an addon to detect node capabilities for Kubernetes. It detects hardware features available on each node in a Kubernetes cluster, and advertises those features using node labels and optionally node extended resources, annotations and node taints. Node Feature Discovery is compatible with any recent version of Kubernetes (v1.24+).
 
+### [Ping Server](https://github.com/homelab-peej/ping-server)
+A basic app with busybox that listens at :8080/ping to use for random debugging.
+
 ### [Reloader](https://github.com/stakater/reloader)
 Reloader will watch many resources for `ConfigMap` or `Secret` changes and automatically rollout an update for those changes. Simply add the annotation `reloader.stakater.com/auto: "true"` to your Deployment `.metadata`. See the [documentation](https://github.com/stakater/reloader#how-to-use-reloader) for more examples.
 

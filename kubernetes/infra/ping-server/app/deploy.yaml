@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-server
+  namespace: ping-server
+  labels:
+    app.kubernetes.io/name: ping-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ping-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ping-server
+    spec:
+      containers:
+        - name: ping-server
+          image: ghcr.io/homelab-peej/ping-server:0.2.0
+          ports:
+            - containerPort: 8080
