@@ -14,7 +14,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: authelia
-      version: 0.10.9
+      version: 0.10.10
   install:
     crds: Create
     remediation:
