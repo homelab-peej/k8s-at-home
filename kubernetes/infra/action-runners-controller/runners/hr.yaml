@@ -14,3 +14,5 @@ spec:
     githubConfigSecret: arc-token
     maxRunners: 3
     minRunners: 1
+    containerMode:
+      type: "dind"
