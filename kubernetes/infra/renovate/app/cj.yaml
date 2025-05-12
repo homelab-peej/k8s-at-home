@@ -17,6 +17,7 @@ spec:
               image: ghcr.io/renovatebot/renovate:40.11.8
               args:
                 - homelab-peej/k8s-at-home
+                - homelab-peej/ping-server
               env:
                 - name: LOG_LEVEL
                   value: debug
