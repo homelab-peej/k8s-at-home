@@ -1,13 +1,12 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: ping-server
   namespace: ping-server
   labels:
     app.kubernetes.io/name: ping-server
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: ping-server
@@ -18,27 +17,27 @@ spec:
     spec:
       containers:
         - name: ping-server
-          image: ghcr.io/homelab-peej/ping-server:0.1.0
+          image: ghcr.io/homelab-peej/ping-server-test:0.2.0
           ports:
             - containerPort: 8080
           livenessProbe:
             httpGet:
-              path: /ping
+              path: /healthz
               port: 8080
             initialDelaySeconds: 5
-            periodSeconds: 30
+            periodSeconds: 10
+            failureThreshold: 2
           readinessProbe:
             httpGet:
-              path: /ping
+              path: /readyz
               port: 8080
             initialDelaySeconds: 5
-            periodSeconds: 5
+            periodSeconds: 2
+            failureThreshold: 2
           startupProbe:
             httpGet:
-              path: /ping
+              path: /startz
               port: 8080
             initialDelaySeconds: 5
-            periodSeconds: 5
-            failureThreshold: 5
-      nodeSelector:
-        kubernetes.io/arch: arm64
+            periodSeconds: 2
+            failureThreshold: 2
