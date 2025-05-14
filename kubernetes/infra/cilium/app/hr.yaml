@@ -25,6 +25,11 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    prometheus:
+      metricsService: true
+      enalbed: true
+      serviceMonitor:
+        enabled: true
     operator:
       resources:
         requests:
@@ -32,6 +37,11 @@ spec:
           memory: 100Mi
         limits:
           memory: 100Mi
+      pormetheus:
+        metricsService: true
+        enabled: true
+        serviceMonitor:
+          enabled: true
     hubble:
       ui:
         enabled: true
@@ -60,6 +70,21 @@ spec:
             - secretName: hubble-internal-tls-secret
               hosts:
                 - hubble.homelab-peej.dev
+      metrics:
+        enabled:
+          - dns
+          - drop
+          - tcp
+          - flow
+          - port-distribution
+          - icmp
+          - httpV2:exemplars=true;labelsContext=source_ip\
+          - source_namespace\
+          - source_workload\
+          - destination_ip\
+          - destination_namespace\
+          - destination_workload\
+          - traffic_direction
       relay:
         enabled: true
         resources:
@@ -68,6 +93,10 @@ spec:
             memory: 34Mi
           limits:
             memory: 34Mi
+        prometheus:
+          enabled: true
+          serviceMonitor:
+            enabled: true
     envoy:
       enabled: true
       resources:
@@ -76,7 +105,14 @@ spec:
           memory: 70Mi
         limits:
           memory: 70Mi
+      prometheus:
+        enabled: true
+        serviceMonitor:
+          enabled: true
     ipam:
       operator:
         clusterPoolIPv4PodCIDRList:
           - 10.42.0.0/16
+        prometheus:
+          metrics:service: true
+          enabled: true
