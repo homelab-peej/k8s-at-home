@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: ping-server
-          image: ghcr.io/homelab-peej/ping-server:0.2.0
+          image: ghcr.io/homelab-peej/ping-server:0.3.0
           ports:
             - containerPort: 8080
           livenessProbe:
