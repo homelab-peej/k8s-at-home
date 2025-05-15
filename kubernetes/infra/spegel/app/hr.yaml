@@ -5,14 +5,25 @@ metadata:
   name: spegel
   namespace: spegel
 spec:
-  interval: 1m
   chart:
     spec:
       chart: spegel
-      interval: 5m
+      reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
         name: spegel
+      version: 0.2.0
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  interval: 24h
+  timeout: 10m
+  targetNamespace: spegel
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      remediateLastFailure: true
   values:
     spegel:
       containerdSock: "/run/k3s/containerd/containerd.sock"
