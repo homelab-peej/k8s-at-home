@@ -20,15 +20,5 @@
       minimumReleaseAge: "3 days",
       internalChecksFilter: "strict",
     },
-    {
-      description: "Auto-merge Helm Charts",
-      matchDatasources: ["helm"],
-      matchUpdateTypes: ["minor", "patch"],
-      automerge: true,
-      automergeType: "branch",
-      ignoreTests: true,
-      minimumReleaseAge: "3 days",
-      internalChecksFilter: "strict",
-    }
   ]
 }
