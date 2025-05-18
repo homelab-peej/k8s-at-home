@@ -5,6 +5,10 @@ metadata:
   name: &app homepage
   namespace: &namespace homepage
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

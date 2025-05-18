@@ -5,6 +5,10 @@ metadata:
   name: &app csi-driver-nfs
   namespace: &namespace csi-driver-nfs
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

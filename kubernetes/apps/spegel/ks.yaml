@@ -5,6 +5,10 @@ metadata:
   name: &app spegel
   namespace: &namespace spegel
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

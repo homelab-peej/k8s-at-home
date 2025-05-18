@@ -5,6 +5,10 @@ metadata:
   name: &app arc-systems
   namespace: &namespace arc-systems
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
@@ -27,6 +31,10 @@ metadata:
   name: &app arc-runners
   namespace: &namespace arc-runners
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

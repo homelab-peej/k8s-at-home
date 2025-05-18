@@ -5,6 +5,10 @@ metadata:
   name: &app longhorn
   namespace: &namespace longhorn-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

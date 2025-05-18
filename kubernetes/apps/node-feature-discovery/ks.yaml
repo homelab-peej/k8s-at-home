@@ -5,6 +5,10 @@ metadata:
   name: &app node-feature-discovery
   namespace: &namespace node-feature-discovery
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

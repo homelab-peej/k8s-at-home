@@ -5,6 +5,10 @@ metadata:
   name: &app system-upgrade-controller
   namespace: &namespace system-upgrade
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

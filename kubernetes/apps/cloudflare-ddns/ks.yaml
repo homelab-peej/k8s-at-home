@@ -5,6 +5,10 @@ metadata:
   name: &app cloudflare-ddns
   namespace: &namespace cloudflare-ddns
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
