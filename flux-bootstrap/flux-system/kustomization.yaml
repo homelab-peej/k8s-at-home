@@ -40,7 +40,7 @@ patches:
   - patch: | ### Lower concurrency | https://fluxcd.io/flux/installation/configuration/vertical-scaling/#increase-the-number-of-workers-and-limits
       - op: add
         path: /spec/template/spec/containers/0/args/-
-        value: --concurrent=1
+        value: --concurrent=3
     target:
       kind: Deployment
       name: "(kustomize-controller|helm-controller|source-controller)"
