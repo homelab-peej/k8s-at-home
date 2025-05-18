@@ -8,6 +8,9 @@ metadata:
     app.kubernetes.io/name: *app
     app.kubernetes.io/part-of: &namespace metrics-server
 spec:
+  dependsOn:
+    - name: flux-system
+      namespace: flux-system
   decryption:
     provider: sops
     secretRef:
