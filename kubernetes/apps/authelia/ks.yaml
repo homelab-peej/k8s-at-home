@@ -5,6 +5,10 @@ metadata:
   name: &app authelia
   namespace: &namespace authelia
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

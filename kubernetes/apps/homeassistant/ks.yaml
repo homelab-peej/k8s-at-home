@@ -5,6 +5,10 @@ metadata:
   name: &app homeassistant
   namespace: &namespace homeassistant
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

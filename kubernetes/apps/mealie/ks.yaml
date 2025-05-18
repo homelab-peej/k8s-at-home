@@ -5,6 +5,10 @@ metadata:
   name: &app mealie
   namespace: &namespace mealie
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

@@ -5,6 +5,10 @@ metadata:
   name: &app myspeed
   namespace: &namespace myspeed
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

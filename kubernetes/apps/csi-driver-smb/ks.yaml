@@ -5,6 +5,10 @@ metadata:
   name: &app csi-driver-smb
   namespace: &namespace csi-driver-smb
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

@@ -5,6 +5,10 @@ metadata:
   name: &app reloader
   namespace: &namespace reloader
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
