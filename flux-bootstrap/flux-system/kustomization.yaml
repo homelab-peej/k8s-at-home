@@ -57,10 +57,10 @@ patches:
               - name: manager
                 resources:
                   limits:
-                    memory: 1Gi
+                    memory: 124Mi
                     cpu: ~
                   requests:
-                    memory: 1Gi
+                    memory: 124Mi
                     cpu: 47m
     target:
       kind: Deployment
@@ -78,10 +78,10 @@ patches:
               - name: manager
                 resources:
                   limits:
-                    memory: 1Gi
+                    memory: 150Mi
                     cpu: ~
                   requests:
-                    memory: 1Gi
+                    memory: 150Mi
                     cpu: 37m
     target:
       kind: Deployment
@@ -99,10 +99,10 @@ patches:
               - name: manager
                 resources:
                   limits:
-                    memory: 1Gi
+                    memory: 200Mi
                     cpu: ~
                   requests:
-                    memory: 1Gi
+                    memory: 200Mi
                     cpu: 17m
     target:
       kind: Deployment
@@ -120,10 +120,10 @@ patches:
               - name: manager
                 resources:
                   limits:
-                    memory: 1Gi
+                    memory: 65Mi
                     cpu: ~
                   requests:
-                    memory: 1Gi
+                    memory: 65Mi
                     cpu: 7m
     target:
       kind: Deployment
