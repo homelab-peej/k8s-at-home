@@ -47,9 +47,8 @@ flux bootstrap github \
   --owner=homelab-peej \
   --repository=k8s-at-home \
   --branch=main \
-  --path=flux-bootstrap \
+  --path=kubernetes/apps \
   --interval 1h \
   --timeout=15m \
-  --components source-controller,kustomize-controller,helm-controller,notification-controller \
-  --components-extra image-reflector-controller,image-automation-controller
+  --components source-controller,kustomize-controller,helm-controller,notification-controller
 ```
