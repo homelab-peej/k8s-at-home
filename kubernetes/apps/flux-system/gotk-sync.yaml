@@ -19,9 +19,13 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   interval: 10m0s
   path: ./kubernetes/apps
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: flux-system
