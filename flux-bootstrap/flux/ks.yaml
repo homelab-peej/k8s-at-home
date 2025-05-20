@@ -20,7 +20,7 @@ spec:
       app.kubernetes.io/name: *app
       app.kubernetes.io/namespace: *namespace
   interval: 4h
-  path: ./kubernetes/apps/flux/app
+  path: ./flux-bootstrap/flux/app
   prune: false
   retryInterval: 5m
   sourceRef:
