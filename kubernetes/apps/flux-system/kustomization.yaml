@@ -78,10 +78,10 @@ patches:
               - name: manager
                 resources:
                   limits:
-                    memory: 150Mi
+                    memory: 220Mi
                     cpu: ~
                   requests:
-                    memory: 150Mi
+                    memory: 220Mi
                     cpu: 37m
     target:
       kind: Deployment
