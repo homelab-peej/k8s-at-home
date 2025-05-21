@@ -29,9 +29,9 @@ spec:
       resources:
         requests:
           cpu: 2m
-          memory: 100Mi
+          memory: 140Mi
         limits:
-          memory: 100Mi
+          memory: 140Mi
     hubble:
       ui:
         enabled: true
