@@ -21,7 +21,7 @@
       '/(^|/)kubernetes/.+\\.ya?ml$/',
     ],
     ignorePaths: [
-      '**/flux-bootstrap/flux-system/gotk-*.yaml',
+      '**/flux-system/*.yaml',
     ],
   },
   'helm-values': {
