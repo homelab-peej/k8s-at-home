@@ -7,7 +7,7 @@
 - Running Kubernetes off of a MicroSD card under normal circumstances will likely impact performance and burn out the card quickly
 - Use a USB 3.0 drive or NVMe for best results
 
-![System Performance](../res/system-performance.png "System Performance")
+![System Performance](./res/system-performance.png "System Performance")
 *plenty of resources across 5 RPi systems*
 
 ## Install Raspbian
@@ -21,9 +21,9 @@
 - Reboot
 
 ## Choose your Kubernetes Flavor
-- [K3S](SETUP-k3s.md) - easy  
-- [Talos](SETUP-talos.md) - easy(ish)  
-- [kubeadm](SETUP-kubeadm.md) - hard  
+- [K3S](./docs/SETUP-k3s.md) - easy  
+- [Talos](./docs/SETUP-talos.md) - easy(ish)  
+- [kubeadm](./SETUP-kubeadm.md) - hard  
 
 ## Install [Cilium CNI](https://docs.cilium.io/en/stable/installation/k3s/)
 
