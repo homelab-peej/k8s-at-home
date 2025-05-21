@@ -1,6 +1,6 @@
 <div align="center">
 
-### <img src="res/k8s-logo.png" align="center" width="30px" height="30px"/> Homelab <img src="res/k3s-logo.png" align="center" width="30px" height="30px"/>
+### <img src="./kubernetes/res/k8s-logo.png" align="center" width="30px" height="30px"/> Homelab <img src="./kubernetes/res/k3s-logo.png" align="center" width="30px" height="30px"/>
 
 _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 
