@@ -86,6 +86,7 @@ spec:
             url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
             token: ''
     kubeStateMetrics:
+      revisionHistoryLimit: 3
       resources:
         requests:
           cpu: 6m
@@ -136,6 +137,7 @@ spec:
             hosts:
               - prometheus.homelab-peej.dev
     prometheusOperator:
+      revisionHistoryLimit: 3
       resources:
         requests:
           cpu: 2m
