@@ -19,6 +19,7 @@ spec:
                 - homelab-peej/k8s-at-home
                 - homelab-peej/ping-server
                 - homelab-peej/yamllint-test
+                - homelab-peej/fileshare-utils
               env:
                 - name: LOG_LEVEL
                   value: debug
