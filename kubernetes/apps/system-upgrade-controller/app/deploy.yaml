@@ -5,6 +5,7 @@ metadata:
   name: system-upgrade-controller
   namespace: system-upgrade
 spec:
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       upgrade.cattle.io/controller: system-upgrade-controller
