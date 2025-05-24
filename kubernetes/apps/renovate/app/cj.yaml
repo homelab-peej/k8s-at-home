@@ -15,6 +15,12 @@ spec:
           containers:
             - name: renovate
               image: ghcr.io/renovatebot/renovate:40.26.3
+              resources:
+                requests:
+                  cpu: 850m
+                  memory: 1300Mi
+                limits:
+                  memory: 1300Mi
               args:
                 - homelab-peej/k8s-at-home
                 - homelab-peej/ping-server
