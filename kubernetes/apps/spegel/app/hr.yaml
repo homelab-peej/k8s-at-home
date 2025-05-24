@@ -25,6 +25,12 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    resources:
+      requests:
+        cpu: 7m
+        memory: 128Mi
+      limits:
+        memory: 128Mi
     spegel:
       containerdSock: "/run/k3s/containerd/containerd.sock"
       containerdContentPath: "/var/lib/rancher/k3s/agent/containerd/io.containerd.content.v1.content"
