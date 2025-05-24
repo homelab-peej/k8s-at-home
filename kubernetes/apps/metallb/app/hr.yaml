@@ -31,15 +31,15 @@ spec:
       resources:
         requests:
           cpu: 2m
-          memory: 75Mi
+          memory: 83Mi
         limits:
-          memory: 75Mi
+          memory: 83Mi
     speaker:
       resources:
         requests:
           cpu: 3m
-          memory: 35Mi
+          memory: 40Mi
         limits:
-          memory: 35Mi
+          memory: 40Mi
       frr:
         enabled: false
