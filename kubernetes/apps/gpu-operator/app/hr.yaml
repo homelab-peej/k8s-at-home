@@ -27,6 +27,14 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    operator:
+      resources:
+        requests:
+          cpu: 200m
+          memory: 80Mi
+        limits:
+          cpu: ~
+          memory: 80Mi
     dcgmExporter:
       resources:
         requests:
