@@ -22,7 +22,7 @@ jobs:
         id: update
         run: |
           flux install \
-            --export > ./flux-bootstrap/flux-system/gotk-components.yaml
+            --export > ./kubernetes/flux-system/gotk-components.yaml
 
           VERSION="$(flux -v)"
           VERSION_NUMBER="$(flux -v | sed 's/flux version //g')"
