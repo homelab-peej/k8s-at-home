@@ -37,8 +37,8 @@
     {
       customType: 'regex',
       managerFilePatterns: [
-        '/infra/system-upgrade-controller\\.yaml$/',
-      ],
+        '/kubernetes/apps/system-upgrade-controller/app/plan-agent\\.yaml$/',
+        '/kubernetes/apps/system-upgrade-controller/app/plan-server\\.yaml$/',      ],
       matchStrings: [
         'version: (?<currentValue>v[\\d\\.\\+\\w-]+)',
       ],
