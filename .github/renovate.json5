@@ -20,7 +20,7 @@
       '/(^|/)kubernetes/.+\\.ya?ml$/',
     ],
     ignorePaths: [
-      '**/flux-system/*.yaml',
+      '/kubernetes/apps/flux-system/*.yaml',
     ],
   },
   'helm-values': {
