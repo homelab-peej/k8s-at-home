@@ -5,7 +5,7 @@ metadata:
   name: renovate
   namespace: renovate
 spec:
-  schedule: '*/10 * * * *'
+  schedule: '* * * * *'
   concurrencyPolicy: Forbid
   timeZone: 'America/Chicago'
   jobTemplate:
