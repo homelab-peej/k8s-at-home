@@ -20,17 +20,23 @@
       '/(^|/)kubernetes/.+\\.ya?ml$/',
     ],
     ignorePaths: [
-      '/kubernetes/apps/flux-system/*.yaml',
+      '**/flux-system/**',
     ],
   },
   'helm-values': {
     managerFilePatterns: [
       '/(^|/)kubernetes/.+\\.ya?ml$/',
     ],
+    ignorePaths: [
+      '**/flux-system/**',
+    ],
   },
   kubernetes: {
     managerFilePatterns: [
       '/(^|/)kubernetes/.+\\.ya?ml$/',
+    ],
+    ignorePaths: [
+      '**/flux-system/**',
     ],
   },
   customManagers: [
