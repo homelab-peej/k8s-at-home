@@ -25,6 +25,8 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    defaultSetting:
+      concurrentAutomaticEngineUpgradePerNodeLimit: 1
     longhornUI:
       replicas: 1
       resources:
