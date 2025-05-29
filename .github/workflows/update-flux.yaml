@@ -36,6 +36,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: update-flux
+          author: Peej11-Bot <198817040+Peej11-Bot@users.noreply.github.com>
+          committer: Peej11-Bot <198817040+Peej11-Bot@users.noreply.github.com>
           commit-message: Update Flux to ${{ env.flux_version }}
           title: Update Flux to ${{ env.flux_version }}
           body: |
