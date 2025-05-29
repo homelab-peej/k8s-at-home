@@ -1,9 +1,11 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
   name: arc-runner-controller
   namespace: arc-systems
+  annotations:
+    api.fluxcd.io/upgrade: "v2.6.0"
 spec:
   interval: 8h
   provider: generic
