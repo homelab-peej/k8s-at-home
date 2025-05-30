@@ -2,21 +2,21 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: arc-runner-set
+  name: yamllint-runner-set
   namespace: arc-runners
 spec:
   chartRef:
     kind: OCIRepository
-    name: yamllint-runner-set
+    name: arc-runner-set
   interval: 24h
   values:
     githubConfigUrl: "https://github.com/homelab-peej/"
     githubConfigSecret: arc-token
     maxRunners: 5
-    minRunners: 2
-    containerMode:
-      type: "dind"
-  template:
-    containers:
-      - name: runner
-        image: ghcr.io/homelab-peej/yamllint-test:2.324.0
+    minRunners: 3
+    template:
+      spec:
+        containers:
+          - name: runner
+            image: ghcr.io/homelab-peej/yamllint:2.324.0
+            command: ["/home/runner/run.sh"]
