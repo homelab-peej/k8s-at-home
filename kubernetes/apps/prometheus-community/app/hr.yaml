@@ -14,7 +14,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
-      version: 72.6.3
+      version: 72.6.4
   install:
     crds: Create
     remediation:
