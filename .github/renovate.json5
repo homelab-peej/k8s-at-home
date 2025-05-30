@@ -4,7 +4,6 @@
     'config:recommended',
     'docker:enableMajor',
     'helpers:pinGitHubActionDigests',
-    'github>homelab-peej/k8s-at-home//.github/renovate/autoMerge.json5',
     'github>homelab-peej/k8s-at-home//.github/renovate/labels.json5',
     'github>homelab-peej/k8s-at-home//.github/renovate/semanticCommits.json5',
     ':dependencyDashboard',
