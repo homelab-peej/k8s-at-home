@@ -1,0 +1,29 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: builder-runner-set
+  namespace: arc-runners
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: arc-runner-set
+  interval: 24h
+  values:
+    githubConfigUrl: "https://github.com/homelab-peej/"
+    githubConfigSecret: arc-token
+    maxRunners: 5
+    minRunners: 2
+    containerMode:
+      type: "dind"
+    template:
+      spec:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values:
+                      - amd64
