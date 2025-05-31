@@ -13,7 +13,7 @@ spec:
     githubConfigUrl: "https://github.com/homelab-peej/"
     githubConfigSecret: arc-token
     maxRunners: 5
-    minRunners: 2
+    minRunners: 1
     containerMode:
       type: "dind"
     template:
