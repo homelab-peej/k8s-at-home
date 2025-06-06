@@ -30,16 +30,16 @@ spec:
     controller:
       resources:
         requests:
-          cpu: 2m
-          memory: 83Mi
+          cpu: 22m
+          memory: 95Mi
         limits:
-          memory: 83Mi
+          memory: 95Mi
     speaker:
       resources:
         requests:
-          cpu: 3m
-          memory: 40Mi
+          cpu: 13m
+          memory: 45Mi
         limits:
-          memory: 40Mi
+          memory: 45Mi
       frr:
         enabled: false
