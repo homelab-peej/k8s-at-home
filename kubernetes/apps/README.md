@@ -57,6 +57,9 @@ A modern, fully static, fast, secure fully proxied, highly customizable applicat
 ### [Jellyfin](https://github.com/jellyfin/jellyfin/)
 Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps.
 
+### [Linkding](https://github.com/sissbruecker/linkding)
+Linkding is a bookmark manager that you can host yourself. It's designed be to be minimal, fast, and easy to set up using Docker.
+
 ### [Longhorn](https://github.com/longhorn/longhorn)
 Longhorn is a lightweight, reliable and easy-to-use distributed block storage system for Kubernetes. We can use local disks to store data and backup data to TrueNAS and other locations.
 
