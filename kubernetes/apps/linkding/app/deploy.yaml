@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: linkding
-          image: ghcr.io/sissbruecker/linkding:latest
+          image: ghcr.io/sissbruecker/linkding:1.40.0
           imagePullPolicy: Always
           env:
             - name: LD_LOG_X_FORWARDED_FOR
