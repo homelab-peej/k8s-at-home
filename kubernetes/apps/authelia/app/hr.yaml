@@ -20,30 +20,19 @@ spec:
     remediation:
       retries: 3
   interval: 24h
-  timeout: 10m
+  timeout: 5m
   targetNamespace: authelia
   upgrade:
     crds: CreateReplace
     remediation:
       remediateLastFailure: true
   values:
+    nameOverride: 'authelia'
     pod:
       kind: 'Deployment'
+      revisionHistoryLimit: 3
       annotations:
         reloader.stakater.com/auto: "true"
-      selectors:
-        affinity:
-          podAntiAffinity:
-            preferredDuringSchedulingIgnoredDuringExecution:
-              - weight: 1
-                podAffinityTerm:
-                  labelSelector:
-                    matchExpressions:
-                      - key: app.kubernetes.io/name
-                        operator: 'In'
-                        values:
-                          - authelia
-                  topologyKey: kubernetes.io/hostname
       podDisruptionBudget:
         enabled: true
         minAvailable: 1
@@ -57,17 +46,21 @@ spec:
             name: authelia-user-config
       resources:
         requests:
-          cpu: 1m
-          memory: 53Mi
+          cpu: 10m
+          memory: 150Mi
         limits:
           cpu: ~
-          memory: 53Mi
+          memory: 150Mi
     configMap:
       access_control:
         default_policy: 'one_factor'
       authentication_backend:
         file:
           enabled: true
+        password_reset:
+          disable: true
+        password_change:
+          disable: true
       session:
         cookies:
           - subdomain: auth
@@ -83,7 +76,7 @@ spec:
         local:
           enabled: true
       password_policy:
-        sdandard:
+        standard:
           enabled: true
           min_length: 32
           require_uppercase: true
@@ -99,17 +92,8 @@ spec:
       master:
         resources:
           requests:
-            cpu: 12m
-            memory: 12Mi
+            cpu: 14m
+            memory: 16Mi
           limits:
             cpu: ~
-            memory: 12Mi
-  postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              kind: Deployment
-            patch: |
-              - op: replace
-                path: /spec/replicas
-                value: 2
+            memory: 16Mi
