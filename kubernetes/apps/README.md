@@ -84,6 +84,9 @@ A basic app with busybox that listens at :8080/ping to use for random debugging.
 ### [Prometheus](https://github.com/prometheus/prometheus)
 Prometheus is a great systems monitoring and alerting toolkit. It's the datasource that is used by Grafana to display your cluster statistics and information. This install is a part of the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) which is helpful for monitoring a K8S cluster.
 
+### [Reflector](https://github.com/emberstack/kubernetes-reflector)
+Reflector is a Kubernetes addon designed to monitor changes to resources (`secret` and `configmap`) and reflect changes to mirror resources in the same or other namespaces.
+
 ### [Reloader](https://github.com/stakater/reloader)
 Reloader will watch many resources for `ConfigMap` or `Secret` changes and automatically rollout an update for those changes. Simply add the annotation `reloader.stakater.com/auto: "true"` to your Deployment `.metadata`. See the [documentation](https://github.com/stakater/reloader#how-to-use-reloader) for more examples.
 

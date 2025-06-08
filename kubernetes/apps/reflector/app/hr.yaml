@@ -1,0 +1,19 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: reflector
+  namespace: reflector
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: reflector
+  interval: 24h
+  values:
+    replicaCount: 1
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 200Mi
+      limits:
+        memory: 200Mi
