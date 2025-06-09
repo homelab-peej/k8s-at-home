@@ -5,6 +5,10 @@ metadata:
   name: postgresql
   namespace: postgres
 spec:
+  inheritedMetadata:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: authelia,linkding
   instances: 3
   storage:
     storageClass: longhorn
