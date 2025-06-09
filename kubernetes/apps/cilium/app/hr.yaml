@@ -29,9 +29,9 @@ spec:
       resources:
         requests:
           cpu: 2m
-          memory: 140Mi
+          memory: 160Mi
         limits:
-          memory: 140Mi
+          memory: 160Mi
     hubble:
       ui:
         enabled: true
@@ -39,9 +39,9 @@ spec:
           resources:
             requests:
               cpu: 2m
-              memory: 44Mi
+              memory: 50Mi
             limits:
-              memory: 44Mi
+              memory: 50Mi
         frontend:
           resources:
             requests:
@@ -65,17 +65,17 @@ spec:
         resources:
           requests:
             cpu: 1m
-            memory: 34Mi
+            memory: 45Mi
           limits:
-            memory: 34Mi
+            memory: 45Mi
     envoy:
       enabled: true
       resources:
         requests:
           cpu: 19m
-          memory: 70Mi
+          memory: 74Mi
         limits:
-          memory: 70Mi
+          memory: 74Mi
     ipam:
       operator:
         clusterPoolIPv4PodCIDRList:
