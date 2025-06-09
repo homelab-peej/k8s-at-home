@@ -24,36 +24,68 @@ spec:
           env:
             - name: ALLOW_SIGNUP
               value: "false"
+            - name: DB_ENGINE
+              value: "postgres"
+            - name: BASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-config
+                  key: BASE_URL
             - name: OPENAI_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: mealie-config
-                  key: openai-api-key
+                  key: OPENAI_API_KEY
             - name: SMTP_FROM_EMAIL
               valueFrom:
                 secretKeyRef:
                   name: mealie-config
-                  key: smtp-from-email
+                  key: SMTP_FROM_EMAIL
             - name: SMTP_HOST
               valueFrom:
                 secretKeyRef:
                   name: mealie-config
-                  key: smtp-host
+                  key: SMTP_HOST
             - name: SMTP_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mealie-config
-                  key: smtp-password
+                  key: SMTP_PASSWORD
             - name: SMTP_PORT
               valueFrom:
                 secretKeyRef:
                   name: mealie-config
-                  key: smtp-port
+                  key: SMTP_PORT
             - name: SMTP_USER
               valueFrom:
                 secretKeyRef:
                   name: mealie-config
-                  key: smtp-user
+                  key: SMTP_USER
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-superuser
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-superuser
+                  key: password
+            - name: POSTGRES_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-app
+                  key: host
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-app
+                  key: port
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-app
+                  key: dbname
           command:
             - /app/run.sh
           volumeMounts:
@@ -62,10 +94,10 @@ spec:
           workingDir: /
           resources:
             requests:
-              cpu: 2m
-              memory: 428Mi
+              cpu: 305m
+              memory: 700Mi
             limits:
-              memory: 428Mi
+              memory: 700Mi
       restartPolicy: Always
       volumes:
         - name: mealie
