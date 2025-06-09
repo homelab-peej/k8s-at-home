@@ -91,6 +91,7 @@
         "metrics-server",
         "node-feature-discovery",
         "kube-prometheus-stack",
+        "reflector",
         "reloader",
         "spegel",
         "traefik",
