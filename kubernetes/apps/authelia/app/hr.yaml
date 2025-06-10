@@ -33,6 +33,19 @@ spec:
       revisionHistoryLimit: 3
       annotations:
         reloader.stakater.com/auto: "true"
+      selectors:
+        affinity:
+          podAntiAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                podAffinityTerm:
+                  labelSelector:
+                    matchExpressions:
+                      - key: app.kubernetes.io/name
+                        operator: 'In'
+                        values:
+                          - authelia
+                  topologyKey: kubernetes.io/hostname
       podDisruptionBudget:
         enabled: true
         minAvailable: 1
@@ -40,17 +53,33 @@ spec:
         - name: config-file
           mountPath: /config/users_database.yml
           subPath: users_database.yml
+        - name: secret
+          readOnly: true
+          mountPath: /config/secrets
       extraVolumes:
         - name: config-file
           configMap:
             name: authelia-user-config
+        - name: secret
+          projected:
+            sources:
+              - secret:
+                  name: authelia-app
+                  items:
+                    - key: password
+                      path: POSTGRES_PASSWORD
       resources:
         requests:
-          cpu: 10m
-          memory: 150Mi
+          cpu: 21m
+          memory: 300Mi
         limits:
           cpu: ~
-          memory: 150Mi
+          memory: 300Mi
+      env:
+        - name: TZ
+          value: America/Chicago
+        - name: AUTHELIA_STORAGE_POSTGRES_PASSWORD_FILE
+          value: /config/secrets/POSTGRES_PASSWORD
     configMap:
       access_control:
         default_policy: 'one_factor'
@@ -73,8 +102,16 @@ spec:
         filesystem:
           enabled: true
       storage:
-        local:
+        postgres:
           enabled: true
+          deploy: false
+          address: "tcp://authelia-rw:5432"
+          database: "authelia"
+          username: "authelia"
+          ssl:
+            mode: disable
+          password:
+            disabled: true
       password_policy:
         standard:
           enabled: true
@@ -97,3 +134,12 @@ spec:
           limits:
             cpu: ~
             memory: 16Mi
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              kind: Deployment
+            patch: |
+              - op: replace
+                path: /spec/replicas
+                value: 2

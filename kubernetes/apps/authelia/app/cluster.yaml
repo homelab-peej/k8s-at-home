@@ -1,0 +1,15 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: authelia
+  namespace: authelia
+spec:
+  instances: 3
+  bootstrap:
+    initdb:
+      database: authelia
+      owner: authelia
+  storage:
+    storageClass: longhorn
+    size: 1Gi
