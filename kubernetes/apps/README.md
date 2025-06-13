@@ -6,9 +6,6 @@ Actions Runner Controller (ARC) is a Kubernetes operator that orchestrates and s
 ### [Actual](https://github.com/actualbudget/actual)
 Actual is a local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.
 
-### [Authelia](https://github.com/authelia/authelia)
-Authelia is an open-source authentication and authorization server providing two-factor authentication and single sign-on (SSO) for your applications via a web portal. It acts as a companion for reverse proxies by allowing, denying, or redirecting requests.
-
 ### [Cert-Manager](https://github.com/cert-manager/cert-manager)
 Cert-manager is a X.509 certificate manager for Kubernetes. It adds multiple certificate and issuer resources to your cluster can help you automate obtaininig, renewing, and using your certificates. By using the [DNS challenge](https://cert-manager.io/docs/configuration/acme/dns01/#setting-nameservers-for-dns01-self-check) option we can obtain certificates even for an internal-only domain name. Cert-manager knows that you still control the domain since it can write TXT records back to Cloudflare with your API token. If you have an internal DNS server and use [split-horizon](https://en.wikipedia.org/wiki/Split-horizon_DNS) be sure to add the extraAgs shown above to force cert-manager to use public DNS to authenticate since your internal DNS will not propogate those records.
 
