@@ -61,20 +61,6 @@
       minimumReleaseAge: "3 days",
     },
     {
-      description: "Renovate Auto-merge Weekly",
-      automerge: true,
-      automergeType: "branch",
-      ignoreTests: true,
-      internalChecksFilter: "strict",
-      matchDatasources: ["docker"],
-      matchPackageNames: [
-        "ghcr.io/renovatebot/renovate",
-      ],
-      matchUpdateTypes: ["minor", "patch"],
-      minimumReleaseAge: "3 days",
-      schedule: ["* 4 * * 6"],
-    },
-    {
       description: "Auto-merge Helm Patch Releases",
       matchDatasources: ["helm"],
       matchUpdateTypes: ["patch"],
