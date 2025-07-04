@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: ghcr.io/renovatebot/renovate:41.20.1
+              image: ghcr.io/renovatebot/renovate:41.20.2
               resources:
                 requests:
                   cpu: 850m
