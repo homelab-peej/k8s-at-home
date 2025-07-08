@@ -65,7 +65,7 @@ spec:
               name: logs
           resources:
             requests:
-              cpu: 1m
+              cpu: 139m
               memory: 183Mi
             limits:
               memory: 183Mi
