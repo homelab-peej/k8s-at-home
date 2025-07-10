@@ -45,6 +45,9 @@ Kubernetes provides access to special hardware resources such as NVIDIA GPUs, NI
 ### [Grafana](https://github.com/grafana/grafana)
 Grafana lets you query, visualize, alert on, and explore your metrics, logs, and traces wherever they're stored. This install is a part of the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) which is helpful for monitoring a K8S cluster. It comes with many helpful default dashboards. The default credentials for this install is `admin`/`prom-operator`.
 
+### [Headlamp](https://github.com/kubernetes-sigs/headlamp)
+Headlamp is an easy-to-use and extensible Kubernetes web UI.
+
 ### [Home Assistant](https://github.com/home-assistant/core)
 Home Assistant is a home automation toolkit that lets you automate and control your home. Changes to `configuration.yaml` are required if you want to place Home Assistant behind a proxy. When doing the first-time install, disable the mount that maps the configmap to the pod. Let the deployment create the directory and necessary files first, then reconfigure the deployment to use your configmap which can be updated as needed. Reloader will take care of restarting it if you do any further configuration changes. Use `ws://localhost:3000` for the web-socket address in the z-wave integration instead of the detected IP address since the pod IP can change with restarts.
 

@@ -1,0 +1,21 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: headlamp-alert
+  namespace: flux-system
+spec:
+  summary: "Headlamp"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: headlamp
+    - kind: HelmChart
+      name: '*'
+      namespace: headlamp
+    - kind: HelmRelease
+      name: '*'
+      namespace: headlamp

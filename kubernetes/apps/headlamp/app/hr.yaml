@@ -1,0 +1,65 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: headlamp
+  namespace: headlamp
+spec:
+  chart:
+    spec:
+      chart: headlamp
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: headlamp
+      version: 0.32.1
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  interval: 24h
+  timeout: 10m
+  targetNamespace: headlamp
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      remediateLastFailure: true
+  values:
+    nameOverride: headlamp
+    fullnameOverride: headlamp
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      hosts:
+        - host: headlamp.homelab-peej.dev
+          paths:
+            - path: /
+              type: ImplementationSpecific
+      tls:
+        - secretName: headlamp-internal-tls-secret
+          hosts:
+            - headlamp.homelab-peej.dev
+    persistentVolumeClaim:
+      enabled: true
+      accessModes:
+        - ReadWriteMany
+      size: 3Gi
+      storageClassName: longhorn
+    initContainers:
+      - name: flux-setup
+        command:
+          - /bin/sh
+          - -c
+          - mkdir -p /headlamp/plugins && cp -r /plugins/* /headlamp/plugins/
+        image: ghcr.io/headlamp-k8s/headlamp-plugin-flux:latest
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /headlamp/plugins
+            name: headlamp-plugins
+    volumeMounts:
+      - mountPath: /headlamp/plugins
+        name: headlamp-plugins
+    volumes:
+      - name: headlamp-plugins
+        persistentVolumeClaim:
+          claimName: headlamp
