@@ -24,3 +24,16 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - prometheus.homelab-peej.dev
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: alertmanager-internal-certificate
+  namespace: prometheus
+spec:
+  secretName: alertmanager-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - alertmanager.homelab-peej.dev

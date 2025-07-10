@@ -34,6 +34,14 @@ spec:
             memory: 36Mi
           limits:
             memory: 36Mi
+      ingress:
+        enabled: true
+        hosts:
+          - alertmanager.homelab-peej.dev
+        tls:
+          - secretName: alertmanager-internal-tls-secret
+            hosts:
+              - alertmanager.homelab-peej.dev
     grafana:
       persistence:
         enabled: true
