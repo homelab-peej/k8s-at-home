@@ -43,6 +43,9 @@ spec:
         limits:
           memory: 600Mi
     devicePlugin:
+      config:
+        name: time-slicing-config
+        default: any
       resources:
         requests:
           cpu: 2m
