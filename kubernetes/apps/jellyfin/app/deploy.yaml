@@ -28,8 +28,10 @@ spec:
             requests:
               cpu: 1000m
               memory: 2048Mi
+              nvidia.com/gpu: "1"
             limits:
               memory: 2048Mi
+              nvidia.com/gpu: "1"
           securityContext:
             privileged: true
           volumeMounts:
@@ -41,8 +43,6 @@ spec:
               mountPath: /cache
             - name: transcode
               mountPath: /transcode
-            - name: quicksync
-              mountPath: /dev/dri
           livenessProbe:
             httpGet:
               path: /System/Ping
@@ -62,8 +62,7 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 5
             failureThreshold: 10
-      nodeSelector:
-        kubernetes.io/hostname: k8s-09-5a8fq
+      runtimeClassName: nvidia
       volumes:
         - name: media
           persistentVolumeClaim:
@@ -77,6 +76,3 @@ spec:
         - name: transcode
           emptyDir:
             sizeLimit: 8Gi
-        - name: quicksync
-          hostPath:
-            path: /dev/dri
