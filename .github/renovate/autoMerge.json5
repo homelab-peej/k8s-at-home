@@ -20,8 +20,6 @@
       matchPackageNames: [
         "ghcr.io/actualbudget/actual",
         "favonia/cloudflare-ddns",
-        "ghcr.io/home-assistant/home-assistant",
-        "ghcr.io/zwave-js/zwave-js-ui",
         "ghcr.io/gethomepage/homepage",
         "ghcr.io/jellyfin/jellyfin",
         "ghcr.io/mealie-recipes/mealie",
@@ -47,8 +45,6 @@
       matchPackageNames: [
         "ghcr.io/actualbudget/actual",
         "favonia/cloudflare-ddns",
-        "ghcr.io/home-assistant/home-assistant",
-        "ghcr.io/zwave-js/zwave-js-ui",
         "ghcr.io/gethomepage/homepage",
         "ghcr.io/jellyfin/jellyfin",
         "ghcr.io/mealie-recipes/mealie",
@@ -62,6 +58,25 @@
         "ghcr.io/emberstack/helm-charts/reflector",
       ],
       matchUpdateTypes: ["minor"],
+      minimumReleaseAge: "3 days",
+    },
+    {
+      description: "Auto-merge Home Assistant on a Schedule",
+      groupName: "Home Assistant",
+      groupSlug: "hass",
+      automerge: true,
+      automergeType: "branch",
+      automergeSchedule: [
+        "0 3 25 * *",
+      ],
+      ignoreTests: true,
+      internalChecksFilter: "strict",
+      matchDatasources: ["docker"],
+      matchPackageNames: [
+        "ghcr.io/home-assistant/home-assistant",
+        "ghcr.io/zwave-js/zwave-js-ui",
+      ],
+      matchUpdateTypes: ["minor", "patch"],
       minimumReleaseAge: "3 days",
     },
     {
