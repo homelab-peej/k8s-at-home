@@ -45,6 +45,9 @@ Kubernetes provides access to special hardware resources such as NVIDIA GPUs, NI
 ### [Grafana](https://github.com/grafana/grafana)
 Grafana lets you query, visualize, alert on, and explore your metrics, logs, and traces wherever they're stored. This install is a part of the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) which is helpful for monitoring a K8S cluster. It comes with many helpful default dashboards. The default credentials for this install is `admin`/`prom-operator`.
 
+### [Grocy](https://github.com/grocy/grocy)
+Grocy is a web-based self-hosted groceries & household management solution for your home. Uses the LinuxServer [Docker image](https://hub.docker.com/r/linuxserver/grocy).
+
 ### [Headlamp](https://github.com/kubernetes-sigs/headlamp)
 Headlamp is an easy-to-use and extensible Kubernetes web UI.
 

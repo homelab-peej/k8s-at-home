@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grocy-private
+  namespace: grocy
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - grocy.homelab-peej.dev
+      secretName: grocy-internal-tls-secret
+  rules:
+    - host: grocy.homelab-peej.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: grocy
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix

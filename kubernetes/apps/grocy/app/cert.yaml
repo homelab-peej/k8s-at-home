@@ -1,0 +1,13 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: grocy-internal-certificate
+  namespace: grocy
+spec:
+  secretName: grocy-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - grocy.homelab-peej.dev
