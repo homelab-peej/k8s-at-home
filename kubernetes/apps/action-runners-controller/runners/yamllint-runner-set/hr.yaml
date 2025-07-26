@@ -18,5 +18,5 @@ spec:
       spec:
         containers:
           - name: runner
-            image: ghcr.io/homelab-peej/yamllint:2.327.0
+            image: ghcr.io/homelab-peej/yamllint:2.327.1
             command: ["/home/runner/run.sh"]
