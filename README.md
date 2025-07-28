@@ -32,7 +32,8 @@ _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 | Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Master | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
 | Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
 | Raspberry Pi 5  | 8GB  | 256GB NVMe SSD            | Worker | Raspbian Lite | [Hat](https://www.waveshare.com/poe-m.2-hat-plus.htm), [Drive](https://a.co/d/4kcOG6z) |
-| N95 Mini PC     | 32GB | 2TB NVMe SSD              | Worker | Debian        |                                                                                        |
+| N95 Mini        | 32GB | 2TB NVMe SSD              | Worker | Debian        |                                                                                        |
+| x86 Xeon        | 64GB | 80TB HDD                  | Worker | Debian        |  Nvidia Quadro M2000                                                                   |
 
 
 ## 📦 Storage
@@ -48,7 +49,9 @@ _Automatically managed with Flux, Renovate, and Github Actions_ 🤖
 |----------|-------------------|-------------------------------------------------|
 | Ubiquiti | Dream Machine Pro | Primary Router, Camera Storage, Network Manager |
 | Ubiquiti | US-48-500W        | Rack switch with PoE and 10G SFP+               |
-| Ubiquiti | U6-LR             | Wireless Access Point                           |
+| Ubiquiti | U7-Pro            | Wireless Access Point                           |
+| Ubiquiti | U7-Pro Wall       | Wireless Access Point                           |
+| Ubiquiti | U7-Pro Wall       | Wireless Access Point                           |
 
 
 ## ☁️ Cloud Services
