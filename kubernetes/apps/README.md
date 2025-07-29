@@ -108,5 +108,8 @@ Traefik is an ingress controller that will let you access services with DNS name
 ### [Unpoller](https://github.com/unpoller/unpoller)
 Unpoller will pull data from Unifi sources through a service account. Data can be exported to InfluxDB or Prometheus for viewing in Grafana. There are some preconfigured dashboards available for import referenced in the Unpoller [docs](https://unpoller.com/docs/install/grafana#dashboard-installation-instructions).
 
+### [Valheim Game Server](https://github.com/lloesche/valheim-server-docker)
+Valheim Server in a Docker Container (with BepInEx and ValheimPlus support)
+
 ### [Z-Wave JS UI](https://github.com/zwave-js/zwave-js-ui)
 Z-Wave control panel and MQTT gateway. Either can be enabled separately or both together. I've paired this with Home Assistant so I can control z-wave switches and outlets around the home via [this dongle](https://a.co/d/9HZfxjH). By running this in the same pod as Home Assistant, it's still accessible from HA via localhost and keeps the services and ingresses simple.

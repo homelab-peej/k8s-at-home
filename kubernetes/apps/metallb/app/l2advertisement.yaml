@@ -8,3 +8,4 @@ spec:
   ipAddressPools:
     - default
     - traefik
+    - valheim
