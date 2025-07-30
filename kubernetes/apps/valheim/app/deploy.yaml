@@ -86,8 +86,11 @@ spec:
           resources:
             requests:
               nvidia.com/gpu: "1"
+              cpu: 700m
+              memory: 3Gi
             limits:
               nvidia.com/gpu: "1"
+              memory: 3Gi
           volumeMounts:
             - name: config
               mountPath: /config
