@@ -20,7 +20,6 @@
       matchPackageNames: [
         "ghcr.io/actualbudget/actual",
         "favonia/cloudflare-ddns",
-        "ghcr.io/gethomepage/homepage",
         "ghcr.io/jellyfin/jellyfin",
         "ghcr.io/mealie-recipes/mealie",
         "germannewsmaker/myspeed",
@@ -45,7 +44,6 @@
       matchPackageNames: [
         "ghcr.io/actualbudget/actual",
         "favonia/cloudflare-ddns",
-        "ghcr.io/gethomepage/homepage",
         "ghcr.io/jellyfin/jellyfin",
         "ghcr.io/mealie-recipes/mealie",
         "germannewsmaker/myspeed",
