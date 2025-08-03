@@ -96,7 +96,7 @@ Reloader will watch many resources for `ConfigMap` or `Secret` changes and autom
 ### [Renovate](https://github.com/renovatebot/renovate)
 Renovate is an automated dependency update tool. It helps to update dependencies in your code without needing to do it manually. When Renovate runs on your repo, it looks for references to dependencies (both public and private) and, if there are newer versions available, Renovate can create pull requests to update your versions automatically.
 
-### [Rook](https://github.com/rook/rook))
+### [Rook](https://github.com/rook/rook)
 Rook is an open source cloud-native storage orchestrator for Kubernetes, providing the platform, framework, and support for Ceph storage to natively integrate with Kubernetes.
 
 ### [Spegel](https://github.com/spegel-org/spegel)
