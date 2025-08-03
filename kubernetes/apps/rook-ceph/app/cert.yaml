@@ -1,0 +1,13 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ceph-dashboard-internal-certificate
+  namespace: rook-ceph
+spec:
+  secretName: ceph-dashboard-internal-tls-secret
+  issuerRef:
+    name: internal-cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - ceph-dashboard.homelab-peej.dev

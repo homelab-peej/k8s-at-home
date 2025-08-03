@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ceph-dashboard-private
+  namespace: rook-ceph
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - ceph-dashboard.homelab-peej.dev
+      secretName: ceph-dashboard-internal-tls-secret
+  rules:
+    - host: ceph-dashboard.homelab-peej.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: rook-ceph-mgr-dashboard
+                port:
+                  number: 7000
+            path: /
+            pathType: Prefix
