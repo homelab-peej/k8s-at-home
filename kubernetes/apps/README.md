@@ -66,6 +66,9 @@ Linkding is a bookmark manager that you can host yourself. It's designed be to b
 ### [Longhorn](https://github.com/longhorn/longhorn)
 Longhorn is a lightweight, reliable and easy-to-use distributed block storage system for Kubernetes. We can use local disks to store data and backup data to TrueNAS and other locations.
 
+### [MariaDB Operator](https://github.com/mariadb-operator/mariadb-operator)
+Run and operate MariaDB in a cloud native way. Declaratively manage your MariaDB using Kubernetes CRDs rather than imperative commands.
+
 ### [Mealie](https://github.com/mealie-recipes/mealie/)
 Mealie is a self-hosted recipe manager, meal planner, and shopping list application.
 

@@ -1,0 +1,21 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: mysql-operator
+  namespace: flux-system
+spec:
+  summary: "MariaDB Operator"
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+      namespace: mariadb-operator
+    - kind: HelmChart
+      name: '*'
+      namespace: mariadb-operator
+    - kind: HelmRelease
+      name: '*'
+      namespace: mariadb-operator

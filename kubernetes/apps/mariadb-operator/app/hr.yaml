@@ -1,0 +1,49 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  annotations:
+    kustomize.toolkit.fluxcd.io/force: enabled
+  name: mariadb-operator-crds
+  namespace: mariadb-operator
+spec:
+  chart:
+    spec:
+      chart: mariadb-operator-crds
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: mariadb-operator
+      version: '25.8.2'
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  interval: 24h
+  timeout: 10m
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  annotations:
+    kustomize.toolkit.fluxcd.io/force: enabled
+  name: mariadb-operator
+  namespace: mariadb-operator
+spec:
+  dependsOn:
+    - name: mariadb-operator-crds
+      namespace: mariadb-operator
+  chart:
+    spec:
+      chart: mariadb-operator
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: mariadb-operator
+      version: '25.8.2'
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  interval: 24h
+  timeout: 10m
