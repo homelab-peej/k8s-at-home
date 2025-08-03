@@ -78,6 +78,9 @@ Metrics Server is a scalable, efficient source of container resource metrics for
 ### [MySpeed](https://github.com/gnmyt/myspeed/)
 Test analysis software that records your internet speed for up to 30 days.
 
+### [MySQL Operator](https://github.com/mysql/mysql-operator)
+The MySQL Operator for Kubernetes is an operator for managing MySQL InnoDB Cluster setups inside a Kubernetes Cluster. It manages the full lifecycle with set up and maintenance that includes automating upgrades and backup.
+
 ### [Node Feature Discovery](https://github.com/kubernetes-sigs/node-feature-discovery)
 Node Feature Discovery is an addon to detect node capabilities for Kubernetes. It detects hardware features available on each node in a Kubernetes cluster, and advertises those features using node labels and optionally node extended resources, annotations and node taints. Node Feature Discovery is compatible with any recent version of Kubernetes (v1.24+).
 
