@@ -51,15 +51,15 @@ spec:
             - name: BACKUPS
               value: "true"
             - name: BACKUPS_CRON
-              value: "0 2 * * *"
+              value: "0 * * * *"
             - name: BACKUPS_DIRECTORY
               value: "/config/backups"
             - name: BACKUPS_MAX_AGE
               value: "14"
             - name: BACKUPS_MAX_COUNT
-              value: "14"
+              value: "30"
             - name: BACKUPS_IF_IDLE
-              value: "true"
+              value: "false"
             - name: BACKUPS_ZIP
               value: "true"
             - name: VALHEIM_PLUS
