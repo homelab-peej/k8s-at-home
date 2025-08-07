@@ -23,7 +23,7 @@ spec:
       containers:
         - name: actual
           image: ghcr.io/actualbudget/actual:25.8.0
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: PORT
               value: "5006"

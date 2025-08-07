@@ -20,7 +20,7 @@ spec:
       containers:
         - name: grocy
           image: lscr.io/linuxserver/grocy:4.5.0
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: TZ
               value: "America/Chicago"

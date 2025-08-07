@@ -22,7 +22,7 @@ spec:
       containers:
         - name: myspeed
           image: germannewsmaker/myspeed:1.0.9
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           volumeMounts:
             - mountPath: /myspeed/data
               name: myspeed

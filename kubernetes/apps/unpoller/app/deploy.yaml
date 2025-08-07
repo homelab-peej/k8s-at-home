@@ -22,7 +22,7 @@ spec:
       containers:
         - name: unpoller
           image: ghcr.io/unpoller/unpoller:v2.15.3
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: UP_UNIFI_DEFAULT_URL
               valueFrom:

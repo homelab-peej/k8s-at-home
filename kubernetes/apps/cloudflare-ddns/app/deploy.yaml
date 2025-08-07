@@ -22,7 +22,7 @@ spec:
       containers:
         - name: cloudflare-ddns
           image: favonia/cloudflare-ddns:1.15.1
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: CLOUDFLARE_API_TOKEN
               valueFrom:
