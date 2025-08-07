@@ -23,7 +23,7 @@ spec:
       containers:
         - name: valheim
           image: ghcr.io/lloesche/valheim-server:sha-20e6258
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: TZ
               value: "America/Chicago"
@@ -55,7 +55,7 @@ spec:
             - name: BACKUPS_DIRECTORY
               value: "/config/backups"
             - name: BACKUPS_MAX_AGE
-              value: "14"
+              value: "99999"
             - name: BACKUPS_MAX_COUNT
               value: "30"
             - name: BACKUPS_IF_IDLE
@@ -85,18 +85,15 @@ spec:
               protocol: UDP
           resources:
             requests:
-              nvidia.com/gpu: "1"
               cpu: 700m
               memory: 3Gi
             limits:
-              nvidia.com/gpu: "1"
               memory: 3Gi
           volumeMounts:
             - name: config
               mountPath: /config
             - name: data
               mountPath: /opt/valheim
-      runtimeClassName: nvidia
       volumes:
         - name: config
           persistentVolumeClaim:
