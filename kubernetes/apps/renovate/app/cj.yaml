@@ -20,8 +20,10 @@ spec:
                 requests:
                   cpu: 850m
                   memory: 1300Mi
+                  ephemeral-storage: 2Gi
                 limits:
                   memory: 1300Mi
+                  ephemeral-storage: 2Gi
               args:
                 - homelab-peej/k8s-at-home
                 - homelab-peej/ping-server
@@ -31,4 +33,16 @@ spec:
               envFrom:
                 - secretRef:
                     name: renovate-env
+              securityContext:
+                allowPrivilegeEscalation: false
+                privileged: false
+                readOnlyRootFilesystem: true
+                runAsUser: 65534
+                runAsGroup: 65534
+              volumeMounts:
+                - name: tmp
+                  mountPath: /tmp
           restartPolicy: Never
+          volumes:
+            - name: tmp
+              emptyDir: {}
