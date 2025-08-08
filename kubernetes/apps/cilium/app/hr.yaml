@@ -25,6 +25,12 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    resources:
+      requests:
+        cpu: 87m
+        memory: 443Mi
+      limits:
+        memory: 443Mi
     operator:
       resources:
         requests:
@@ -39,9 +45,9 @@ spec:
           resources:
             requests:
               cpu: 2m
-              memory: 80Mi
+              memory: 120Mi
             limits:
-              memory: 80Mi
+              memory: 120Mi
         frontend:
           resources:
             requests:
