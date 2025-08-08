@@ -2,20 +2,20 @@
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
-  name: cnpg-alert
+  name: cnpg-operator-alert
   namespace: flux-system
 spec:
-  summary: "CNPG Operator"
+  summary: "Postgres Operator"
   providerRef:
     name: discord
   eventSeverity: info
   eventSources:
     - kind: HelmRepository
       name: '*'
-      namespace: cnpg
+      namespace: cnpg-operator
     - kind: HelmChart
       name: '*'
-      namespace: cnpg
+      namespace: cnpg-operator
     - kind: HelmRelease
       name: '*'
-      namespace: cnpg
+      namespace: cnpg-operator
