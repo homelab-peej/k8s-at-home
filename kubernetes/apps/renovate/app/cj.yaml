@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: ghcr.io/renovatebot/renovate:41.59
+              image: ghcr.io/renovatebot/renovate:41.60
               imagePullPolicy: IfNotPresent
               resources:
                 requests:
