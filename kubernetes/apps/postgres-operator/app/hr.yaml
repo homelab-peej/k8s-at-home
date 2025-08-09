@@ -22,9 +22,13 @@ spec:
   interval: 24h
   timeout: 10m
   values:
+    podAnnotations:
+      kube-score/ignore: pod-probes-identical # These are set by the chart and not easily configurable
     resources:
       requests:
         cpu: 10m
         memory: 115Mi
+        ephemeral-storage: 2Gi
       limits:
         memory: 115Mi
+        ephemeral-storage: 2Gi
