@@ -34,10 +34,7 @@ spec:
             - name: WORLD_NAME
               value: "Valhalla"
             - name: SERVER_PASS
-              valueFrom:
-                secretKeyRef:
-                  name: valheim-config
-                  key: SERVER_PASS
+              value: ""
             - name: SERVER_PUBLIC
               value: "false"
             - name: UPDATE_CRON
@@ -63,7 +60,7 @@ spec:
             - name: BACKUPS_ZIP
               value: "true"
             - name: VALHEIM_PLUS
-              value: "false"
+              value: "true"
             - name: VALHEIM_PLUS_REPO
               value: "Grantapher/ValheimPlus"
             - name: VALHEIM_PLUS_RELEASE
@@ -105,12 +102,18 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+            - name: valheim-plus-config
+              mountPath: /config/valheimplus/valheim_plus.cfg
+              subPath: valheim_plus.cfg
             - name: data
               mountPath: /opt/valheim
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: config
+        - name: valheim-plus-config
+          configMap:
+            name: valheim-plus-config
         - name: data
           persistentVolumeClaim:
             claimName: data
