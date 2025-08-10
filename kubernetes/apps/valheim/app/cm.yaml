@@ -90,13 +90,13 @@ data:
     [Beehive]
 
     ; Change false to true to enable this section.
-    enabled = false
+    enabled = true
 
     ; Configure the speed at which the bees produce honey in seconds, 1200 seconds are 24 ingame hours.
     honeyProductionSpeed = 1200
 
     ; Configure the maximum amount of honey in beehives.
-    maximumHoneyPerBeehive = 4
+    maximumHoneyPerBeehive = 8
 
     ; Instead of dropping the items, they will be placed inside the nearest nearby chests.
     autoDeposit = false
@@ -426,7 +426,7 @@ data:
     ; Increase or reduce the size of all maximum item stacks by a modifier in percent.
     ; The value 50 would set a usual item stack of 100 to be 150.
     ; The value -50 would set a usual item stack of 100 to be 50.
-    itemStackMultiplier = -25
+    itemStackMultiplier = 0
 
     ; Set duration that dropped items stay on the ground before they are despawning. Game default is 3600 seconds.
     droppedItemOnGroundDurationInSeconds = 3600
@@ -437,7 +437,7 @@ data:
     [Hud]
 
     ; Change false to true to enable this section.
-    enabled = false
+    enabled = true
 
     ; Shows the required amount of items AND the amount of items in your inventory in build mode and while crafting.
     ; This is enabled when the CraftFromChest section is enabled.
@@ -450,7 +450,7 @@ data:
     removeDamageFlash = false
 
     ; If bow is in hotbar, display current ammo & total ammo under hotbar icon - never (0), when equipped (1), or always (2).
-    displayBowAmmoCounts = 0
+    displayBowAmmoCounts = 2
 
     [Gathering]
 
@@ -831,14 +831,14 @@ data:
     [Workbench]
 
     ; Change false to true to enable this section.
-    enabled = false
+    enabled = true
 
     ; Set the workbench radius in meters.
-    workbenchRange = 20
+    workbenchRange = 50
 
     ; Set the enemy spawn radius around workbenches in meters
     ; This value equals workbenchRange if its set to 0.
-    workbenchEnemySpawnRange = 100
+    workbenchEnemySpawnRange = 200
 
     ; Sets the workbench attachment (e.g. anvil) radius.
     workbenchAttachmentRange = 15
@@ -905,7 +905,7 @@ data:
 
     ; Cart (Wagon) inventory number of rows (more than 4 rows will add a scrollbar)
     ; (default 3, min 3, max 30)
-    cartInventoryRows = 3
+    cartInventoryRows = 4
 
     ; Karve (small boat) inventory number of columns
     ; (default 2, min 2, max 8)
@@ -1099,7 +1099,7 @@ data:
     [PlayerProjectile]
 
     ; Change false to true to enable this section.
-    enabled = false
+    enabled = true
 
     ; Value of 50 would increase the minimum charge velocity from 2 to 3.
     playerMinChargeVelocityMultiplier = 0
@@ -1111,10 +1111,10 @@ data:
     playerMinChargeAccuracyMultiplier = 0
 
     ; Value of (+)50 increase in accuracy will change the variance of arrows 1 degree to 0.5 degree at the point of maximum charge release.
-    playerMaxChargeAccuracyMultiplier = 0
+    playerMaxChargeAccuracyMultiplier = 50
 
     ; Enabling this option will linearly scale by skill level from the base values of the weapon to the modified values (according to multipliers above).
-    enableScaleWithSkillLevel = false
+    enableScaleWithSkillLevel = true
 
     [MonsterProjectile]
 
