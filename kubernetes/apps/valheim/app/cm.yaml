@@ -106,7 +106,7 @@ data:
     autoDepositRange = 10
 
     ; Display the minutes and seconds until the beehive produces honey on crosshair hover.
-    showDuration = false
+    showDuration = true
 
     [Building]
 
@@ -316,10 +316,10 @@ data:
     productionSpeed = 15
 
     ; Instead of dropping the items, they will be placed inside the nearest nearby chests.
-    autoDeposit = false
+    autoDeposit = true
 
     ; The Smelter will pull coal and raw materials from nearby chests to be automatically added to it when its empty.
-    autoFuel = false
+    autoFuel = true
 
     ; This option prevents the Smelter to pull items from warded areas if it isn't placed inside of it.
     ; For convenience, we recommend this to be set to true.
@@ -347,10 +347,10 @@ data:
     productionSpeed = 15
 
     ; Instead of dropping the items, they will be placed inside the nearest nearby chests.
-    autoDeposit = false
+    autoDeposit = true
 
     ; The Furnace will pull coal and raw materials from nearby chests to be automatically added to it when its empty.
-    autoFuel = false
+    autoFuel = true
 
     ; This option prevents the Furnace to pull items from warded areas if it isn't placed inside of it.
     ; For convenience, we recommend this to be set to true.
@@ -566,15 +566,15 @@ data:
     productionSpeed = 10
 
     ; Instead of dropping the items, they will be placed inside the nearest nearby chests.
-    autoDeposit = false
+    autoDeposit = true
 
     ; The Kiln will pull wood from nearby chests to be automatically added to it when its empty.
     ; This option respects the dontProcessFineWood and dontProcessRoundLog settings.
-    autoFuel = false
+    autoFuel = true
 
     ; Stops autoFuel (looking for fuel) when there is at leasts this quantity of Coal in nearby chests
     ; (ignored if set to 0)
-    stopAutoFuelThreshold = 0
+    stopAutoFuelThreshold = 100
 
     ; This option prevents the Kiln to pull items from warded areas if it isn't placed inside of it.
     ; For convenience, we recommend this to be set to true.
@@ -826,7 +826,7 @@ data:
 
     ; Set the enemy spawn radius around wards in meters
     ; This value equals wardRange if its set to 0.
-    wardEnemySpawnRange = 100
+    wardEnemySpawnRange = 250
 
     [Workbench]
 
@@ -865,7 +865,7 @@ data:
     enabled = true
 
     ; Player inventory number of rows (inventory is resized up to 6 rows, higher values will add a scrollbar). default 4, min 4, max 20
-    playerInventoryRows = 5
+    playerInventoryRows = 6
 
     ; Wood chest number of columns
     ; (default 5, 3 min, 8 max)
@@ -877,15 +877,15 @@ data:
 
     ; Personal chest number of columns.
     ; (default 3, 3 min, 8 max)
-    personalChestColumns = 3
+    personalChestColumns = 8
 
     ; Personal chest number of rows
     ; (default 2, 2 min, 20 max)
-    personalChestRows = 2
+    personalChestRows = 4
 
     ; Iron chest number of columns.
     ; (default 6, min 3, max 8)
-    ironChestColumns = 6
+    ironChestColumns = 8
 
     ; Iron chest number of rows (more than 4 rows will add a scrollbar)
     ; (default 4, min 3, max 20)
@@ -921,7 +921,7 @@ data:
 
     ; Longboat (large boat) inventory number of rows (more than 4 rows will add a scrollbar)
     ; (default 3, min 3, max 30)
-    longboatInventoryRows = 3
+    longboatInventoryRows = 4
 
     ; By default tools and weapons go into inventories top to bottom and other materials bottom to top.
     ; Set to true to make all items go into the inventory top to bottom.
@@ -991,7 +991,7 @@ data:
 
     ; Change false to true to enable this section.
     ; This feature allows you to craft from nearby chests when in range.
-    enabled = false
+    enabled = true
 
     ; Change false to true to disable this feature when using a Cooking Station.
     disableCookingStation = false
@@ -1010,10 +1010,10 @@ data:
     lookupInterval = 3
 
     ; Allows the system to use and see contents of carts for crafting. Might also allow use of other modded containers or vehicles not accessible otherwise.
-    allowCraftingFromCarts = false
+    allowCraftingFromCarts = true
 
     ; Allows the system to use and see contents of ships for crafting. Might also allow use of other modded containers or vehicles not accessible otherwise.
-    allowCraftingFromShips = false
+    allowCraftingFromShips = true
 
     [Windmill]
 
@@ -1130,11 +1130,11 @@ data:
     [Tameable]
 
     ; Change false to true to enable this section.
-    enabled = false
+    enabled = true
 
     ; Modify what happens when a tamed creature is attacked.
     ; 0 = normal, 1 = essential(deadly attacks stun instead of kill, tamed creatures can still die rarely), 2 = immortal.
-    mortality = 0
+    mortality = 1
 
     ; This will circumvent the mortality setting, so even if tamed creatures are immortal, players can still kill them with a butcher knife.
     ; For this option to work you need to have mortality to set to either essential or immortal.
