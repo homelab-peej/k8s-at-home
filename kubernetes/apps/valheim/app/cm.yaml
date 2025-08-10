@@ -1003,7 +1003,7 @@ data:
     ignorePrivateAreaCheck = false
 
     ; The range of the chest detection in meters.
-    range = 20
+    range = 200
 
     ; The interval in seconds that the feature scans your nearby chests.
     ; We recommend not going below 3 seconds.
