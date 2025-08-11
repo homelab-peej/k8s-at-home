@@ -10,7 +10,7 @@ jobs:
     if: github.repository == 'homelab-peej/k8s-at-home'
     steps:
       - name: Check out code
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
       - name: Run yamllint
         run: for i in ${{ github.workspace }}; do yamllint -d '{"extends":"default","ignore":"flux-system/\n.github/\n.secrets/","rules":{"line-length":"disable","comments":"disable"}}' "$i"; done
         shell: bash
