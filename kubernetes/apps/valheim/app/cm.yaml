@@ -455,31 +455,31 @@ data:
     [Gathering]
 
     ; Change false to true to enable this section. This section contains modifiers. Modifiers are increases and reduction in percent declared by 50, or -50.
-    enabled = false
+    enabled = true
 
     ; Modify the chance to drop resources from resource nodes affected by this category. This only works on resource nodes that do not have guaranteed drops.
     ; As example by default scrap piles in dungeons have a 20% chance to drop a item, if you set this option to 200, you will then have a 60% chance to drop iron.
-    dropChance = 0
+    dropChance = 50
 
     ; Each of these values increase or reduce the dropped items from destroyed objects with tools (Stones, Trees, Resource nodes, etc.) by %.
     ; The value 50 will increase the dropped wood from trees from 10 to 15. The value -50 will reduce the amount of dropped wood from 10 to 5.
-    wood = 0
-    fineWood = 0
-    coreWood = 0
-    elderBark = 0
-    yggdrasilWood = 0
-    blackwood = 0
-    stone = 0
-    grausten = 0
-    blackMarble = 0
-    tinOre = 0
-    copperOre = 0
+    wood = 20
+    fineWood = 20
+    coreWood = 20
+    elderBark = 20
+    yggdrasilWood = 20
+    blackwood = 20
+    stone = 20
+    grausten = 20
+    blackMarble = 20
+    tinOre = 20
+    copperOre = 20
 
     ; copperScrap doesn't increase drop rate from looting, ex. killing Dvergrs.
-    copperScrap = 0
-    ironScrap = 0
-    silverOre = 0
-    chitin = 0
+    copperScrap = 20
+    ironScrap = 20
+    silverOre = 20
+    chitin = 20
 
     ; feather will also affect the drops from shooting gulls/crows, as well as drops from trees.
     feather = 0
@@ -493,13 +493,13 @@ data:
     ; Change false to true to enable this section.
     ; Each value below (in percent) will modify the yield when "picking" items (default key E) such as berries and flowers.
     ; A value of 100 will double drops, 200 will triple and so on.
-    enabled = false
+    enabled = true
 
     ; All berries, all mushrooms, onions and carrots
-    edibles = 0
+    edibles = 20
 
     ; Barley, Flax, Dandelion, Thistle, Carrot Seeds, Turnip Seeds, Turnip, Onion Seeds
-    flowersAndIngredients = 0
+    flowersAndIngredients = 20
 
     ; Bone Fragments, Flint, Stone, Wood (branches on the ground)
     materials = 0
@@ -844,7 +844,7 @@ data:
     workbenchAttachmentRange = 15
 
     ; Disables the roof and exposure requirement to use a workbench.
-    disableRoofCheck = false
+    disableRoofCheck = true
 
     [Wagon]
 
