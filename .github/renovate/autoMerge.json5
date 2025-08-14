@@ -61,25 +61,6 @@
       minimumReleaseAge: "3 days",
     },
     {
-      description: "Auto-merge Home Assistant on a Schedule",
-      groupName: "Home Assistant",
-      groupSlug: "hass",
-      automerge: true,
-      automergeType: "branch",
-      automergeSchedule: [
-        "0 3 25 * *",
-      ],
-      ignoreTests: true,
-      internalChecksFilter: "strict",
-      matchDatasources: ["docker"],
-      matchPackageNames: [
-        "ghcr.io/home-assistant/home-assistant",
-        "ghcr.io/zwave-js/zwave-js-ui",
-      ],
-      matchUpdateTypes: ["minor", "patch"],
-      minimumReleaseAge: "3 days",
-    },
-    {
       description: "Auto-merge Helm Patch Releases",
       matchDatasources: ["helm"],
       matchUpdateTypes: ["patch"],
