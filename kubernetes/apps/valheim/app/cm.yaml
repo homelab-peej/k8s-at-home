@@ -250,10 +250,10 @@ data:
     showDuration = true
 
     ; Instead of dropping the items, they will be placed inside the nearest nearby chests.
-    autoDeposit = false
+    autoDeposit = true
 
     ; Automatically pull meads from nearby chests to be placed inside the Fermenter as soon as its empty.
-    autoFuel = false
+    autoFuel = true
 
     ; This option prevents the fermenter to pull items from warded areas if it isn't placed inside of it.
     ; For convenience, we recommend this to be set to true.
@@ -361,7 +361,7 @@ data:
     autoRange = 10
 
     ; This option allows all ores inside the Furnace.
-    allowAllOres = false
+    allowAllOres = true
 
     [Game]
 
@@ -649,13 +649,13 @@ data:
 
     ; If set to true, when equipping a one-handed weapon, the best shield from your inventory is automatically equipped.
     ; (Best is determined by highest block power)
-    autoEquipShield = false
+    autoEquipShield = true
 
     ; When unequipping a one-handed weapon also unequip shield from inventory.
-    autoUnequipShield = false
+    autoUnequipShield = true
 
     ; If set to true, weapon switches requested mid-attack will be carried out when the current attack is finished instead of being ignored.
-    queueWeaponChanges = false
+    queueWeaponChanges = true
 
     ; If set to true, you will always skip the intro of the game.
     skipIntro = false
@@ -667,7 +667,7 @@ data:
     dontUnequipItemsWhenSwimming = false
 
     ; If set to true, items will be re-equipped when you exit water after swimming (if they were hidden automatically)
-    reequipItemsAfterSwimming = false
+    reequipItemsAfterSwimming = true
 
     ; This value represents how much the fall damage should be scaled in +/- %. This is a modifier value.
     ; The value 50 would result in 50% increased fall damage. The value -50 would result in 50% reduced fall damage.
