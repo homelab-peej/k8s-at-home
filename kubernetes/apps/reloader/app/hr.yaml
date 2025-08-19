@@ -35,5 +35,17 @@ spec:
           requests:
             cpu: 1m
             memory: 150Mi
+            ephemeral-storage: 256Mi
           limits:
             memory: 150Mi
+            ephemeral-storage: 256Mi
+        containerSecurityContext:
+          capabilities:
+            drop:
+              - ALL
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 65534
+          runAsGroup: 65534
+      readOnlyRootFilesystem: true
