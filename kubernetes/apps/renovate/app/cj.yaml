@@ -4,13 +4,19 @@ kind: CronJob
 metadata:
   name: renovate
   namespace: renovate
+  labels:
+    app.kubernetes.io/name: renovate
 spec:
   schedule: '*/10 * * * *'
   concurrencyPolicy: Forbid
   timeZone: 'America/Chicago'
+  startingDeadlineSeconds: 120
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: renovate
         spec:
           containers:
             - name: renovate
@@ -30,6 +36,8 @@ spec:
               env:
                 - name: LOG_LEVEL
                   value: debug
+                - name: RENOVATE_FORK_PROCESSING
+                  value: disabled
               envFrom:
                 - secretRef:
                     name: renovate-env
