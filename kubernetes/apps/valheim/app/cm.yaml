@@ -261,7 +261,7 @@ data:
 
     ; The range of the chest detection for the auto deposit and auto fuel features
     ; Maximum is 50
-    autoRange = 10
+    autoRange = 50
 
     [FireSource]
 
@@ -327,7 +327,7 @@ data:
 
     ; The range of the chest detection for the auto deposit and auto fuel features.
     ; Maximum is 50
-    autoRange = 10
+    autoRange = 50
 
     [Furnace]
 
@@ -358,7 +358,7 @@ data:
 
     ; The range of the chest detection for the auto deposit and auto fuel features.
     ; Maximum is 50
-    autoRange = 10
+    autoRange = 50
 
     ; This option allows all ores inside the Furnace.
     allowAllOres = true
@@ -582,7 +582,7 @@ data:
 
     ; The range of the chest detection for the auto deposit and fuel features.
     ; Maximum is 50
-    autoRange = 10
+    autoRange = 50
 
     [Map]
 
@@ -1041,7 +1041,7 @@ data:
 
     ; The range of the chest detection for the auto deposit and auto fuel features.
     ; Maximum is 50
-    autoRange = 20
+    autoRange = 50
 
     [SpinningWheel]
 
@@ -1066,7 +1066,7 @@ data:
 
     ; The range of the chest detection for the auto deposit and auto fuel features
     ; Maximum is 50
-    autoRange = 20
+    autoRange = 50
 
     [EitrRefinery]
 
@@ -1094,7 +1094,7 @@ data:
 
     ; The range of the chest detection for the auto deposit and auto fuel features.
     ; Maximum is 50
-    autoRange = 10
+    autoRange = 50
 
     [PlayerProjectile]
 
@@ -1266,7 +1266,7 @@ data:
 
     ; The range of the chest detection for the auto fuel feature.
     ; Maximum is 50
-    autoRange = 10
+    autoRange = 50
 
     [ShieldGenerator]
 
@@ -1285,7 +1285,7 @@ data:
 
     ; The range of the chest detection for the auto fuel feature.
     ; Maximum is 50
-    autoRange = 10
+    autoRange = 50
 
     [Turret]
 
@@ -1344,7 +1344,7 @@ data:
 
     ; The range of the chest detection for the auto fuel feature.
     ; Maximum is 50
-    autoRange = 20
+    autoRange = 50
 
     [SapCollector]
 
