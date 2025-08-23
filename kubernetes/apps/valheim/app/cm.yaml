@@ -719,28 +719,28 @@ data:
     enabled = true
 
     ; Changes the amount of stamina cost of using the dodge roll by %
-    dodgeStaminaUsage = 0
+    dodgeStaminaUsage = -25
 
     ; Changes the stamina drain of being overweight by %
     encumberedStaminaDrain = -10
 
     ; Changes the stamina cost of jumping by %
-    jumpStaminaDrain = -10
+    jumpStaminaDrain = -20
 
     ; Changes the stamina cost of running by %
-    runStaminaDrain = -10
+    runStaminaDrain = -40
 
     ; Changes the stamina drain by sneaking by %
-    sneakStaminaDrain = -30
+    sneakStaminaDrain = -50
 
     ; Changes the total amount of stamina recovered per second by %
-    staminaRegen = 30
+    staminaRegen = 50
 
     ; Changes the delay until stamina regeneration sets in by %
     staminaRegenDelay = 0
 
     ; Changes the stamina drain of swimming by %
-    swimStaminaDrain = -10
+    swimStaminaDrain = -40
 
     [StaminaUsage]
 
@@ -749,20 +749,20 @@ data:
     enabled = true
 
     ; Each of these values change the respective tool in stamina usage by increases and reduction in percent declared by 50, or -50.
-    axes = -10
-    blocking = -10
-    bows = -10
-    clubs = -10
-    knives = -10
-    pickaxes = -10
-    polearms = -10
-    spears = -10
-    swords = -10
-    unarmed = -10
-    hammer = -10
-    hoe = -10
-    cultivator = -10
-    fishing = -10
+    axes = -25
+    blocking = -25
+    bows = -25
+    clubs = -25
+    knives = -25
+    pickaxes = -25
+    polearms = -25
+    spears = -25
+    swords = -25
+    unarmed = -25
+    hammer = -75
+    hoe = -75
+    cultivator = -75
+    fishing = -75
 
     [EitrUsage]
 
