@@ -31,10 +31,10 @@ spec:
       resources:
         requests:
           cpu: 200m
-          memory: 100Mi
+          memory: 150Mi
         limits:
           cpu: ~
-          memory: 100Mi
+          memory: 150Mi
     dcgmExporter:
       resources:
         requests:
@@ -68,16 +68,16 @@ spec:
       resources:
         requests:
           cpu: 2m
-          memory: 40Mi
+          memory: 75Mi
         limits:
-          memory: 40Mi
+          memory: 75Mi
     validator:
       resources:
         requests:
           cpu: 2m
-          memory: 2Mi
+          memory: 15Mi
         limits:
-          memory: 2Mi
+          memory: 15Mi
     nfd:
       enabled: false
     driver:
