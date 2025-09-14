@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: homeassistant
-          image: ghcr.io/home-assistant/home-assistant:2025.8.3
+          image: ghcr.io/home-assistant/home-assistant:2025.9.3
           imagePullPolicy: IfNotPresent
           env:
             - name: TZ
